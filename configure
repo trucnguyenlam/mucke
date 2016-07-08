@@ -1,0 +1,234 @@
+#!/bin/sh
+
+usage() {
+  echo "*** usage:  configure <options>" 1>&2
+  echo "" 1>&2
+  echo "  where <options> is a sequence of the following options:" 1>&2
+  echo "" 1>&2
+  echo "    --static    enable static compilation which is usefull" 1>&2
+  echo "                for debugging but might compromise the copyright" 1>&2
+  echo "                of libraries that are statically linked" 1>&2
+  echo "" 1>&2
+  echo "    --longbdd=<dir>    to generate code for the BDD library" 1>&2
+  echo "                       of D. E. Long (from CMU)" 1>&2
+  echo "" 1>&2
+  echo "    --CXX=<compiler>   specifies another C++ compiler" 1>&2
+  echo "" 1>&2
+  echo "    --CPP=<cpp>        specifies another C(++) preprocessor" 1>&2
+  exit 1
+}
+
+#--------------------------------------------------------------------------
+# First Erase Old Configuration -------------------------------------------
+#--------------------------------------------------------------------------
+
+if [ -f .configuration ]
+then
+  . ./.configuration
+  echo "removing old configuration for $ARCH ($SARCH)"
+fi
+
+rm -f .configuration
+
+#--------------------------------------------------------------------------
+# Parse Command Line Flags ------------------------------------------------
+#--------------------------------------------------------------------------
+
+STATIC=false
+CXX="g++"
+CPP="gcc -E"
+LONGBDD=""
+
+while [ $# -gt 0 ]
+do
+  case $1 in
+    --static) STATIC=true;;
+    --longbdd=*)
+      LONGBDD=`echo "$1" | sed -e 's,--longbdd=,,'`
+      if [ x"$LONGBDD" = x ]
+      then
+        echo "*** configure: argument to --longbdd is missing" 1>&2
+	usage
+      fi
+      if [ ! -d $LONGBDD ]
+      then
+        echo "*** configure: argument to --longbdd is not a directory" 1>&2
+	usage
+      fi
+      ;;
+    --CXX=*) CXX=`echo "$1" | sed -e 's,--CXX=,,'`;;
+    --CPP=*) CPP=`echo "$1" | sed -e 's,--CPP=,,'`;;
+    *) usage;;
+  esac
+  shift
+done
+
+if [ x"$LONGBDD" = x ]
+then
+  if [ $STATIC = true ]
+  then
+    echo \
+    "*** $0: for static compilation the library of D. E. Long is needed" 1>&2
+    exit 1
+  fi
+fi
+
+#--------------------------------------------------------------------------
+# Determine OS of this Machine --------------------------------------------
+#--------------------------------------------------------------------------
+
+SARCH=`./bin/sarch`
+BARCH=`./bin/barch`
+
+echo "configuring for $ARCH ($SARCH)"
+
+#--------------------------------------------------------------------------
+# Set up the right links in the `bin' and `obj' dir -----------------------
+#--------------------------------------------------------------------------
+
+echo "generating subdirectories for $BARCH"
+
+for dir in bin obj
+do
+  if [ ! -d $dir/$BARCH ]
+  then
+    mkdir $dir/$BARCH
+  fi
+  cd $dir
+  rm -f LINK
+  ln -s $BARCH LINK
+  cd ..
+done
+
+#--------------------------------------------------------------------------
+# Generate `config.h' -----------------------------------------------------
+#--------------------------------------------------------------------------
+
+echo "generating config.h"
+
+rm -f src/new_config.h
+trap "rm -f src/new_config.h" 2
+
+echo "#ifndef _config_h_INCLUDED" > src/new_config.h
+echo "#define _config_h_INCLUDED" >> src/new_config.h
+
+case $SARCH in
+  solaris)
+    echo "#define SOLARIS" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "/*" >> src/new_config.h
+    echo "DATE_STR +%a %b %d %Y" >> src/new_config.h
+    echo "*/" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "#define HAVE_CURSES" >> src/new_config.h
+    echo "#define HAVE_TERMIOS" >> src/new_config.h
+    echo "#define HAVE_ISATTY" >> src/new_config.h
+    echo "#define HAVE_GETENV" >> src/new_config.h
+    ;;
+  linux)
+    echo "#define LINUX" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "/*" >> src/new_config.h
+    echo "DATE_STR +%a %b %d %Y" >> src/new_config.h
+    echo "*/" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "#define HAVE_CURSES" >> src/new_config.h
+    echo "#define HAVE_TERMIOS" >> src/new_config.h
+    echo "#define HAVE_ISATTY" >> src/new_config.h
+    echo "#define HAVE_GETENV" >> src/new_config.h
+    ;;
+  sunos)
+    echo "#define SUNOS" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "#define atexit(f) on_exit(f,0)" >> src/new_config.h
+    echo "" >> src/new_new_config.h
+    echo "/*" >> src/new_config.h
+    echo "DATE_STR +%a %h %d %y" >> src/new_config.h
+    echo "*/" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "#define HAVE_CURSES" >> src/new_config.h
+    echo "#define HAVE_TERMIOS" >> src/new_config.h
+    echo "#define HAVE_ISATTY" >> src/new_config.h
+    ;;
+  *) echo "*** $0: internal error (0)" 1>&2; exit 1;;
+esac
+
+echo "  constants ..."
+${CPP} src/Constants.c | \
+sed -e '/_MY_/!d' -e 's/_MY_\([a-zA-Z0-9_]*\)/\1/' >> src/new_config.h
+
+echo "  have to define bool ..."
+tmpfile=/tmp/have_bool$$
+trap "rm -f $tmpfile.[Co]" 2 15
+echo "main() { bool i; }" > $tmpfile.C
+${CXX} -c $tmpfile.C -o $tmpfile.o > /dev/null 2>&1 || \
+  echo "#define bool int" >> src/new_config.h
+rm -f $tmpfile.[Co]
+
+echo "  have to define false ..."
+tmpfile=/tmp/have_false$$$
+trap "rm -f $tmpfile.[Co]" 2 15
+echo "main() { int i = false; }" > $tmpfile.C
+${CXX} -c $tmpfile.C -o $tmpfile.o > /dev/null 2>&1 || \
+  echo "#define false 0" >> src/new_config.h
+rm -f $tmpfile.[Co]
+
+echo "  have to define true ..."
+tmpfile=/tmp/have_true$$$
+trap "rm -f $tmpfile.[Co]" 2 15
+echo "main() { int i = true; }" > $tmpfile.C
+${CXX} -c $tmpfile.C -o $tmpfile.o > /dev/null 2>&1 || \
+  echo "#define true 1" >> src/new_config.h
+rm -f $tmpfile.[Co]
+
+if [ $STATIC = true ]
+then
+  echo "#define TLOAD_BMAN_STATIC" >> src/new_config.h
+fi
+
+echo "#endif" >> src/new_config.h
+
+if [ -f src/config.h ]
+then
+  if diff src/config.h src/new_config.h 1>/dev/null 2>/dev/null
+  then
+     echo "keeping old config.h"
+     rm -f src/new_config.h
+  else
+    mv src/new_config.h src/config.h
+  fi
+else
+  mv src/new_config.h src/config.h
+fi
+
+#--------------------------------------------------------------------------
+# Finally save the configuration ------------------------------------------
+#--------------------------------------------------------------------------
+
+echo "saving configuration"
+
+cat /dev/null > .configuration
+
+echo "ARCH=$ARCH" >> .configuration
+echo "SARCH=$SARCH" >> .configuration
+echo "BARCH=$BARCH" >> .configuration
+echo "STATIC=$STATIC" >> .configuration
+echo 'LONGBDD="'$LONGBDD'"' >> .configuration
+
+#--------------------------------------------------------------------------
+# Configure subtargets ----------------------------------------------------
+#--------------------------------------------------------------------------
+
+if [ ! x"$LONGBDD" = x ]
+then
+  echo "configuring bdd library of D. E. Long"
+  cd contrib/bddlib.D.E.Long
+  ./configure $LONGBDD || exit 1
+  cd ../..
+fi
+
+echo "configuring ABCD:"
+
+cd contrib/abcd/src
+./configure
+cd ../../..

@@ -1,0 +1,1026 @@
+/*****************************************************************************\
+(C) 1997 Armin Biere 
+$Id: abcd_node.tmpl,v 1.2 2000-05-08 11:33:35 biere Exp $
+\*****************************************************************************/
+
+#include "config.h"
+#include "abcd_manager.h"
+#include "abcd_manager_int.h"
+#include "abcd_node_int.h"
+#include "abcd_util.h"
+
+/*===========================================================================*/
+#ifdef aBCD_compiler_does_bit_allocation
+/*===========================================================================*/
+
+FUNCTION void
+aBCD_Node_mark
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> marked = 1;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_unmark
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> marked = 0;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Node_is_marked
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> marked
+END
+
+/*---------------------------------------------------------------------------*/
+#ifdef USE_SHARED
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_set_shared
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  /* epsilon */
+END
+
+/*---------------------------------------------------------------------------*/
+#endif
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Node_is_shared
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> shared != 0
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_signed_succ1
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> right
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_uint
+aBCD_Node_var
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> var
+END
+
+/*---------------------------------------------------------------------------*/
+#ifdef aBCD_split_left_successor
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_is_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> right == 0 &&
+  (node_ptr) -> left_high == 0 &&
+  (node_ptr) -> left_low == 0
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_mk_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  /* Make sure that this is equivalent to setting all bits to zero!
+   * (right now this function is just a comment since `memset' is used)
+   */
+  (node_ptr) -> var = 0;
+  (node_ptr) -> marked = 0;
+  (node_ptr) -> shared = 0;
+  (node_ptr) -> left_high = 0;
+  (node_ptr) -> left_low = 0;
+  (node_ptr) -> right = 0;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_are_the_same_Node
+TYPE	struct aBCD_Node *
+ARG	a
+TYPE	struct aBCD_Node *
+ARG	b
+BODY
+  (a) -> var == (b) -> var &&
+  (a) -> left_low == (b) -> left_low &&
+  (a) -> left_high == (b) -> left_high &&
+  (a) -> right == (b) -> right
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_init_node
+TYPE	aBCD_uint
+ARG	v
+TYPE	aBCD_Idx
+ARG	l
+TYPE	aBCD_Idx
+ARG	r
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> var = (v);
+  (node_ptr) -> marked = 0;
+  (node_ptr) -> shared = 0;
+  (node_ptr) -> left_low = (l) & ~((~0)<<aBCD_NumLeftLowBits);
+  (node_ptr) -> left_high = (l) >> aBCD_NumLeftLowBits;
+  (node_ptr) -> right = (r);
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_signed_succ0
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  ((node_ptr) -> left_low) |
+  (((node_ptr) -> left_high) << aBCD_NumLeftLowBits)
+END
+
+/*---------------------------------------------------------------------------*/
+#else /* aBCD_split_left_successor */
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_is_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> left == 0 &&
+  (node_ptr) -> right == 0
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_mk_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  /* Make sure that this is equivalent to setting all bits to zero!
+   * (right now this function is just a comment since `memset' is used)
+   */
+  (node_ptr) -> var = 0;
+  (node_ptr) -> marked = 0;
+  (node_ptr) -> shared = 0;
+  (node_ptr) -> left = 0;
+  (node_ptr) -> right = 0;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_are_the_same_Node
+TYPE	struct aBCD_Node *
+ARG	a
+TYPE	struct aBCD_Node *
+ARG	b
+BODY
+  (a) -> left == (b) -> left &&
+  (a) -> right == (b) -> right &&
+  (a) -> var == (b) -> var
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_init_node
+TYPE	aBCD_uint
+ARG	v
+TYPE	aBCD_Idx
+ARG	l
+TYPE	aBCD_Idx
+ARG	r
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> var = (v);
+  (node_ptr) -> marked = 0;
+  (node_ptr) -> shared = 0;
+  (node_ptr) -> left = (l);
+  (node_ptr) -> right = (r);
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_signed_succ0
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> left
+END
+
+/*---------------------------------------------------------------------------*/
+#endif /* aBCD_split_left_successor */
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_set_forward
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+TYPE	aBCD_Idx
+ARG	destination
+BODY
+  (node_ptr) -> right = (destination);
+END
+
+/*------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_get_forward
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> right
+END
+
+/*===========================================================================*/
+#else /* aBCD_compiler_does_bit_allocation */
+/*===========================================================================*/
+
+FUNCTION int
+aBCD_is_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[0] == 0 &&
+  (node_ptr) -> data[1] == 0
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_mk_empty_Node
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  /* Make sure that this is equivalent to setting all bits to zero!
+   * (right now this function is just a comment since `memset' is used)
+   */
+  (node_ptr) -> data[0] = 0;
+  (node_ptr) -> data[1] = 0;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_are_the_same_Node
+TYPE	struct aBCD_Node *
+ARG	a
+TYPE	struct aBCD_Node *
+ARG	b
+BODY
+  ((a) -> data[0] & ~aBCD_FlagsMask) == ((b) -> data[0] & ~aBCD_FlagsMask) &&
+  (a) -> data[1] == (b) -> data[1]
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_mark
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[0] |= aBCD_MarkMask;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_unmark
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[0] &= ~aBCD_MarkMask;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Node_is_marked
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+ ((node_ptr) -> data[0] & aBCD_MarkMask) != 0
+END
+
+/*---------------------------------------------------------------------------*/
+#ifdef USE_SHARED
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_set_shared
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[0] |= aBCD_SharedMask;
+END
+
+/*---------------------------------------------------------------------------*/
+#else
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_set_shared
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  /* epsilon */
+END
+
+/*---------------------------------------------------------------------------*/
+#endif
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Node_is_shared
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+ ((node_ptr) -> data[0] & aBCD_SharedMask) != 0
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_init_node
+TYPE	aBCD_uint
+ARG	v
+TYPE	aBCD_Idx
+ARG	l
+TYPE	aBCD_Idx
+ARG	r
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  aBCD_uint d0, d1;
+
+  /* The variable is smaller than aBCD_MaxVar (assume 1<<10) and
+   * make up the bits 0..9 of d0. This also clears both the `mark'
+   * and the `shared' flag!
+   */
+  d0=(v);
+
+  /* The right index consists of 26 bits (containing the sign) that are
+   * copied to the lowest 26 bits of d0.
+   */
+  d1=(r);
+
+  /* The 19 lowest bits of the left idx at position 1..19 together
+   * with the sign at position 0 (which makes 20 bits) are moved to
+   * position 31..12 with a left shift of 12 and masked with the size of
+   * a 32 Bit word => should make this library functional on 64 bit
+   * machines (this is not tested yet).
+   */
+  d0 |= ((l)<<12) & 0xFFFFFFFF;	/* Hope the compiler optimizes the
+				 * masking away for 32 bit machines.
+                                 */
+
+  /* The remaining 26 - 20 = 6 highest bits are the bits at position
+   * 25..20 which means they have to be shifted by 6 positions to
+   * 31..26 and masked with the highest 6 bits in a 32 bit word.
+   */
+  d1 |= ((l)<<6) & 0xFC000000;
+
+  (node_ptr) -> data[0] = d0;
+  (node_ptr) -> data[1] = d1;
+END
+
+/*---------------------------------------------------------------------------*/
+/* assume aBCD_MaxVar == (1<<10)
+ */
+FUNCTION aBCD_uint
+aBCD_Node_var
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[0] & 0x3FF
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_signed_succ0
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  ((node_ptr) -> data[0] >> 12)
+  |
+  (((node_ptr) -> data[1] & 0xFC000000) >> 6)
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_signed_succ1
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[1] & ~0xFC000000
+END
+
+/*------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Node_set_forward
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+TYPE	aBCD_Idx
+ARG	destination
+BODY
+  (node_ptr) -> data[1] = (destination);
+END
+
+/*------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Node_get_forward
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+BODY
+  (node_ptr) -> data[1]
+END
+
+
+/*===========================================================================*/
+#endif /* aBCD_compiler_does_bit_allocation */
+/*===========================================================================*/
+
+FUNCTION int
+aBCD_is_marked
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  aBCD_Node_is_marked(aBCD_IdxAsNodePtr(manager,idx))
+END
+
+/*---------------------------------------------------------------------------*/
+#ifdef USE_SHARED
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_is_shared
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  aBCD_Node_is_shared(aBCD_IdxAsNodePtr(manager,idx))
+END
+
+/*---------------------------------------------------------------------------*/
+#ifdef aBCD_compiler_does_bit_allocation
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_uint
+aBCD_copy
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  !aBCD_is_shared((manager), (idx)) ? 
+    ((aBCD_IdxAsNodePtr((manager),(idx)) -> shared = 1) , (idx)) :
+    (idx)
+END
+
+/*---------------------------------------------------------------------------*/
+#else
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_uint
+aBCD_copy
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  !aBCD_is_shared((manager), (idx)) ? 
+    ((aBCD_IdxAsNodePtr((manager),(idx))->data[0] |= aBCD_SharedMask), (idx))
+    :
+    (idx)
+END
+
+/*---------------------------------------------------------------------------*/
+#endif /* aBCD_compiler_does_bit_allocation */
+/*---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------*/
+#else
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_is_shared
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  1
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_uint
+aBCD_copy
+TYPE    struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	idx
+BODY
+  idx
+END
+
+/*---------------------------------------------------------------------------*/
+#endif /* USE_SHARED */
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Idx_split
+TYPE    aBCD_uint
+ARG     signed_idx
+TYPE    aBCD_uint *
+ARG     unsigned_idx_ptr
+TYPE    int *
+ARG     sign_ptr
+BODY
+  int tmp;
+
+  tmp = aBCD_is_negated(signed_idx);
+  *(sign_ptr) = tmp;
+  *(unsigned_idx_ptr) = tmp ? aBCD_toggle_sign(signed_idx) : (signed_idx);
+END
+
+/*---------------------------------------------------------------------------*/
+#ifndef POWER2_SIZE
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_hash_Node
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+TYPE	aBCD_uint *
+ARG	result_ptr
+BODY
+  aBCD_uint tmp, var;
+
+  /* (A)
+   * I experimented for hours to find a better hash function and could not
+   * find one. I bet that it is very dependent of aBCD_MaxIdxBits being 26 ;-)
+   */
+  tmp = aBCD_Node_signed_succ0(node_ptr);
+  var = aBCD_Node_var(node_ptr);
+  tmp <<= 6;
+  tmp |= var >> 6;
+  tmp = tmp ^ aBCD_Node_signed_succ1(node_ptr);
+  tmp ^= var << 26;
+
+  *(result_ptr) = tmp % (manager) -> nodes_mod_or_shift;
+END
+
+/*---------------------------------------------------------------------------*/
+#else
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_hash_Node
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	node_ptr
+TYPE	aBCD_uint *
+ARG	result_ptr
+BODY
+  *(result_ptr) = aBCD_hash3(
+    aBCD_Node_signed_succ0(node_ptr),
+    aBCD_Node_signed_succ1(node_ptr),
+    aBCD_Node_var(node_ptr),
+    manager -> nodes_mod_or_shift);
+END
+
+/*---------------------------------------------------------------------------*/
+#endif
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_uint
+aBCD_Idx_var
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+  aBCD_Node_var(aBCD_IdxAsNodePtr(manager,idx))
+END  
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Idx_succ0
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+  aBCD_Node_signed_succ0(aBCD_IdxAsNodePtr(manager,idx))
+END  
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_Idx_succ1
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+  aBCD_Node_signed_succ1(aBCD_IdxAsNodePtr(manager,idx))
+END  
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Idx_is_constant
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+	(idx) == 0 || (idx) == 1
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_Idx_is_variable
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+  aBCD_Idx_is_constant(aBCD_Idx_succ0(manager, idx))
+  &&
+  aBCD_Idx_is_constant(aBCD_Idx_succ1(manager, idx))
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Idx_cofactor1
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+TYPE	aBCD_uint *
+ARG	v
+TYPE	aBCD_Idx *
+ARG	l
+TYPE	aBCD_Idx *
+ARG	r
+BODY
+  struct aBCD_Node * node_ptr;
+
+  node_ptr = aBCD_IdxAsNodePtr(manager,idx);
+  *(v) = aBCD_Node_var(node_ptr);
+
+  if(aBCD_is_negated(idx))
+    {
+      *(l) = aBCD_toggle_sign(aBCD_Node_signed_succ0(node_ptr));
+      *(r) = aBCD_toggle_sign(aBCD_Node_signed_succ1(node_ptr));
+    }
+  else
+    {
+      *(l) = aBCD_Node_signed_succ0(node_ptr);
+      *(r) = aBCD_Node_signed_succ1(node_ptr);
+    }
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Idx_cofactor2
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	f
+TYPE	aBCD_Idx
+ARG	g
+TYPE	aBCD_uint *
+ARG	m
+TYPE	aBCD_Idx *
+ARG	f0
+TYPE	aBCD_Idx *
+ARG	f1
+TYPE	aBCD_Idx *
+ARG	g0
+TYPE	aBCD_Idx *
+ARG	g1
+BODY
+  struct aBCD_Node * f_node_ptr, * g_node_ptr;
+  aBCD_uint f_var, g_var;
+
+  f_node_ptr = aBCD_IdxAsNodePtr(manager,f);
+  f_var = aBCD_Node_var(f_node_ptr); 
+  g_node_ptr = aBCD_IdxAsNodePtr(manager,g);
+  g_var = aBCD_Node_var(g_node_ptr); 
+
+  *(m) = aBCD_min2(f_var, g_var);
+
+  if(f_var==*(m))
+    {
+      if(aBCD_is_negated(f))
+        {
+          *(f0) = aBCD_toggle_sign(aBCD_Node_signed_succ0(f_node_ptr));
+          *(f1) = aBCD_toggle_sign(aBCD_Node_signed_succ1(f_node_ptr));
+	}
+      else
+        {
+          *(f0) = aBCD_Node_signed_succ0(f_node_ptr);
+          *(f1) = aBCD_Node_signed_succ1(f_node_ptr);
+	}
+    }
+  else
+    {
+      *(f0) = f;
+      *(f1) = f;
+    }
+
+  if(g_var==*(m))
+    {
+      if(aBCD_is_negated(g))
+        {
+          *(g0) = aBCD_toggle_sign(aBCD_Node_signed_succ0(g_node_ptr));
+          *(g1) = aBCD_toggle_sign(aBCD_Node_signed_succ1(g_node_ptr));
+	}
+      else
+        {
+          *(g0) = aBCD_Node_signed_succ0(g_node_ptr);
+          *(g1) = aBCD_Node_signed_succ1(g_node_ptr);
+        }
+    }
+  else
+    {
+      *(g0) = g;
+      *(g1) = g;
+    }
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_Idx_cofactor3
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	f
+TYPE	aBCD_Idx
+ARG	g
+TYPE	aBCD_Idx
+ARG	h
+TYPE	aBCD_uint *
+ARG	m
+TYPE	aBCD_Idx *
+ARG	f0
+TYPE	aBCD_Idx *
+ARG	f1
+TYPE	aBCD_Idx *
+ARG	g0
+TYPE	aBCD_Idx *
+ARG	g1
+TYPE	aBCD_Idx *
+ARG	h0
+TYPE	aBCD_Idx *
+ARG	h1
+BODY
+  struct aBCD_Node * f_node_ptr, * g_node_ptr, * h_node_ptr;
+  aBCD_uint f_var, g_var , h_var;
+
+  f_node_ptr = aBCD_IdxAsNodePtr(manager,f);
+  f_var = aBCD_Node_var(f_node_ptr); 
+  g_node_ptr = aBCD_IdxAsNodePtr(manager,g);
+  g_var = aBCD_Node_var(g_node_ptr); 
+  h_node_ptr = aBCD_IdxAsNodePtr(manager,h);
+  h_var = aBCD_Node_var(h_node_ptr); 
+
+  *(m) = aBCD_min3(f_var, g_var, h_var);
+
+  if(f_var==*(m))
+    {
+      if(aBCD_is_negated(f))
+        {
+          *(f0) = aBCD_toggle_sign(aBCD_Node_signed_succ0(f_node_ptr));
+          *(f1) = aBCD_toggle_sign(aBCD_Node_signed_succ1(f_node_ptr));
+	}
+      else
+        {
+          *(f0) = aBCD_Node_signed_succ0(f_node_ptr);
+          *(f1) = aBCD_Node_signed_succ1(f_node_ptr);
+	}
+    }
+  else
+    {
+      *(f0) = f;
+      *(f1) = f;
+    }
+
+  if(g_var==*(m))
+    {
+      if(aBCD_is_negated(g))
+        {
+          *(g0) = aBCD_toggle_sign(aBCD_Node_signed_succ0(g_node_ptr));
+          *(g1) = aBCD_toggle_sign(aBCD_Node_signed_succ1(g_node_ptr));
+	}
+      else
+        {
+          *(g0) = aBCD_Node_signed_succ0(g_node_ptr);
+          *(g1) = aBCD_Node_signed_succ1(g_node_ptr);
+        }
+    }
+  else
+    {
+      *(g0) = g;
+      *(g1) = g;
+    }
+
+  if(h_var==*(m))
+    {
+      if(aBCD_is_negated(h))
+        {
+          *(h0) = aBCD_toggle_sign(aBCD_Node_signed_succ0(h_node_ptr));
+          *(h1) = aBCD_toggle_sign(aBCD_Node_signed_succ1(h_node_ptr));
+	}
+      else
+        {
+          *(h0) = aBCD_Node_signed_succ0(h_node_ptr);
+          *(h1) = aBCD_Node_signed_succ1(h_node_ptr);
+        }
+    }
+  else
+    {
+      *(h0) = h;
+      *(h1) = h;
+    }
+END
+
+/*---------------------------------------------------------------------------*/
+/* do not normalize -> can be used for variable sets, substitutions,
+ * and for constructing BDDs without negated edges.
+ */
+
+FUNCTION void
+aBCD_find_Idx_aux
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	v
+TYPE	aBCD_Idx *
+ARG	l_ptr
+TYPE	aBCD_Idx *
+ARG	r_ptr
+TYPE	aBCD_Idx *
+ARG	result
+BODY
+  struct aBCD_Node node, * p, * last;
+  aBCD_uint hash_val, inc;
+
+  aBCD_init_node(v,*(l_ptr),*(r_ptr),&node);
+  aBCD_hash_Node(manager, &node, &hash_val);
+  if(hash_val==0) hash_val++;				/* skip constants */
+  p = &manager -> nodes[hash_val];
+  last = manager -> nodes + manager -> nodes_size;
+
+  aBCD_inc_stats(manager, nodes_searches);
+  inc = 0; 
+
+  for(;;)
+    {
+      if(aBCD_are_the_same_Node(&node, p))
+        {
+	  aBCD_inc_distribution_visited(manager);
+          aBCD_inc_distribution_hit(manager);
+
+	  aBCD_inc_stats(manager, nodes_visited);
+	  aBCD_inc_stats(manager, nodes_hits);
+
+	  if(!aBCD_Node_is_shared(p)) aBCD_Node_set_shared(p);
+          *(result) = aBCD_NodePtrAsIdx(manager, p);
+
+	  break;
+	}
+      else
+      if(aBCD_is_empty_Node(p))
+        {
+	  /* Generate a new node but check if we first have to collect
+	   * garbage nodes. Reading an empty node is not considered
+	   * to be a visit of that node. This is questionable because
+	   * for `abcd' we really have to read the whole node before we
+	   * can decide if it is empty.
+	   */
+
+          aBCD_inc_distribution_miss(manager);
+
+	  if(aBCD_check_for_garbage(manager))
+	    {
+	      /* `result' is assigned by `aBCD_garbage_collection'. Also
+	       * the node count is increased.
+	       */
+	      aBCD_garbage_collection(manager, v, l_ptr, r_ptr, result);
+	    }
+	  else
+	    {
+	      *p = node;
+              *(result) = aBCD_NodePtrAsIdx(manager, p);
+	      manager -> nodes_count++;
+	    }
+
+          aBCD_adjust_distribution(manager);
+	  
+	  /* By default the `shared' flag of the result is cleared.
+	   */
+
+	  break;
+	}
+      else
+        {
+	  aBCD_inc_distribution_visited(manager);
+	  aBCD_inc_stats(manager, nodes_visited);
+          if(inc == 0) 
+	    {
+	      inc = aBCD_double_hash(manager, v, *(l_ptr), *(r_ptr));
+	      if(!inc) inc = 1;
+	    }
+	  p += inc;
+	  if(p>=last) p = manager -> nodes + 1;		/* skip constant */
+	}
+    }
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_find_Idx
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	v
+TYPE	aBCD_Idx *
+ARG	l_ptr
+TYPE	aBCD_Idx *
+ARG	r_ptr
+TYPE	aBCD_Idx *
+ARG	result
+BODY
+  if(*(l_ptr) != *(r_ptr))
+    {
+      if(aBCD_is_negated(*(l_ptr)))
+        {
+	  *(l_ptr) = aBCD_toggle_sign(*(l_ptr));
+	  *(r_ptr) = aBCD_toggle_sign(*(r_ptr));
+          aBCD_find_Idx_aux(manager,v,l_ptr,r_ptr,result);
+	  *(result) = aBCD_toggle_sign(*result);
+	  *(r_ptr) = aBCD_toggle_sign(*(r_ptr));
+	  *(l_ptr) = aBCD_toggle_sign(*(l_ptr));
+	}
+      else aBCD_find_Idx_aux(manager,v,l_ptr,r_ptr,result);
+    }
+  else *(result) = *(l_ptr);
+END
+
+/*---------------------------------------------------------------------------*/

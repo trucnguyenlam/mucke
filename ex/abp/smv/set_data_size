@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" = "" ]
+then
+  echo "*** argument is missing" 1>&2; exit 1
+fi
+
+awk "/;--DATA/{print \"0..\"2^($1)-1\";--DATA\"}!/;--DATA/" \
+  abpOrig.smv > abp.smv

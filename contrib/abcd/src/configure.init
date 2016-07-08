@@ -1,0 +1,13 @@
+#!/bin/sh
+define_debug=no
+use_doubles=yes
+use_power2=no
+multiplicative_hashing=no
+generate=macros
+manual_bit_stuffing=yes
+split_left_successor=yes
+define_statistics=yes
+define_call_stats=no
+define_distribution_stats=no
+define_priority=no
+use_shared=no

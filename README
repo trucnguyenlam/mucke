@@ -1,0 +1,18 @@
+This is the source distribution of the mucke model checker.  Be sure to
+read the copyright information in the file COPYRIGHT.  To compile type:
+
+	./configure
+	make
+      
+For a binary distribution repeat this process on each machine
+(currently only Solaris and Linux are supported).  Then run the
+`./bin/mkdist' script.  You might also use the configure option
+
+	./configure --longbdd=<dir>
+
+each time if you have the sources of the BDD library of D. E. Long
+available in directory <dir>.  The default is that dynamic libraries
+are used.  For debugging purposes a static version might be preferrable.
+In this case use the configuration option `--static'.
+
+				    Armin Biere, 4 Januar 1999, Karlsruhe

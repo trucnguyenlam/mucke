@@ -1,0 +1,79 @@
+#!/bin/sh
+
+cd `dirname $0`/..
+
+version=`grep '^VERSION' src/Makefile | sed -e 's,VERSION=,,'`
+cd bin
+alldirs=`find * -type d -print`
+cd ..
+
+echo "[found $alldirs]"
+
+#tmpdir=/tmp/mkdist-$$
+tmpdir=/tmp/mkdist-
+mkdir $tmpdir
+tmp=$tmpdir/mucke-$version
+mkdir $tmp
+
+trap "rm -rf $tmp" 2
+
+echo "[generating common files:  mucke-$version-common.tar.gz]"
+cat >$tmp/README <<EOF
+This is the binary distribution of the mu-calculus model checker mucke.
+See http://iseran.ira.uka/~armin/mucke or contact Armin.Biere@ira.uka.de
+for more information.
+
+	(C) 1996-1997, 1998 Armin Biere, University of Karlsruhe.
+EOF
+cp NEWS $tmp/NEWS
+
+mkdir $tmp/bin
+cp bin/mucke $tmp/bin
+cp bin/ldshared $tmp/bin/ldshared
+cp bin/sarch $tmp/bin/sarch
+cp bin/barch $tmp/bin/barch
+
+mkdir $tmp/contrib
+mkdir $tmp/contrib/bddlib.D.E.Long
+cp contrib/bddlib.D.E.Long/Makefile $tmp/contrib/bddlib.D.E.Long/Makefile
+cp contrib/bddlib.D.E.Long/configure $tmp/contrib/bddlib.D.E.Long/configure
+
+( cd $tmpdir; tar cf - \
+  mucke-$version/README \
+  mucke-$version/NEWS \
+  mucke-$version/contrib \
+  mucke-$version/bin ) | \
+gzip -c > ../mucke-$version-common.tar.gz
+
+for dir in $alldirs
+do
+  if [ ! $dir = arch ]
+  then
+    echo "[generating $dir binaries:  mucke-$version-$dir.tar.gz]"
+    mkdir $tmp/bin/$dir
+    cp bin/$dir/mucke_dynamic_bman $tmp/bin/$dir
+    cp bin/$dir/simplebman.so $tmp/bin/$dir
+    cp bin/$dir/abcdbman.so $tmp/bin/$dir
+    cp bin/$dir/libabcd.so $tmp/bin/$dir
+    cp bin/$dir/longbman.so $tmp/bin/$dir
+    ( cd $tmpdir; tar cf - \
+      mucke-$version/bin/$dir/mucke_dynamic_bman \
+      mucke-$version/bin/$dir/simplebman.so \
+      mucke-$version/bin/$dir/abcdbman.so \
+      mucke-$version/bin/$dir/libabcd.so \
+      mucke-$version/bin/$dir/longbman.so \
+     ) | \
+     gzip -c > ../mucke-$version-$dir.tar.gz
+    if [ -f bin/$dir/bddlib.D.E.Long.so ]
+    then
+      echo "[generating:  mucke-$version-D.E.Long-$dir.tar.gz]"
+      cp bin/$dir/bddlib.D.E.Long.so $tmp/bin/$dir
+      ( cd $tmpdir; tar cf - \
+	mucke-$version/bin/$dir/bddlib.D.E.Long.so \
+      ) | \
+      gzip -c > ../mucke-$version-D.E.Long-$dir.tar.gz
+    fi
+  fi
+done
+
+rm -rf $tmpdir

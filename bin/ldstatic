@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DEBUG=1
+
+. ../.configuration
+
+if [ "$LD" = "" ]
+then
+  echo "*** lddynamic: LD not defined" 1>&2
+  exit 1
+fi
+
+. ../bin/parse_ld_args.sh
+
+echo "[ linking with '$LD $LDFLAGS -o $arg' ]"
+$LD $LDFLAGS -o $arg

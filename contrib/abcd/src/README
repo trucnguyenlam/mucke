@@ -1,0 +1,21 @@
+Armin Biere's Compact Decision Diagram (ABCD) BDD library
+---------------------------------------------------------
+
+Second public release (version 0.3)
+
+Supported Platforms:  SunOS 4.3, Solaris (SunOS 5.5), Linux 2.x
+
+For installation type
+  
+  ./configure
+  make depend
+  make
+
+You should find the library in `../lib/libabcd.a'.  The interface
+of the library is described in `ABCD.h'.
+
+If you have any problems, bug fixes, or suggestion then please drop
+me a line.
+
+Armin Biere, biere@inf.ethz.ch
+Thu Nov 30 09:33:13 CET 2000

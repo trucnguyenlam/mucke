@@ -1,0 +1,20 @@
+#!/bin/sh
+
+OS=`uname -s`
+REVISION=`uname -r`
+
+if [ $OS = SunOS ]
+then
+  case $REVISION in
+    4*) SARCH=sunos;;
+    5*) SARCH=solaris;;
+    *) echo "*** this architecture is not supported" 2>&1; exit 1;;
+  esac
+elif [ $OS = Linux ]
+then
+  SARCH=linux
+else
+  echo "*** this architecture is not supported" 2>&1; exit 1
+fi
+
+echo "$SARCH"

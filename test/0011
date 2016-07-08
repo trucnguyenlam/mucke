@@ -1,0 +1,7 @@
+// For this example there is still a bug in Version 3.6
+
+enum R { 1..3 };
+
+bool f1(R r) r = 1;
+
+#dump f1;

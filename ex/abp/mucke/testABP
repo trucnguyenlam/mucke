@@ -1,0 +1,13 @@
+#!/bin/sh
+
+i=1
+while [ $i -lt 11 ]
+do
+  ./set_data_size $i
+  echo -n "$i ";
+  MUCKEOPTS='-uao -nf -bman longbman.so -dnuls'
+  echo `mucke $MUCKEOPTS reach1 | \
+    awk '/memory/{printf "%s ", $NF}\
+         /seconds/{print $8}'`
+  i=`expr $i + 1`
+done

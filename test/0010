@@ -1,0 +1,62 @@
+enum Int8 { 0..255 };
+
+bool inc8_0(Int8 a, Int8 b)
+  b[0] != a[0]
+;
+
+bool one8_0(Int8 a) a[0];
+bool one8_1(Int8 a) one8_0(a) & a[1];
+bool one8_2(Int8 a) one8_1(a) & a[2];
+bool one8_3(Int8 a) one8_2(a) & a[3];
+bool one8_4(Int8 a) one8_3(a) & a[4];
+bool one8_5(Int8 a) one8_4(a) & a[5];
+bool one8_6(Int8 a) one8_5(a) & a[6];
+
+bool inc8_1(Int8 a, Int8 b)
+  inc8_0(a, b) & (if(one8_0(a)) b[1] != a[1] else b[1] = a[1])
+;
+bool inc8_2(Int8 a, Int8 b)
+  inc8_1(a, b) & (if(one8_1(a)) b[2] != a[2] else b[2] = a[2])
+;
+bool inc8_3(Int8 a, Int8 b)
+  inc8_2(a, b) & (if(one8_2(a)) b[3] != a[3] else b[3] = a[3])
+;
+bool inc8_4(Int8 a, Int8 b)
+  inc8_3(a, b) & (if(one8_3(a)) b[4] != a[4] else b[4] = a[4])
+;
+bool inc8_5(Int8 a, Int8 b)
+  inc8_4(a, b) & (if(one8_4(a)) b[5] != a[5] else b[5] = a[5])
+;
+bool inc8_6(Int8 a, Int8 b)
+  inc8_5(a, b) & (if(one8_1(a)) b[6] != a[6] else b[6] = a[6])
+;
+bool inc8_7(Int8 a, Int8 b)
+  inc8_6(a, b) & (if(one8_6(a)) b[7] != a[7] else b[7] = a[7])
+;
+
+mu bool add8(Int8 a, Int8 b, Int8 c)
+  if(a = 0) c = b
+  else (exists Int8 d, Int8 e. inc8_6(d, a) & add8(d, b, e) & inc8_6(e, c))
+;
+
+bool lshift8(Int8 a, Int8 b)
+  b[7] = a[6] &
+  b[6] = a[5] &
+  b[5] = a[4] &
+  b[4] = a[3] &
+  b[3] = a[2] &
+  b[2] = a[1] &
+  b[1] = a[0] &
+  b[0] = 0
+;
+
+bool rshift8(Int8 a, Int8 b)
+  b[7] = 0 &
+  b[6] = a[7] &
+  b[5] = a[6] &
+  b[4] = a[5] &
+  b[3] = a[4] &
+  b[2] = a[3] &
+  b[1] = a[2] &
+  b[0] = a[1]
+;

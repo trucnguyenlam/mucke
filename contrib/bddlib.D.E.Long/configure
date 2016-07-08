@@ -1,0 +1,58 @@
+#!/bin/sh
+
+if [ $# -ne 1 ]
+then
+  echo "*** usage: $0 <dir>" 1>&2
+  echo "" 1>&2
+  echo \
+"   <dir> is the directory where you unpacked the bddlib.tar.gz archive" 1>&2
+  exit 1
+fi
+
+if [ ! -d $1 ]
+then
+  echo "*** usage: $0 <dir>" 1>&2
+  exit 1
+fi
+
+if [ ! -d $1/bddlib ]
+then
+  echo "*** could not find $1/bddlib" 1>&2
+  exit 1
+fi
+
+if [ ! -d $1/mem ]
+then
+  echo "*** could not find $1/mem" 1>&2
+  exit 1
+fi
+
+for f in bdd.c bddapply.c bddassoc.c bddblk.c bddcache.c bddcmp.c bddcomp.c \
+  bdddump.c bddhash.c bddmisc.c bddprimes.c bddprint.c bddprprofile.c \
+  bddqnt.c bddreduce.c bddrelprod.c bddreorder.c bddsat.c bddsize.c \
+  bddsupport.c bddswap.c bddunique.c bddwarn.c mtbdd.c bddint.h bdduser.h
+
+do
+  if [ -f $1/bddlib/$f ]
+  then
+    rm -f $f
+    ln -s $1/bddlib/$f .
+  else
+    echo "*** $0: could not find $1/bddlib/$f" 1>&2
+    exit 1
+  fi
+done
+
+for f in memblock.c memrec.c memuser.h memint.h
+do
+  if [ -f $1/mem/$f ]
+  then
+    rm -f $f
+    ln -s $1/mem/$f .
+  else
+    echo "*** $0: could not find $1/mem/$f" 1>&2
+    exit 1
+  fi
+done
+
+exit 0

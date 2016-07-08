@@ -1,0 +1,53 @@
+Exists		Token::Exists
+EXISTS		Token::Exists
+exists		Token::Exists
+Forall		Token::Forall
+FORALL		Token::Forall
+forall		Token::Forall
+if		Token::If
+then		Token::Then
+else		Token::Else
+fi		Token::Fi
+
+class		Token::Class
+struct		Token::Class
+enum		Token::Enum
+
+case		Token::Case
+esac		Token::Esac
+
+true		Token::True
+false		Token::False
+
+mu		Token::Minimal
+nu		Token::Maximal
+
+assume		Token::Assume
+cofactor	Token::Cofactor
+
+#quit		Token::Quit
+#print		Token::Print
+#cex		Token::CEX
+#counterexample	Token::CEX
+#wit		Token::Witness
+#witness	Token::Witness
+#vis		Token::Visualize
+#visualize	Token::Visualize
+#verbose	Token::Verbose
+#frontier	Token::Frontier
+#ons		Token::OnSetSize
+#onsetsize	Token::OnSetSize
+#size		Token::Size
+#reset		Token::Reset
+#load		Token::Load
+#timer		Token::Timer
+#dump		Token::Dump
+#undump		Token::Undump
+
+witnessconstraint	Token::WitnessConstraint
+WitnessConstraint	Token::WitnessConstraint
+witcs			Token::WitnessConstraint
+AllocationConstraint	Token::AllocationConstraint
+allocationConstraint	Token::AllocationConstraint
+alloccs			Token::AllocationConstraint
+show			Token::Show

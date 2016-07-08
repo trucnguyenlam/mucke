@@ -1,0 +1,45 @@
+#!/bin/sh
+
+files=$*
+tmp=/tmp/genprecleanup-$$
+
+trap "rm -f $tmp" 2
+
+if [ x"$files" = x ]; then exit; fi
+
+for file in $files
+do
+  if [ ! -f $file ]
+  then
+    echo "*** $0: could not find $file" 2>&1
+    exit 1
+  fi
+  sed -e '/%%NSPC%%/!d' -e 's,^.*%%NSPC%%,,' $file
+done | \
+awk '
+{ tmp = $1; $1 = ""; a [ tmp ] = $0 }
+END {
+  for(i in a) print "extern void " i "();";
+  print "struct PreCleanupBucket {";
+  print "  void (*f)();";
+  print "  const char * comment;";
+  print "}; ";
+  print "static PreCleanupBucket precleanupbuckets [] = {";
+  for(i in a) print "  {" i ", \"" a [ i ] "\"},";
+  print "  {0, 0}";
+  print "}; ";
+}' > $tmp
+
+if [ -f ../src/precleanup.h ]
+then 
+  if diff -q ../src/precleanup.h $tmp
+  then
+    echo "keeping old precleanup.h"
+  else
+    cp $tmp ../src/precleanup.h
+  fi
+else
+  cp $tmp ../src/precleanup.h
+fi
+
+rm -f $tmp

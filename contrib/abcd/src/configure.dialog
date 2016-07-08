@@ -1,0 +1,221 @@
+#!/bin/sh
+
+A=/tmp/configure-answer.$$
+
+cleanup() {
+  rm -f $A
+}
+
+shouldexit() {
+  if dialog --yesno "Really quit?" 5 30
+  then
+    cleanup
+    exit 1
+  fi
+}
+
+if test -f ./config.cache
+then
+  #dialog --infobox "reading config.cache" 3 40
+  . ./config.cache
+else
+  #dialog --infobox "no config.cache found" 3 40
+  . ./configure.init
+fi
+
+###########################################################
+# prepare checklist
+
+if test $define_debug = yes
+then
+  debugOnOff=on
+else
+  debugOnOff=off
+fi
+
+if test $define_statistics = yes
+then
+  statisticsOnOff=on
+else
+  statisticsOnOff=off
+fi
+
+if test $use_doubles = yes
+then
+  useDoubles=on
+else
+  useDoubles=off
+fi
+
+if test $use_power2 = yes
+then
+  usePower2=on
+else
+  usePower2=off
+fi
+
+if test $multiplicative_hashing = yes
+then
+  multiplicativeHashing=on
+else
+  multiplicativeHashing=off
+fi
+
+if test $manual_bit_stuffing = yes
+then
+  manualBitStuffing=on
+else
+  manualBitStuffing=off
+fi
+
+if test $split_left_successor = yes
+then
+  splitLeftSuccessor=on
+else
+  splitLeftSuccessor=off
+fi
+
+if test $define_call_stats = yes
+then
+  callStatsOnOff=on
+else
+  callStatsOnOff=off
+fi
+
+if test $define_distribution_stats = yes
+then
+  distStatsOnOff=on
+else
+  distStatsOnOff=off
+fi
+
+if test $define_priority = yes
+then
+  priorityOnOff=on
+else
+  priorityOnOff=off
+fi
+
+if test $use_shared = yes
+then
+  useShared=on
+else
+  useShared=off
+fi
+
+###########################################################
+
+define_debug=no
+use_doubles=no
+use_power2=no
+multiplicative_hashing=no
+manual_bit_stuffing=no
+split_left_successor=no
+define_statistics=no
+define_call_stats=no
+define_distribution_stats=no
+define_priority=no
+use_shared=no
+
+if \
+dialog \
+  --separate-output \
+  --checklist \
+  'Which flags should be defined?' 18 50 11 \
+  DEBUG        "defined" "$debugOnOff" \
+  DOUBLES      "defined" "$useDoubles" \
+  BITSTUFFING  "defined" "$manualBitStuffing" \
+  SPLITLEFT    "defined" "$splitLeftSuccessor" \
+  STATISTICS   "defined" "$statisticsOnOff" \
+  POWER2       "defined" "$usePower2" \
+  MULTIPLY     "defined" "$multiplicativeHashing" \
+  CALLSTATS    "defined" "$callStatsOnOff" \
+  DISTSTATS    "defined" "$distStatsOnOff" \
+  SHARED       "defined" "$useShared" \
+  PRIORITY     "defined" "$priorityOnOff" \
+  2>$A
+then
+  for answer in `cat $A`
+  do
+    case $answer in
+      DEBUG) define_debug=yes;;
+      DOUBLES) use_doubles=yes;;
+      BIT*) manual_bit_stuffing=yes;;
+      SPLIT*) split_left_successor=yes;;
+      STATISTICS) define_statistics=yes;;
+      POWER2) use_power2=yes;;
+      MULTIPLY) multiplicative_hashing=yes;;
+      CALLSTATS) define_call_stats=yes;;
+      DISTSTATS) define_distribution_stats=yes;;
+      SHARED) use_shared=yes;;
+      PRIORITY) define_priority=yes;;
+    esac
+  done
+else
+  shouldexit
+fi
+
+###########################################################
+
+case $generate in
+  functions)
+    functionsOnOff=on
+    macrosOnOff=off
+    customOnOff=off;;
+  macros)
+    functionsOnOff=off
+    macrosOnOff=on
+    customOnOff=off;;
+  custom)
+    functionsOnOff=off
+    macrosOnOff=off
+    customOnOff=on;;
+esac
+
+if \
+dialog --radiolist "Choose type of code generation?" 10 60 3 \
+  functions 'all functions' $functionsOnOff \
+  macros    'all macros' $macrosOnOff \
+  custom    'some macros, some functions' $customOnOff \
+  2>$A
+then
+  case "`cat $A`" in
+    custom) generate=custom;;
+    functions) generate=functions;;
+    macros) generate=macros;;
+  esac
+else
+  shouldexit
+fi
+
+if test $generate = custom
+then
+  if test ! -f no-macros
+  then
+    dialog --msgbox \
+'Could not find the file "no-macros"
+that is needed to define the
+functions for which no macros but
+real C-functions are generated.' 8 38
+    cleanup
+    exit 1
+  fi
+  functions=`cat no-macros`
+  for f in $functions
+  do
+    assignments="$assignments ${f}=function"
+  done
+  l=`wc -l no-macros | awk '{print $1}'`
+  l=`expr $l + 3`
+  dialog --title 'no macro list' \
+         --msgbox "`cat no-macros`" $l 40 \
+  || shouldexit
+fi
+
+###########################################################
+dialog --infobox "saving config.cache and generating config.h" 3 48
+
+. ./configure.write
+
+###########################################################
+cleanup

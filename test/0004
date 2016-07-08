@@ -1,0 +1,9 @@
+enum E { null, eins, zwei };
+enum R { 0..2 };
+class S { E e; R r; };
+
+bool f0(S s[2], S t[2])
+  s[0].e = null & s[1].e = eins & t[0].r = 0 & t[1].r = 1
+;
+
+#dump f0;

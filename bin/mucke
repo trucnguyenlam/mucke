@@ -1,0 +1,50 @@
+#!/bin/sh
+
+#---------------------------------------------------------------------------
+# Set some common standard options
+#
+MUCKEOPTS="-res $MUCKEOPTS"
+
+#---------------------------------------------------------------------------
+# Set actual binary: static for debugging and dynamic for distribution.
+#
+#MUCKE=mucke_static_bman
+MUCKE=mucke_dynamic_bman
+
+#---------------------------------------------------------------------------
+# Set the default BDD library.
+#
+#BMAN=simplebman.so
+#BMAN=longbman.so
+BMAN=abcdbman.so
+
+#---------------------------------------------------------------------------
+# Determine actual OS + Processor
+#
+BINDIR=`dirname $0`
+BARCH=`$BINDIR/barch`
+
+#---------------------------------------------------------------------------
+# mucke needs that for finding the libraries.
+#
+MUCKEPATH=$BINDIR/$BARCH
+export MUCKEPATH
+
+#---------------------------------------------------------------------------
+# Set LD_LIBRARY_PATH correctly (Linux needs that for some reason)
+#
+if true
+then
+if [ x"$LD_LIBRARY_PATH" = x ]
+then
+  LD_LIBRARY_PATH=$MUCKEPATH
+else
+  LD_LIBRARY_PATH=$MUCKEPATH:$LD_LIBRARY_PATH
+fi
+
+export LD_LIBRARY_PATH
+fi
+
+#---------------------------------------------------------------------------
+#
+exec $MUCKEPATH/$MUCKE -bman $BMAN $MUCKEOPTS $*

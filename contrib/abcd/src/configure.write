@@ -1,0 +1,191 @@
+#!/bin/sh
+
+OS=`uname -s`
+REVISION=`uname -r`
+
+case x"$OS" in
+  xSunOS*)
+    case x"$REVISION" in
+      x4*) SARCH="sunos";;
+      x5*) SARCH="solaris";;
+      *) SARCH="unknown";;
+    esac
+    ;;
+  xLinux*) SARCH="linux";;
+  *) SARCH="unknown";;
+esac
+
+echo "# AUTOMATICALLY GENERATED -- DO NOT EDIT" > config.cache
+echo >> config.cache
+echo "architecture=$SARCH"  >> config.cache
+echo "generate=$generate" >> config.cache
+echo "define_debug=$define_debug" >> config.cache
+echo "define_statistics=$define_statistics" >> config.cache
+echo "manual_bit_stuffing=$manual_bit_stuffing" >> config.cache
+echo "split_left_successor=$split_left_successor" >> config.cache
+echo "use_doubles=$use_doubles" >> config.cache
+echo "use_power2=$use_power2" >> config.cache
+echo "multiplicative_hashing=$multiplicative_hashing" >> config.cache
+echo "define_call_stats=$define_call_stats" >> config.cache
+echo "define_distribution_stats=$define_distribution_stats" >> config.cache
+echo "define_priority=$define_priority" >> config.cache
+echo "use_shared=$use_shared" >> config.cache
+if test $generate = custom
+then
+  echo >> config.cache
+  for a in $assignments
+  do
+    echo "$a" >> config.cache
+  done
+fi
+
+############################################################################
+
+echo "#ifndef _config_h_INCLUDED" > config.h
+echo "#define _config_h_INCLUDED" >> config.h
+echo >> config.h
+echo "/* AUTOMATICALLY GENERATED (`date`) */" >> config.h
+
+if [ $SARCH = linux ]; then echo "#define LINUX" >> config.h;
+elif [ $SARCH = sunos ]; then echo "#define SUNOS" >> config.h;
+elif [ $SARCH = solaris ]; then echo "#define SOLARIS" >> config.h;
+fi
+
+if test "$define_debug" = yes
+then
+  echo "#define DEBUG" >> config.h
+fi
+
+if test "$define_statistics" = yes
+then
+  echo "#define STATISTICS" >> config.h
+fi
+
+if test "$define_call_stats" = yes
+then
+  echo "#define CALL_STATS" >> config.h
+fi
+
+if test "$define_distribution_stats" = yes
+then
+  echo "#define DISTRIBUTION_STATS" >> config.h
+fi
+
+if test "$define_priority" = yes
+then 
+  echo "#define PRIORITY" >> config.h
+fi
+
+if test "$use_doubles" = yes
+then
+  echo "#define aBCD_Counter_is_floating_point_number" >> config.h
+  echo "#define aBCD_CounterFMT \"%.0f\"" >> config.h
+  echo "typedef double aBCD_Counter;" >> config.h
+else
+  echo "#define aBCD_CounterFMT \"%lu\"" >> config.h
+  echo "typedef unsigned long aBCD_Counter;" >> config.h
+fi
+
+if test "$use_power2" = yes
+then
+  echo "#define POWER2_SIZE" >> config.h
+fi
+
+if test "$multiplicative_hashing" = yes
+then
+  echo "#define MULTIPLICATIVE_HASHING" >> config.h
+fi
+
+if test "$use_shared" = yes
+then 
+  echo "#define USE_SHARED" >> config.h
+fi
+
+if test "$manual_bit_stuffing" = no
+then
+  echo "#define aBCD_compiler_does_bit_allocation" >> config.h
+  if test "$split_left_successor" = yes
+  then
+    echo "#define aBCD_split_left_successor" >> config.h
+  fi
+fi
+
+version="ABCD-0.2 ($generate"
+if test $define_debug = yes
+then
+  version="$version,+debug"
+else
+  version="$version,-debug"
+fi
+
+if test $define_statistics = yes
+then
+  version="$version,+stat"
+else
+  version="$version,-stat"
+fi
+
+if test $define_call_stats = yes
+then
+  version="$version,+call"
+else
+  version="$version,-call"
+fi
+
+if test $define_distribution_stats = yes
+then
+  version="$version,+dist"
+else
+  version="$version,-dist"
+fi
+
+if test $define_priority = yes
+then
+  version="$version,+pri"
+else
+  version="$version,-pri"
+fi
+
+if test $manual_bit_stuffing = yes
+then
+  version="$version,manual"
+else
+  if test $split_left_successor = yes
+  then
+    version="$version,compiler"
+  else
+    version="$version,-stuffing"
+  fi
+fi
+
+if test $use_power2 = yes
+then
+ version="$version,power2"
+else
+ version="$version,primes"
+fi
+
+if test $multiplicative_hashing = yes
+then
+  version="$version,+mult"
+else
+  version="$version,-mult"
+fi
+
+if test $use_shared = yes
+then
+  version="$version,+share"
+else
+  version="$version,-share"
+fi
+
+if test $use_doubles = yes
+then
+  version="$version,+float)"
+else
+  version="$version,-float)"
+fi
+
+echo "#define aBCD_Version \"$version\"" >> config.h
+
+echo "#endif" >> config.h

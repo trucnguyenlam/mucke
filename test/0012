@@ -1,0 +1,25 @@
+enum farbe { rot, gruen , gelb};
+
+bool p (farbe a, farbe b) a=rot;
+#ons p;
+forall farbe a. (forall farbe b. (p(a, b) -> (b=rot | b=gruen | b=gelb)));
+forall farbe a. (forall farbe b. ((!p(a, b)) | (b=rot | b=gruen | b=gelb)));
+
+bool p0 (farbe a, farbe b) a=rot & (b=b);
+#ons p0;
+forall farbe a. (forall farbe b. (p(a, b) -> (b=rot | b=gruen | b=gelb)));
+forall farbe a. (forall farbe b. ((!p(a, b)) | (b=rot | b=gruen | b=gelb)));
+
+bool p1 (farbe a, farbe b) a=rot & (b=rot | b!=rot);
+#ons p1;
+forall farbe a. (forall farbe b. (p1(a, b) -> (b=rot | b=gruen | b=gelb)));
+forall farbe a. (forall farbe b. ((!p1(a, b)) | (b=rot | b=gruen | b=gelb)));
+
+bool p2 (farbe a, farbe b) a=rot & (!false);
+#ons p2;
+forall farbe a. (forall farbe b. (p2(a, b) -> (b=rot | b=gruen | b=gelb)));
+forall farbe a. (forall farbe b. ((!p2(a, b)) | (b=rot | b=gruen | b=gelb)));
+
+bool p3 (farbe a, farbe b) a=rot & true;
+#ons p3;
+forall farbe a. (forall farbe b. (p3(a, b) -> (b=rot | b=gruen | b=gelb)));

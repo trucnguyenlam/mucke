@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ "$1" = "" ]; then N=1; else N=$1; fi
+echo 'class Data { bool bits[' "$N" ']; };' > data.mu
+echo '#print "=>  ' $1 '  data bits  <=";' >> data.mu
+echo '#print "";' >> data.mu

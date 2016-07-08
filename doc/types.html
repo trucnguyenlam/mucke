@@ -1,0 +1,314 @@
+<HTML>
+<HEAD>
+  <TITLE>	Type System of the Mucke Model Checker
+  </TITLE>
+  <LINK
+    REV="made"
+    HREF="mailto:armin@ira.uka.de">
+</HEAD>
+
+<BODY>
+
+<A NAME="lastModified">
+<EM>	Language Definition for the Mucke 0.2 Modelchecker
+<BR>
+	(
+Fri May 10 12:09:36 GMT 1996
+	)
+</EM>
+</A>
+
+<A NAME="TypeSystem">
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"
+				       alt="[HOME]">
+</A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"
+				       alt="[DOWN]">
+</A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"
+				       alt="[ UP ]">
+</A>
+<HR>	<!----------------------------------------------------------------->
+<H1>
+	Type System
+</H1>
+</A>
+
+<HR>	<!----------------------------------------------------------------->
+
+	In general the syntax is similiar to C++ (or IDL) without any access
+	specifiers (public, private or protected) and without inheritance.
+	There is <EM>no</EM> `<TT>typedef</TT>' directive.
+	But in addition there is a range type like in Ada.
+
+<UL>
+  <LI><A HREF="#BasicTypes">		Basic Types		</A>
+  <LI><A HREF="#EnumTypes">		Enumeration Types	</A>
+  <LI><A HREF="#RangeTypes">		Range Types		</A>
+  <LI><A HREF="#CompoundTypes"> 	Compound Types		</A>
+  <LI><A HREF="#Example"> 		Example			</A>
+</UL>
+
+<A NAME="BasicTypes"> 
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+
+<H2>
+	Basic Types
+</H2>
+</A>
+	The only basic type that is currently implemented is the
+	type <A NAME="bool">`<TT>bool</TT>'</A>.
+	It consists of the two constants `<TT>true</TT>' and
+	`<TT>false</TT>'.
+	It also can be seen as a predefined
+	<A HREF="#EnumTypes">enum type</A> with the definition:
+<PRE>
+  enum bool { false, true };
+</PRE>
+	This means you can use `<TT>0</TT>' and `<TT>1</TT>' instead
+	of `<TT>true</TT>' or respectfully `<TT>false</TT>' too.
+
+<A NAME="EnumTypes">
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+<H2>
+
+	Enumeration Types
+</H2>
+</A>
+	Enumeration Types are defined with the following syntax:
+<PRE>
+  'enum' &lt;IDENT&gt; '{'  ( &lt;IDENT&gt; ',' )* &lt;IDENT&gt; '};'
+</PRE>
+	An example of an enum type is the pseudo definition of the
+	<A HREF="#bool">`<TT>bool</TT>'</A> type.
+	Enumeration Types can be used like <A HREF="#RangeTypes">Range
+	Types</A>. This means if you have a variable <TT>e</TT>
+	of type <TT>E</TT> which is the following Enumeration Type
+<PRE>
+  enum E { one, two, three, four, five };
+</PRE>
+	then the predicates <TT>e=four</TT> and <TT>e=3</TT>
+	are equivalent. <TT>E</TT> can be seen as a
+	<A HREF="#RangeTypes">Range Type</A> <TT>R</TT>
+<PRE>
+  enum R { 0..4 };
+</PRE>
+	This means the first value (actually `<TT>first</TT>' in our
+	example) can also be accessed as the number <TT>0</TT> and
+	the last value of an Enumeration Type <TT>E</TT> can be
+	accessed as <math>|<TT>E</TT>|-1</math>
+<p>
+	For details about the encoding of Enumeration Types see
+	the section about <A HREF="#RangeTypes">Range Types</A>.
+
+<A NAME="RangeTypes">
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+<H2>
+	Range Types
+</H2>
+</A>
+	Range Types are a (finite) interval of the Natural Numbers
+	including zero.
+	The syntax of the definition of a Range Type is similiar to
+	that of an enum type:
+<PRE>
+  'enum' &lt;IDENT&gt; '{' &lt;NUMBER&gt; '..' &lt;NUMBER&gt; '};'
+</PRE>
+	The two numbers represent the borders of the <EM>closed</EM>
+	interval.  That means that
+	the first number (<math>min</math>) should be less than the
+	second (<math>max</math>) and greater or equal to zero.
+	The elements of the type are the numbers
+	<math>min, min + 1, ... , max</math>.
+<p>
+	When the boolean representation is used then a range type
+	of size <math>n = max - min + 1</math> will use
+	<math>ld(n)</math> bits to encode a variable of that type.
+	A Number <math>n</math> is represented as the standard
+	boolean encoding of <math>n - min</math>.
+	The order of the bits is that the most significant bit comes first
+	(this is interesting if the boolean representation has to
+	order variables f.e. if it uses BDD libraries).
+
+<A NAME="Arrays"> 
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+<H2>
+	Arrays
+</H2>
+</A>
+	Arrays of a fixed size are supported. The general syntax of a
+	definition of an array is
+<PRE>
+  &lt;IDENT&gt; '[' &lt;NUMBER&gt; ']'
+</PRE>
+	Because we have no `<TT>typedef</TT>' Arrays can only be defined
+	at three places:
+<OL>
+  <LI>	as part of a <A HREF="CompoundTypes">Compound Type</A>
+  <LI> 	as type of a predicate paramater
+  <LI>	as type of variable bound by a quantifier
+</OL>
+	Array elements can be accessed with the standard syntax
+	and as this syntax is similiar to C++ the valid indices
+	start at <TT>0</TT>.
+	If <TT>a</TT> has been declared as <TT>T a[3]</TT> then
+	exactly the following terms are valid 
+<PRE>
+  a[0]   a[1]   a[2]
+</PRE>
+<EM>	As a future extension (Tue May  7 09:30:22 GMT 1996)
+        we plan to allow the usage of an arbitrary
+	<A HREF="#EnumTypes">Enumeration</A> or
+	<A HREF="#RangeTypes">Range Type</A>
+	in the definition of an array.
+	This will enable the user to use variable indices for arrays.
+</EM>
+	
+<A NAME="CompoundTypes">
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+<H2>
+	Compound Types
+</H2>
+</A>
+	Compound Types can be used to denote the cartesian product
+	of already defined types (no recursion here):
+<PRE>
+  'class' &lt;IDENT&gt; '{' &lt;COMPOUNDS&gt; '};'
+
+  &lt;COMPOUNDS&gt; ::= ( &lt;COMPOUND&gt; ';' )* &lt;COMPOUND&gt;
+
+  &lt;COMPOUND&gt; ::= &lt;IDENT&gt; ( &lt;CMPPAR&gt; ',' )* &lt;CMPPAR&gt;
+  &lt;CMPPAR&gt; ::= &lt;IDENT&gt; ( '[' &lt;NUMBER&gt; ']' )?
+</PRE>
+	If <TT>T</TT> is an arbitrary already defined type
+	then the definition
+<PRE>
+  class A { T a; bool b[4], c; T d; };
+</PRE>
+	ist equivalent to the definition
+<PRE>
+  class A { T a; bool b[4]; bool c; T d; };
+</PRE>
+	and defines a type with four components accessed by the
+	symbols <TT>a</TT>, <TT>b</TT>, <TT>c</TT> and <TT>d</TT>.
+	If <TT>x</TT> is defined as <TT>A x</TT> then the following
+	terms are all valid
+<PRE>
+  x.a   x.b  x.b[3]   x.c   x.d
+</PRE>
+
+<H2>
+
+<A NAME="Example">
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="#Address">		<IMAGE src="images/down.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+	Example
+</H2>
+</A>
+	the following mucke code will define the basic types used in
+	the verification of the simple alternating bit telecomunication
+	protocol.
+<p>
+	We use an enum type to represent the valid values of the
+	control part of the sender state:
+<PRE>
+  enum ControlStateOfSender {
+    send, wait_for_ack
+  };
+</PRE>
+	The sender has to store the data, in case it has to be retransmitted:
+<PRE>
+  enum Data { 0..3 }; 		// two bit data
+</PRE>
+	The alternating bit is of type `<TT>bool</TT>' so that
+	the type for the state of the sender looks like:
+<PRE>
+  class StateOfSender {
+    bool alternating_bit;
+    Data data;
+    ControlStateOfSender state;
+  };
+</PRE>
+	We could have defined <TT>Data</TT> also as
+<PRE>
+  class Data { bool bits[2]; };
+</PRE>
+	and with the declaration <TT>StateOfSender s</TT> the following
+	terms are valid
+<PRE>
+  s.state=send   s.data.bits[0]
+</PRE>
+	Also we could define
+<PRE>
+  class TwoSenderState { StateOfSender states[2]; };
+</PRE>
+	and use
+<PRE>
+  t.states[1].alternating_bit
+</PRE>
+	to access the alternating bit of the state of the second sender
+	with the declaration <TT>TwoSenderState t</TT>.
+
+<A NAME="Address">
+<HR>	<!----------------------------------------------------------------->
+
+<A HREF="#lastModified">
+
+<EM>	Last Change
+</EM>
+</A>
+
+<HR>	<!----------------------------------------------------------------->
+<A HREF="language.html">	<IMAGE src="images/home.gif"></A>
+<A HREF="#TypeSystem">		<IMAGE src="images/up.gif"></A>
+<A HREF="index.html">		<IMAGE src="images/index.gif"></A>
+<HR>	<!----------------------------------------------------------------->
+
+
+
+<ADDRESS>
+  <A HREF="http://iseran.ira.uka.de/~armin/">    Armin Biere
+  </A><BR>
+  <A HREF="http://iseran.ira.uka.de/">           ILKD
+  </A><BR>
+  <A HREF="http://www.rz.uni-karlsruhe.de/Uni/"> Universit&auml;t Karlsruhe
+  </A><BR>
+                                                 D-76128 Karlsruhe
+  <br>
+  <A HREF="mailto:armin@ira.uka.de">             Email: armin@ira.uka.de
+  </A><BR>
+</ADDRESS>
+</A>
+
+</BODY>
+</HTML>

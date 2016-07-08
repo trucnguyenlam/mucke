@@ -1,0 +1,33 @@
+#!/bin/sh
+
+error() {
+  echo "*** this architecture is not supported" 2>&1
+  exit 1
+}
+
+OS=`uname -s`
+
+if [ $OS = SunOS ]
+then
+  case `uname -r` in
+    5*)
+      SARCH=solaris
+      case `uname -p` in
+        sparc) MACHINE=sparc;;
+	*) error;;
+      esac
+      ;;
+    *) error;;
+  esac
+elif [ $OS = Linux ]
+then
+  SARCH=linux
+  case `uname -m` in
+    i386 | i486 | i586 | i686) MACHINE=intel;;
+    *) error;;
+  esac
+else
+  error;
+fi
+
+echo "$SARCH-$MACHINE"

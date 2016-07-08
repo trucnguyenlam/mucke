@@ -1,0 +1,10 @@
+
+bool Rel(bool a, bool b, bool c, bool d)
+
+  (c <-> (a & b))
+  &
+  (d <-> (a | b))
+; 
+
+#dump Rel;
+

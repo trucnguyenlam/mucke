@@ -1,0 +1,8 @@
+set only-count
+file mucke_static_bman
+log ccmalloc.log
+set keep-deallocated-data
+set check-free-space
+set check-overwrites 1
+set check-underwrites 1
+set check-interval 100

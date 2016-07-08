@@ -1,0 +1,18 @@
+enum E { null, eins, zwei };
+enum R { 0..2 };
+
+bool e0(E e) e = null;
+bool e1(E e) e = eins;
+bool e2(E e) e = zwei;
+
+#dump e0;
+#dump e1;
+#dump e2;
+
+bool r0(R r) r = 0;
+bool r1(R r) r = 1;
+bool r2(R r) r = 2;
+
+#dump r0;
+#dump r1;
+#dump r2;

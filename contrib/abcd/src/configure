@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# (C) 1997 - 1998 Armin Biere
+#     $Id: configure,v 1.2 2000-05-08 11:33:36 biere Exp $
+
+AUTOMATIC=true
+
+while [ $# -ne 0 ]
+do
+  case $1 in
+    --manual) AUTOMATIC=false;;
+    *) 
+      echo "*** unknown command line option $1" 1>&2
+      echo "*** usage:  configure [--manual]" 1>&2
+      exit 1;;
+  esac
+  shift
+done
+
+if [ $AUTOMATIC = false ]
+then
+  found_dialog=no
+  for dir in "" `echo $PATH | sed -e 's,:, ,g'`
+  do
+    if test -f "${dir}/dialog"
+    then
+      found_dialog=yes
+      break
+    fi
+  done
+
+  if test "$found_dialog" = yes
+  then
+    . ./configure.dialog
+  else
+    . ./configure.sh --manual
+  fi
+else
+  . ./configure.sh
+fi

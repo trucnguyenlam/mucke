@@ -1,0 +1,229 @@
+cuff, O2, -g, -fomit-frame-pointer
+
+(I) [ABCD-0.1.0 (functions, debug, stats, manual bit stuffing, doubles)]
+
+(1)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 11) ^ (node_ptr) -> data[1];
+    
+  dme: visited(92101756=68.36avg)
+  abp: visited(824687=4.41avg)
+  
+(2)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 5) ^ (node_ptr) -> data[1];
+
+  abp: lookup(2078022/2128797=98%) visited(15066804=7.08avg)
+  dme: lookup(610237/1978575=31%) visited(7928274=4.01avg)
+
+(3)
+  
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 3) ^ (node_ptr) -> data[1];
+
+  abp: lookup(966954/1023988=94%) visited(6641627=6.49avg)
+  dme: lookup(580884/1932588=30%) visited(13926302=7.21avg)
+
+(4)
+
+  *(result_ptr) = (node_ptr) -> data[0] ^ (node_ptr) -> data[1];
+
+  abp: lookup(1415631/1465200=97%) visited(26119284=17.83avg)
+  dme: lookup(265679/1203261=22%) visited(91474060=76.02avg)
+
+(5)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 4) ^ (node_ptr) -> data[1];
+
+  abp: lookup(487222/540566=90%) visited(1388516=2.57avg)
+  dme: lookup(580081/1925448=30%) visited(12466829=6.47avg)
+
+(6)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 6) ^ (node_ptr) -> data[1];
+
+  abp: lookup(1572702/1627839=97%) visited(3060330=1.88avg)
+  dme: lookup(615955/1990073=31%) visited(5888135=2.96avg)
+
+(7)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 7) ^ (node_ptr) -> data[1];
+
+  abp: lookup(59561/110022=54%) visited(366211=3.33avg)
+  dme: lookup(619480/2005702=31%) visited(5456749=2.72avg)
+
+(II) [ABCD-0.1.0 (macros, nodebug, stats, manual bit stuffing, doubles)]
+
+(4)
+
+  *(result_ptr) = (node_ptr) -> data[0] ^ (node_ptr) -> data[1];
+
+  abp: lookup(3789711/3839393=99%) visited(3790130=0.99avg)
+  dme: lookup(847639/2897085=29%) visited(2349755=0.81avg)
+
+(6)
+
+  *(result_ptr) = aBCD_ror((node_ptr) -> data[0], 6) ^ (node_ptr) -> data[1];
+
+  abp: lookup(3917740/3967425=99%) visited(3918159=0.99avg)
+  dme: lookup(1515299/5564819=27%) visited(3907815=0.70avg)
+
+(II) [ABCD-0.1.0 (macros,-debug,+stats,-stuffing,+doubles)]
+
+(1)
+
+  tmp = aBCD_Node_signed_succ0(node_ptr);
+  tmp = aBCD_ror(tmp, 25) ^ (node_ptr) -> right;
+  var = aBCD_Node_var(node_ptr);
+  tmp ^= (var << 11);
+  var = (var & 7) << 2;
+  tmp = aBCD_ror(tmp, (var));
+
+  abp: lookup(2632544/2685686=98%) visited(2769447=1.03avg)
+  dme: lookup(23967/228450=10%) visited(237810142=1040.97avg)
+
+(2)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  l <<= (sizeof(aBCD_uint)<<3) - aBCD_MaxIdxBits;
+  tmp = l ^ r;
+  var = aBCD_Node_var(node_ptr);
+  tmp ^= (var << 11);
+  var = (var & 7) << 2;
+  tmp = aBCD_ror(tmp, (var));
+
+  abp: lookup(1122736/1184453=95%) visited(1303098=1.10avg)
+  dme: lookup(26183/235449=11%) visited(288558792=1225.57avg)
+
+(3)
+  
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  l <<= (sizeof(aBCD_uint)<<3) - aBCD_MaxIdxBits;
+  var = aBCD_Node_var(node_ptr);
+  var <<= (sizeof(aBCD_utin)<<3) - aBCD_MaxVarBits;
+  tmp = l ^ r ^ var;
+
+  abp: lookup(1836624/1885543=97%) visited(1912619=1.01avg)
+  dme: lookup(794916/2774152=29%) visited(5606370=2.02avg)
+
+(4) (this is modelled after (I.6) in the first set of examples)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  var = aBCD_Node_var(node_ptr);
+  l <<= 6;
+  l |= var >> 6;
+  tmp = l ^ r;
+  tmp ^= var << 26;
+
+  abp: lookup(3615054/3664736=99%) visited(3615473=0.99avg)
+  dme: lookup(821028/2839981=29%) visited(2245081=0.79avg)
+
+(5)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  var = aBCD_Node_var(node_ptr);
+  tmp = l << 24;
+  tmp |= (l << 8) & 0xff0000;
+  tmp |= (l >> 8) & 0xff00;
+  tmp |= l >> 24;
+  var <<= 11;
+  tmp = l ^ r ^ var;
+
+  abp: lookup(1169635/1260291=93%) visited(99164216=78.68avg)
+  dme: lookup(819709/2857849=29%) visited(9175006=3.21avg)
+
+(6)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  var = aBCD_Node_var(node_ptr);
+  tmp = l << 24;
+  tmp |= (l << 8) & 0xff0000;
+  tmp |= (l >> 8) & 0xff00;
+  tmp |= l >> 24;
+  tmp = l ^ r ^ (var >> 6) ^ (var << 26);
+
+  abp: lookup(163912/220807=74%) visited(187475625=849.05avg)
+  dme: lookup(73273/473610=15%) visited(314871225=664.83avg)
+
+(7)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  var = aBCD_Node_var(node_ptr);
+  h = var;
+
+  while(l || r)
+    {
+      if(l)
+        {
+	  h = (h<<4) + (l & 0xff);
+	  l >>= 8;
+	  g = h & ((~0) << aBCD_MaxIdxBits);
+	  if(g)
+	    {
+	      h = h^(g >> aBCD_MaxIdxBits);
+	      h ^= g;
+	    }
+	}
+      
+      if(r)
+        {
+	  h = (h<<4) + (r & 0xff);
+	  r >>= 8;
+	  g = h & ((~0) << aBCD_MaxIdxBits);
+	  if(g)
+	    {
+	      h = h^(g >> aBCD_MaxIdxBits);
+	      h ^= g;
+	    }
+	}
+    }
+  tmp = h;
+
+  abp: lookup(254862/304558=84%) visited(469388=1.54avg)
+  dme: lookup(291639/1350777=22%) visited(170662630=126.34avg)
+
+(8)
+
+  l = aBCD_Node_signed_succ0(node_ptr);
+  r = aBCD_Node_signed_succ1(node_ptr);
+  h = 0;
+
+  while(l || r)
+    {
+      if(l)
+        {
+	  h = (h<<6) + (l & 0x1ff);
+	  l >>= 9;
+	  g = h & ((~0) << aBCD_MaxIdxBits);
+	  if(g)
+	    {
+	      h = h^(g >> aBCD_MaxIdxBits);
+	      h ^= g;
+	    }
+	}
+      
+      if(r)
+        {
+	  h = (h<<6) + (r & 0x1ff);
+	  r >>= 9;
+	  g = h & ((~0) << aBCD_MaxIdxBits);
+	  if(g)
+	    {
+	      h = h^(g >> aBCD_MaxIdxBits);
+	      h ^= g;
+	    }
+	}
+    }
+
+  var = aBCD_Node_var(node_ptr);
+  h ^= (var >> 6) | (var << 26);
+
+  tmp = h;
+
+  abp: lookup(1843398/1892838=97%) visited(2400654=1.27avg)
+  dme: lookup(21693/193421=11%) visited(226740556=1172.26avg)

@@ -1,0 +1,4 @@
+#!/bin/sh
+makedepend $*
+cp Makefile Makefile.old
+sed -e '/# DO NOT/,$s,\([^	]*\.o\),../obj/\1,g' Makefile.old > Makefile

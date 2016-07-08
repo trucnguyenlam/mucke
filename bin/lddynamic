@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DEBUG=1
+
+. ../.configuration
+
+if [ "$LD" = "" ]
+then
+  echo "*** lddynamic: LD not defined" 1>&2
+  exit 1
+fi
+
+. ../bin/parse_ld_args.sh
+
+case x"$SARCH" in
+  xlinux) $LD -rdynamic $LDFLAGS -o $arg;;
+  xsolaris) $LD $LDFLAGS -o $arg;;
+  xsunos) $LD $LDFLAGS -o $arg;;
+  *) echo "*** $0: oops" 1>&2; exit;;
+esac

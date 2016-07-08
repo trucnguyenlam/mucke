@@ -1,0 +1,5 @@
+enum E { one, two, three };
+class D { bool flag; E e; bool a[10]; };
+class S { E e; D a[2]; };
+bool R(S s, S t) s.a[0].a[9] & s = t;
+#size R;

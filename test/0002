@@ -1,0 +1,2 @@
+bool f(bool a[4], bool b[4]) a = b;
+#dump f;

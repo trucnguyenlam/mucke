@@ -1,0 +1,108 @@
+/*****************************************************************************\
+(C) 1997 Armin Biere 
+$Id: abcd_manager.tmpl,v 1.2 2000-05-08 11:33:35 biere Exp $
+\*****************************************************************************/
+
+#include "abcd_manager_int.h"
+#include "abcd_node_int.h"
+#include "abcd_types.h"
+#include "abcd_util.h"
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION  struct aBCD_Node *
+_aBCD_IdxAsNodePtr
+TYPE	struct aBCD_Node *
+ARG	base
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+ &base[(idx) >> 1]
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION struct aBCD_Node *
+aBCD_IdxAsNodePtr
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_Idx
+ARG	idx
+BODY
+  _aBCD_IdxAsNodePtr((manager)->nodes,(idx))
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+_aBCD_NodePtrAsIdx
+TYPE	struct aBCD_Node *
+ARG	base
+TYPE	struct aBCD_Node *
+ARG	n
+BODY
+  ((n) - (base)) << 1
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION aBCD_Idx
+aBCD_NodePtrAsIdx
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	struct aBCD_Node *
+ARG	n
+BODY
+  _aBCD_NodePtrAsIdx((manager) -> nodes, n)
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_push
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	aBCD_uint
+ARG	i
+BODY
+  assert((manager) -> sp < (manager) -> top_of_stack, "stack overflow");
+  *(manager) -> sp++ = (aBCD_uint) (i);
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_pop
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	void *
+ARG	void_ptr
+BODY
+  assert((manager) -> sp > (manager) -> stack, "stack underflow");
+  *(aBCD_uint *)(void_ptr) = *--(manager) -> sp;
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION void
+aBCD_top
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+TYPE	void *
+ARG	void_ptr
+BODY
+  assert((manager) -> sp > (manager) -> stack, "stack underflow");
+  *(aBCD_uint*)(void_ptr) = (manager) -> sp[-1];
+END
+
+/*---------------------------------------------------------------------------*/
+
+FUNCTION int
+aBCD_check_for_garbage
+TYPE	struct aBCD_Manager_ *
+ARG	manager
+BODY
+  manager -> nodes_count > manager -> gc_threshold
+END
+
+/*---------------------------------------------------------------------------*/

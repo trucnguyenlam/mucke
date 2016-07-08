@@ -1,0 +1,98 @@
+----------------------------------------------------------------------------
+VERSION 0.4.5                    (Armin Biere, Mon Mar  3 12:41:52 CET 2008)
+----------------------------------------------------------------------------
+
+  * ported to GCC 4.1.3 on Ubuntu
+
+----------------------------------------------------------------------------
+VERSION 0.4.5                    (Armin Biere, Tue Mar 26 15:46:14 CET 2002)
+----------------------------------------------------------------------------
+
+  * ported to GCC 2.95.2 on Linux
+
+  * first source release
+
+  * new COPYRIGHT notice
+
+----------------------------------------------------------------------------
+VERSION 0.4.4
+----------------------------------------------------------------------------
+
+  * ported to GCC 2.95.1 on linux
+
+----------------------------------------------------------------------------
+VERSION 0.4.0                (Armin Biere, Thu Mar 30 12:08:28 MET DST 2000)
+----------------------------------------------------------------------------
+
+  * moved to gcc-2.95.2
+
+----------------------------------------------------------------------------
+VERSION 0.3.6		     (Armin Biere, Tue Feb  2 15:20:08 MET 1999)
+----------------------------------------------------------------------------
+  
+  * configuration now similar to GNU autoconf: ./configure, make
+  * compiles with gcc 2.8.1 (detected some syntax/semantic bugs)
+    Because of some compiler bugs several C++ files had to be compiled
+    without optimization switches.
+  * compiles under Solaris 2.7
+  * fixed `rangify'-bug in negations
+  * there is a still a bug with Range Types that do not start at zero.
+
+----------------------------------------------------------------------------
+VERSION 0.3.5		     (Armin Biere, Fri Dec 11 10:48:53 MET 1998)
+----------------------------------------------------------------------------
+  
+  * fixed the following bug:  If an enumeration did not start at zero,
+    was used as a type for an argument of a function and a constant
+    was given as parameter for that argument then the wrong value
+    was used.
+
+----------------------------------------------------------------------------
+VERSION 0.3.4		     (Armin Biere, Sun Nov 22 13:23:07 EST 1998)
+----------------------------------------------------------------------------
+  
+  * fixed several bugs in the `#dump' command
+  * added array access for enumeration and range types
+
+----------------------------------------------------------------------------
+VERSION 0.3.3		     (Armin Biere, Thu Nov  5 11:19:44 MET 1998)
+----------------------------------------------------------------------------
+
+  * added the `#dump <predicate>;' command.  Works only with abcdbman.so.
+
+----------------------------------------------------------------------------
+VERSION 0.3.2		     (Armin Biere, Wed Oct 21 16:41:40 MET DST 1998)
+----------------------------------------------------------------------------
+
+  * ABCD takes all the available memory (actually, only half of it
+    until a garbage collection is triggered)
+
+  * removed `-res' bug
+  
+  * ABCD works now!
+
+----------------------------------------------------------------------------
+VERSION 0.3.1		     (Armin Biere, Tue Oct 20 10:12:52 MET DST 1998)
+----------------------------------------------------------------------------
+
+  * should compile more easily
+
+  * added ABCD (my new BDD library) support (Hint: setting MB to something
+    usefull in the .abcdbmanrc file can speed up things dramatically).
+  
+  * added configure options:
+       
+       --longbdd=<dir>    To include the BDD library of D. E. Long. Note
+			  that a statically compiled version that includes
+			  the library of D.E.Long can not be distributed
+			  since it violates the copyright of CMU.
+
+       --static		  Includes all boolean managers (simplebman,
+			  abcdbman and if configured longbman) in one
+			  binary.  This makes it much more easy to debug
+			  mucke. Object files can be shared between the
+			  dynamic and static binaries.
+
+  * cleaned up the example directory a little bit
+
+  * last but not least a mkdist script to generate a binary distribution

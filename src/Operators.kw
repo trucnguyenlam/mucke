@@ -1,0 +1,19 @@
+!		Token::Not
+&		Token::And
+|		Token::Or
+<-		Token::Seilpmi
+->		Token::Implies
+<->		Token::Equiv
+<+>		Token::NotEquiv
+
+?		Token::QuestionMark
+:		Token::Colon
+
+=		Token::Equal
+!=		Token::NotEqual
+
+<		Token::Less
+>		Token::Greater
+
+~+		Token::SimPlus
+~-		Token::SimMinus
