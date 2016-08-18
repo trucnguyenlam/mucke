@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 error() {
   echo "*** this architecture is not supported" 2>&1
@@ -24,6 +24,7 @@ then
   SARCH=linux
   case `uname -m` in
     i386 | i486 | i586 | i686) MACHINE=intel;;
+    x86_64) MACHINE=intel;;
     *) error;;
   esac
 else

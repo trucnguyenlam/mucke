@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 dir=`dirname $0`
 case x`$dir/sarch` in
-  xlinux | xsolaris) gcc -shared -WL,-soname,$1 -o $*;;
+  xlinux | xsolaris) gcc -shared -Wl,-soname,$1 -o $*;;
   xsunos) ld -o $* -lm;;
   *) echo "*** $0: oops" 1>&2; exit;;
 esac

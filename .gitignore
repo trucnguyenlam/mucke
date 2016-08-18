@@ -68,3 +68,7 @@
 # Debug files
 *.dSYM/
 *.su
+
+
+bin/
+obj/

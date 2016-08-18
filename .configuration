@@ -1,0 +1,5 @@
+ARCH=linux
+SARCH=linux
+BARCH=linux-intel
+STATIC=true
+LONGBDD="/home/trucnguyenlam/Development/MUCKE/contrib/bddlib.D.E.Long/bddlib"

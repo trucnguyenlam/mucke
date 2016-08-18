@@ -15,7 +15,7 @@ class Exception
 protected:
 
   friend class CatchPoint;
-  
+
   int number;
   char * _name;
 

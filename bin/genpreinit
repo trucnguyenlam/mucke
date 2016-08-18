@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 files=$*
 tmp=/tmp/genpreinit-$$
@@ -31,7 +31,7 @@ END {
 }' > $tmp
 
 if [ -f ../src/preinit.h ]
-then 
+then
   if diff -q ../src/preinit.h $tmp
   then
     echo "keeping old preinit.h"

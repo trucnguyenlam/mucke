@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 arg=$*
 target=$1
@@ -30,7 +30,7 @@ do
            libs="$libs ${d}/$lib"
 	   found=true
 	   break
-         fi 
+         fi
        done
        if test $found = false
        then

@@ -1,5 +1,5 @@
 /*==========================================================================
- *  (C) 1997-98 Armin Biere 
+ *  (C) 1997-98 Armin Biere
  *  $Id: abcd_util.h,v 1.3 2008-03-03 12:13:14 biere Exp $
  *==========================================================================
  */
@@ -14,7 +14,7 @@
 /*---------------------------------------------------------------------------*/
 
 #define aBCD_swap(f,g)    { aBCD_uint tmp; tmp = f; f = g; g = tmp; }
- 
+
 #define aBCD_min2(i,j)    ((i)<(j) ? (i) : (j))
 
 #define aBCD_min3(i,j,k)  ((i)<(j) ? aBCD_min2((i),(k)) : aBCD_min2((j), (k)))
@@ -27,7 +27,7 @@
 
 /*------------------------------------------------------------------------*/
 
-#ifdef POWER2_SIZE       
+#ifdef POWER2_SIZE
 #  define aBCD_mod(i,s) ((i) >> (s))
 #else
 #  define aBCD_mod(i,m) ((i) % (m))
@@ -97,10 +97,10 @@ extern aBCD_uint aBCD_ld(aBCD_uint);
 /*---------------------------------------------------------------------------*/
 
 #ifndef __GNUC__
-#define __FUNCTION__ ((char*) 0)
+#define __func__ ((char*) 0)
 #endif
 
-#define POSITION __FUNCTION__, __FILE__, __LINE__
+#define POSITION __func__, __FILE__, __LINE__
 
 #ifdef DEBUG /*--------------------------------------------------------------*/
 

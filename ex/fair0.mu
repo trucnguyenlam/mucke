@@ -2,7 +2,7 @@
  *                          v    |     which the goal state should be
  *         ,---->start -> loop1 -'     reached infinetly often if we do
  *         |       |        |          not get stuck in on of the two loops.
- *         |       v        v          This can be formulated as fairness 
+ *         |       v        v          This can be formulated as fairness
  *         |  .- loop2 ->  goal        constraints: `!loopi | goal'.  We
  *         |  |    ^        |          could also add additional states
  *         |  `----'        |          after each loop and formulate the
@@ -51,3 +51,5 @@ mu bool EF_EG_goal(S s)
 ;
 
 EF_EG_goal(start);
+
+

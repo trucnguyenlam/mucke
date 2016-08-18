@@ -136,7 +136,7 @@ class LongBooleSubsData
 		_assoc_bdds [ i++ ] = to_bdds;
 	      }
 	  }
-	
+
 	_assoc_bdds [ 2 * _size ] = 0;
 	_assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
       }
@@ -152,7 +152,7 @@ class LongBooleSubsData
       {
 	int from = it.from();
 	bdd to = it.to();
-        
+
 	if(LongBMan::instance() -> variables() [ from ] != to)
 	  _size++;
       }
@@ -165,7 +165,7 @@ class LongBooleSubsData
 	  {
 	    int from = it.from();
 	    bdd to = it.to();
-        
+
 	    if(LongBMan::instance() -> variables() [ from ] != to)
 	      {
 	        bdd from_bdds =
@@ -178,7 +178,7 @@ class LongBooleSubsData
 		_assoc_bdds [ i++ ] = to;
 	      }
 	  }
-	
+
 	_assoc_bdds [ 2 * _size ] = 0;
 	_assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
       }
@@ -190,7 +190,7 @@ class LongBooleSubsData
 public:
 
   bool valid() { return _assoc_bdds != 0; }
-  void reset() 
+  void reset()
   {
     if(_assoc_bdds)
       {
@@ -198,9 +198,9 @@ public:
 
 	for(int i=0; i<2*_size; i++)
 	  PTR_bdd_free(longbdd_manager(), _assoc_bdds [ i ]);
-	
+
 	delete _assoc_bdds;
-        
+
         _assoc_bdds = 0;
       }
   }
@@ -295,7 +295,7 @@ LongBMan::dcast_subs_data(BooleSubsData * bsd)
 
 int
 LongBMan::new_var()
-{ 
+{
   if(current_var>=max_variables)
     {
       int new_max_variables = max_variables ? 2 * max_variables : 200;
@@ -307,14 +307,14 @@ LongBMan::new_var()
 	    new_variables [ i ] = _variables [ i ];
 	  delete _variables;
 	}
-      
+
       for(int i=max_variables; i<new_max_variables; i++)
         new_variables [ i ] = 0;
-      
+
       _variables = new_variables;
       max_variables = new_max_variables;
     }
-    
+
   _variables [ current_var ] = PTR_bdd_new_var_last(manager());
   return current_var++;
 }
@@ -472,7 +472,7 @@ LongBMan::_relprod(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
       res -> longbdd = PTR_bdd_rel_prod(manager(), a -> longbdd, b -> longbdd);
       return res;
     }
-  else return and(abr,bbr);
+  else return andop(abr,bbr);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -550,7 +550,7 @@ LongBMan::_forallOr(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
       res -> longbdd = tmp;
       return res;
     }
-  else return or(abr,bbr);
+  else return orop(abr,bbr);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -626,7 +626,7 @@ LongBMan::ite(BooleRepr * cbr, BooleRepr * tbr, BooleRepr * ebr)
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::and(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_and); }
+LongBMan::andop(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_and); }
 
 /*---------------------------------------------------------------------------*/
 
@@ -683,12 +683,12 @@ BooleRepr * LongBMan::cofactor(BooleRepr * a, BooleRepr * b)
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::or(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_or); }
+LongBMan::orop(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_or); }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::not(BooleRepr * abr)
+LongBMan::notop(BooleRepr * abr)
 {
   LongBooleRepr * a = dcast(abr);
   LongBooleRepr * res = new LongBooleRepr;

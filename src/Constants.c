@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <limits.h>
 
-const int _MY_EOF = EOF;
-const int _MY_INT_MAX = INT_MAX;
-const int _MY_INT_MIN = INT_MIN;
+const int _MY_EOF = (-1);
+const int _MY_INT_MAX = 0x7fffffff;
+const int _MY_INT_MIN = (-0x7fffffff - 1);

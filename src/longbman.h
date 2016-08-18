@@ -18,6 +18,10 @@ typedef struct block_ * block;
 
 /*---------------------------------------------------------------------------*/
 
+class LongBooleRepr;
+class LongBooleSubsData;
+class LongBooleQuantData;
+
 class LongBMan
 :
   public BooleManager
@@ -51,7 +55,7 @@ class LongBMan
 
   bdd_manager _manager;
   bdd_manager manager() { return _manager; }
-  
+
   static LongBMan * _instance;
 
   bdd _var(int);
@@ -74,15 +78,15 @@ public:
 
   BooleRepr* copy(BooleRepr*);
   BooleRepr* bool_to_Boole(bool);
-  BooleRepr* and(BooleRepr*,BooleRepr*);
+  BooleRepr* andop(BooleRepr*,BooleRepr*);
   BooleRepr* implies(BooleRepr*,BooleRepr*);
   BooleRepr* seilpmi(BooleRepr*,BooleRepr*);
   BooleRepr* equiv(BooleRepr*,BooleRepr*);
   BooleRepr* notequiv(BooleRepr*,BooleRepr*);
   BooleRepr* simplify_assuming(BooleRepr*,BooleRepr*);
   BooleRepr* cofactor(BooleRepr*,BooleRepr*);
-  BooleRepr* or(BooleRepr*,BooleRepr*);
-  BooleRepr* not(BooleRepr*);
+  BooleRepr* orop(BooleRepr*,BooleRepr*);
+  BooleRepr* notop(BooleRepr*);
   BooleRepr* ite(BooleRepr*,BooleRepr*,BooleRepr*);
 
   bool isTrue(BooleRepr*);

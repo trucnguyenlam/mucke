@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Remove all the generated directories int `bin', `obj', and `lib'
 #

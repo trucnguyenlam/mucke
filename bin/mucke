@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #---------------------------------------------------------------------------
 # Set some common standard options
@@ -8,14 +8,14 @@ MUCKEOPTS="-res $MUCKEOPTS"
 #---------------------------------------------------------------------------
 # Set actual binary: static for debugging and dynamic for distribution.
 #
-#MUCKE=mucke_static_bman
+# MUCKE=mucke_static_bman
 MUCKE=mucke_dynamic_bman
 
 #---------------------------------------------------------------------------
 # Set the default BDD library.
 #
 #BMAN=simplebman.so
-#BMAN=longbman.so
+# BMAN=longbman.so
 BMAN=abcdbman.so
 
 #---------------------------------------------------------------------------

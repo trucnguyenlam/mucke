@@ -19,7 +19,7 @@ INITCLASS(
   {
     if(!IOStream::initialized()) return false;
     verbose << "initializing debugging ...\n";
-    pterm_install_print_routines(printStrForC, printIntForC); 
+    pterm_install_print_routines(printStrForC, printIntForC);
   }
 )
 
@@ -65,7 +65,7 @@ int main(int argc, char ** argv)
   }
   catchall {
     internal << "sorry, this is an internal error" << '\n'
-             << "please send a bug report to: " 
+             << "please send a bug report to: "
              << "biere@inf.ethz.ch" << '\n';
     THROW(Internal());
   }

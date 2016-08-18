@@ -86,7 +86,7 @@ public:
 
   const Idx<T> & map(int f, const T & t)
   {
-    insert( IdxData<T>(f,t) );
+    this->insert( IdxData<T>(f,t) );
     return *this;
   }
 
