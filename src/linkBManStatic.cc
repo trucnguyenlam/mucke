@@ -3,6 +3,7 @@
 
 #include "simplebman.h"
 #include "longbman.h"
+#include "cuddbman.h"
 
 extern char * bmanID;
 
@@ -12,6 +13,7 @@ extern "C" {
 
 extern void simplebman_installAt(BooleManager**);
 extern void longbman_installAt(BooleManager**);
+extern void cuddbman_installAt(BooleManager**);
 extern void abcdbman_installAt(BooleManager**);
 };
 
@@ -37,6 +39,11 @@ bool linkBMan_doTheLink()
   if(strcmp(bmanID, "abcdbman.so") == 0)
     {
       installAt = &abcdbman_installAt;
+    }
+  else
+  if(strcmp(bmanID, "libcudd.so") == 0)
+    {
+      installAt = &cuddbman_installAt;
     }
   else
     {

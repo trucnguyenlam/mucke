@@ -1,144 +1,146 @@
-#ifndef _longbman_h_INCLUDED
-#define _longbman_h_INCLUDED
+#ifndef _cuddbman_h_INCLUDED
+#define _cuddbman_h_INCLUDED
 
-// Author:	(C) 1996-1997 Armin Biere
-// LastChange:	Sat Jul 12 17:06:41 MET DST 1997
+// Author:  (C) 2016 Truc Nguyen Lam
+// LastChange:  Thu Aug 18
 
 /*TOC------------------------------------------------------------------------.
- | LongBMan                                                                  |
+ | CuddBMan                                                                  |
  `---------------------------------------------------------------------------*/
 
 #include "booleman.h"
 
 extern "C" {
-typedef struct bdd_ * bdd;
-typedef struct bdd_manager_ * bdd_manager;
-typedef struct block_ * block;
+#include <math.h>
+#include <stdio.h>
+#include "../contrib/cudd/install/include/cudd.h"
+    typedef DdNode * cudd_var;
+    typedef DdManager * cudd_manager;
 };
 
+
+class CuddBooleRepr;
+class CuddBooleSubsData;
+class CuddBooleQuantData;
+
 /*---------------------------------------------------------------------------*/
-
-class LongBooleRepr;
-class LongBooleSubsData;
-class LongBooleQuantData;
-
-class LongBMan
+class CuddBMan
 :
-  public BooleManager
+    public BooleManager
 {
-  friend class LongBooleRepr;
-  friend class LongBooleSubsData;
-  friend class LongBooleQuantData;
-  friend void LongBMan_installAt(BooleManager **);
+    friend class CuddBooleRepr;
+    friend class CuddBooleSubsData;
+    friend class CuddBooleQuantData;
 
-  LongBMan();
-  ~LongBMan();
+    friend void CuddBMan_installAt(BooleManager **);
 
-  LongBooleRepr* dcast(BooleRepr*);
-  LongBooleQuantData * dcast_quant_data(BooleQuantData*);
-  LongBooleSubsData * dcast_subs_data(BooleSubsData*);
+    cudd_manager _manager;
+    int current_var;
 
-  int current_var;
-  int max_variables;
-  bdd * _variables;
+    CuddBMan();
+    ~CuddBMan();
 
-  bdd * variables() { return _variables; }
+    CuddBooleRepr* dcast(BooleRepr*);
+    CuddBooleQuantData * dcast_quant_data(BooleQuantData*);
+    CuddBooleSubsData * dcast_subs_data(BooleSubsData*);
 
-  BooleRepr* _substitute(BooleRepr*, BooleSubsData*);
-  BooleRepr* _exists(BooleRepr*, BooleQuantData*);
-  BooleRepr* _relprod(BooleRepr*, BooleQuantData*, BooleRepr*);
-  BooleRepr* _forall(BooleRepr*, BooleQuantData*);
-  BooleRepr* _forallImplies(BooleRepr*, BooleQuantData*, BooleRepr *);
-  BooleRepr* _forallOr(BooleRepr*, BooleQuantData*, BooleRepr *);
+    int max_variables;
+    cudd_var * _variables;
+    cudd_var * variables() { return _variables; }
+    cudd_var _var(int);
 
-  BooleRepr* binary(BooleRepr*, BooleRepr*, bdd (*)(bdd_manager,bdd,bdd));
+    BooleRepr* _substitute(BooleRepr*, BooleSubsData*);
+    BooleRepr* _exists(BooleRepr*, BooleQuantData*);
+    BooleRepr* _relprod(BooleRepr*, BooleQuantData*, BooleRepr*);
+    BooleRepr* _forall(BooleRepr*, BooleQuantData*);
+    BooleRepr* _forallImplies(BooleRepr*, BooleQuantData*, BooleRepr *);
+    BooleRepr* _forallOr(BooleRepr*, BooleQuantData*, BooleRepr *);
 
-  bdd_manager _manager;
-  bdd_manager manager() { return _manager; }
+    BooleRepr* binary(BooleRepr*, BooleRepr*, cudd_var (*)(cudd_manager, cudd_var, cudd_var));
 
-  static LongBMan * _instance;
-
-  bdd _var(int);
+    static CuddBMan * _instance;
 
 public:
 
-  static LongBMan* instance()
-  {
-    if(_instance == 0) _instance = new LongBMan();
-    return _instance;
-  }
+    cudd_manager manager() { return _manager; }
 
-  BooleRepr * var_to_Boole(int);
-  int new_var();
+    static CuddBMan* instance()
+    {
+        if (_instance == 0) _instance = new CuddBMan();
+        return _instance;
+    }
 
-  BooleSubsData * new_sub(const Idx<int>&);
-  BooleSubsData * new_sub(const Idx<BooleRepr*>&);
+    BooleRepr * var_to_Boole(int);
+    int new_var();
+    BooleSubsData * new_sub(const Idx<int>&);
+    BooleSubsData * new_sub(const Idx<BooleRepr*>&);
+    BooleQuantData * new_var_set(IdxSet&);
 
-  BooleQuantData * new_var_set(IdxSet&);
+    BooleRepr* copy(BooleRepr*);
+    BooleRepr* bool_to_Boole(bool);
+    BooleRepr* andop(BooleRepr*, BooleRepr*);
+    BooleRepr* implies(BooleRepr*, BooleRepr*);
+    BooleRepr* seilpmi(BooleRepr*, BooleRepr*);
+    BooleRepr* equiv(BooleRepr*, BooleRepr*);
+    BooleRepr* notequiv(BooleRepr*, BooleRepr*);
+    BooleRepr* simplify_assuming(BooleRepr*, BooleRepr*);
+    BooleRepr* cofactor(BooleRepr*, BooleRepr*);
+    BooleRepr* orop(BooleRepr*, BooleRepr*);
+    BooleRepr* notop(BooleRepr*);
+    BooleRepr* ite(BooleRepr*, BooleRepr*, BooleRepr*);
 
-  BooleRepr* copy(BooleRepr*);
-  BooleRepr* bool_to_Boole(bool);
-  BooleRepr* andop(BooleRepr*,BooleRepr*);
-  BooleRepr* implies(BooleRepr*,BooleRepr*);
-  BooleRepr* seilpmi(BooleRepr*,BooleRepr*);
-  BooleRepr* equiv(BooleRepr*,BooleRepr*);
-  BooleRepr* notequiv(BooleRepr*,BooleRepr*);
-  BooleRepr* simplify_assuming(BooleRepr*,BooleRepr*);
-  BooleRepr* cofactor(BooleRepr*,BooleRepr*);
-  BooleRepr* orop(BooleRepr*,BooleRepr*);
-  BooleRepr* notop(BooleRepr*);
-  BooleRepr* ite(BooleRepr*,BooleRepr*,BooleRepr*);
+    bool isTrue(BooleRepr*);
+    bool isFalse(BooleRepr*);
+    bool areEqual(BooleRepr*, BooleRepr*);
+    bool doesImply(BooleRepr*, BooleRepr*);
 
-  bool isTrue(BooleRepr*);
-  bool isFalse(BooleRepr*);
-  bool areEqual(BooleRepr*,BooleRepr*);
-  bool doesImply(BooleRepr*,BooleRepr*);
+    bool isValid(BooleRepr*);
 
-  bool isValid(BooleRepr*);
+    const char * stats();
+    int size(BooleRepr*);
+    float onsetsize(BooleRepr*, IdxSet&);
+    BooleRepr * onecube(BooleRepr*, IdxSet &);
 
-  const char * stats();
-  int size(BooleRepr*);
-  float onsetsize(BooleRepr*,IdxSet&);
-  BooleRepr * onecube(BooleRepr*,IdxSet &);
-  void visualize(BooleRepr*);
+    // IOStream & print(IOStream &, BooleRepr*);
+    void visualize(BooleRepr*);
+    // void dump(BooleRepr*, void (*)(char*), char **);
 
 private:
-
-  char stats_buffer [ 2000 ];
+    char stats_buffer [ 2000 ];
 };
 
 /*------------------------------------------------------------------------*/
 
-extern bdd (*PTR_bdd_and)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_cofactor)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_exists)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_forall)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_implies)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_ite)(bdd_manager, bdd, bdd, bdd);
-extern bdd (*PTR_bdd_new_var_last)(bdd_manager);
-extern bdd (*PTR_bdd_not)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_one)(bdd_manager);
-extern bdd (*PTR_bdd_or)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_reduce)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_rel_prod)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_satisfy)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_satisfy_support)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_substitute)(bdd_manager, bdd);
-extern bdd (*PTR_bdd_xnor)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_xor)(bdd_manager, bdd, bdd);
-extern bdd (*PTR_bdd_zero)(bdd_manager);
-extern int (*PTR_bdd_assoc)(bdd_manager, int);
-extern int (*PTR_bdd_cache_ratio)(bdd_manager, int);
-extern int (*PTR_bdd_depends_on)(bdd_manager, bdd, bdd);
-extern int (*PTR_bdd_new_assoc)(bdd_manager, bdd *, int);
-extern long (*PTR_bdd_size)(bdd_manager, bdd, int);
-extern long (*PTR_bdd_vars)(bdd_manager);
-extern void (*PTR_bdd_free)(bdd_manager, bdd);
-extern void (*PTR_bdd_free_assoc)(bdd_manager, int);
-extern void (*PTR_bdd_quit)(bdd_manager);
-extern void (*PTR_bdd_unfree)(bdd_manager, bdd);
-extern bdd_manager (*PTR_bdd_init)();
-extern double (*PTR_bdd_satisfying_fraction)(bdd_manager, bdd);
-extern void load_long_bdd_library();
+extern cudd_var (*PTR_cudd_and)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_cofactor)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_exists)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_forall)(cudd_manager, cudd_var, cudd_var);
+extern void (*PTR_cudd_recursive_free)(cudd_manager, cudd_var);
+extern void (*PTR_cudd_free)(cudd_var);
+extern cudd_manager (*PTR_cudd_init)(unsigned int, unsigned int, unsigned int, unsigned int, size_t);
+extern cudd_var (*PTR_cudd_ite)(cudd_manager, cudd_var, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_new_var_last)(cudd_manager);
+extern cudd_var (*PTR_cudd_var)(cudd_manager, int);
+extern cudd_var (*PTR_cudd_not)(cudd_var);
+extern cudd_var (*PTR_cudd_one)(cudd_manager);
+extern cudd_var (*PTR_cudd_or)(cudd_manager, cudd_var, cudd_var);
+extern void (*PTR_cudd_quit)(cudd_manager);
+extern cudd_var (*PTR_cudd_minimize)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_rel_prod)(cudd_manager, cudd_var, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_intersect)(cudd_manager, cudd_var, cudd_var);
+extern int (*PTR_cudd_size)(cudd_var);
+extern cudd_var (*PTR_cudd_compose)(cudd_manager, cudd_var, cudd_var, int);
+extern cudd_var (*PTR_cudd_vector_compose)(cudd_manager, cudd_var, cudd_var *);
+extern void (*PTR_cudd_unfree)(cudd_var);
+extern cudd_var (*PTR_cudd_xnor)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_xor)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_zero)(cudd_manager);
+extern cudd_var (*PTR_cudd_indices_to_cube)(cudd_manager, int *, int);
+extern cudd_var (*PTR_cudd_make_prime)(cudd_manager, cudd_var, cudd_var);
+extern int (*PTR_cudd_vars)(cudd_manager);
+extern double (*PTR_cudd_count_min_term)(cudd_manager, cudd_var, int);
+
+/*------------------------------------------------------------------------*/
+extern void load_cudd_bdd_library();
 
 #endif

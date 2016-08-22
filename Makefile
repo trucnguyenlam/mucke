@@ -12,6 +12,9 @@ clean:
 	cd contrib/abcd/src; make clean
 	cd contrib/bddlib.D.E.Long; make clean
 
+clean-exe:
+	cd src; make clean-exe
+
 depend:
 	cd src; make depend
 	cd contrib/abcd/src; make depend

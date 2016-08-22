@@ -87,7 +87,7 @@ void BooleManager::_dequeue(BooleManagerManaged* bmm)
       ASSERT(bmm->_prev != 0);
 
       bmm->_prev->_next = bmm->_next;
-      
+
       if(bmm->_next)
         bmm->_next->_prev = bmm->_prev;
     }

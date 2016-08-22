@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Changelog:
+#   2016.08.21   add option to generate configuration file for CUDD library
+
 usage() {
   echo "*** usage:  configure <options>" 1>&2
   echo "" 1>&2
@@ -11,6 +14,9 @@ usage() {
   echo "" 1>&2
   echo "    --longbdd=<dir>    to generate code for the BDD library" 1>&2
   echo "                       of D. E. Long (from CMU)" 1>&2
+  echo "" 1>&2
+  echo "    --cuddbdd=<dir>    to generate code for the CUDD library" 1>&2
+  echo "                       of Fabio Somenzi" 1>&2
   echo "" 1>&2
   echo "    --CXX=<compiler>   specifies another C++ compiler" 1>&2
   echo "" 1>&2
@@ -36,11 +42,13 @@ STATIC=false
 CXX="g++"
 CPP="gcc -E"
 LONGBDD=""
+CUDDBDD=""
 
 while [ $# -gt 0 ]
 do
   case $1 in
-    --static) STATIC=true;;
+    --static)
+      STATIC=true;;
     --longbdd=*)
       LONGBDD=$(echo "$1" | sed -e 's,--longbdd=,,')
       if [ x"$LONGBDD" = x ]
@@ -51,6 +59,19 @@ do
       if [[ ! -d $LONGBDD ]]
       then
         echo "*** configure: argument to --longbdd is not a directory" 1>&2
+  usage
+      fi
+      ;;
+    --cuddbdd=*)
+      CUDDBDD=$(echo "$1" | sed -e 's,--cuddbdd=,,')
+      if [ x"$CUDDBDD" = x ]
+      then
+        echo "*** configure: argument to --cuddbdd is missing" 1>&2
+  usage
+      fi
+      if [[ ! -d $CUDDBDD ]]
+      then
+        echo "*** configure: argument to --cuddbdd is not a directory" 1>&2
   usage
       fi
       ;;
@@ -212,6 +233,7 @@ echo "SARCH=$SARCH" >> .configuration
 echo "BARCH=$BARCH" >> .configuration
 echo "STATIC=$STATIC" >> .configuration
 echo 'LONGBDD="'$LONGBDD'"' >> .configuration
+echo 'CUDDBDD="'$CUDDBDD'"' >> .configuration
 
 #--------------------------------------------------------------------------
 # Configure subtargets ----------------------------------------------------
@@ -223,6 +245,12 @@ then
   cd contrib/bddlib.D.E.Long
   ./configure $LONGBDD || exit 1
   cd ../..
+fi
+
+if [ ! x"$CUDDBDD" = x ]
+then
+  echo "configuring cudd .. TODO"
+  # TODO
 fi
 
 echo "configuring ABCD:"

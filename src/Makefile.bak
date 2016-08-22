@@ -1,11 +1,7 @@
 #------------------------------------------------------------------------
 
-# FLAGS=-fPIC#-O6
-# FLAGS=-fPIC -g -fno-strict-aliasing
-# FLAGS=-fPIC -O3 -rdynamic -fno-strict-aliasing
-# FLAGS=-g -O3 -fno-strict-aliasing
-FLAGS=-g -fPIC -fno-strict-aliasing
-CXXFLAGS=-g -fPIC -fno-strict-aliasing -fpermissive
+FLAGS=-g -fPIC -fno-strict-aliasing -Wno-write-strings
+CXXFLAGS=-g -fPIC -fno-strict-aliasing -fpermissive -Wno-write-strings
 
 #------------------------------------------------------------------------
 
@@ -32,7 +28,7 @@ all: config.h
 
 BIN=../bin/LINK
 OBJ=../obj/LINK
-INCL=-I../contrib/bddlib.D.E.Long -I../contrib/abcd/src
+INCL=-I../contrib/bddlib.D.E.Long -I../contrib/abcd/src -I../contrib/cudd/install/include
 
 #------------------------------------------------------------------------
 
@@ -48,6 +44,11 @@ dynamic: $(BIN)/simplebman.so $(BIN)/abcdbman.so $(BIN)/mucke_dynamic_bman
 	  make $(BIN)/longbman.so; \
 	  cd ../contrib/bddlib.D.E.Long; \
 	  make ../../bin/LINK/bddlib.D.E.Long.so; \
+	fi
+	if [ ! x"$$CUDDBDD" = x ]; \
+	then \
+	  echo "[generating libcudd.a]"; \
+	  make $(BIN)/cuddbman.so;
 	fi
 	@echo "[generating abcdbman.so]"; \
 	cd ../contrib/abcd/src; make ../lib/libabcd.so
@@ -66,6 +67,14 @@ LONGBMANOBJS=$(OBJ)/longbman.o $(OBJ)/longbddstats.o
 
 $(BIN)/longbman.so: $(LONGBMANOBJS) $(OBJ)/longbmanDynamic.o
 	../bin/ldshared $@ $(LONGBMANOBJS) $(OBJ)/longbmanDynamic.o
+
+#------------------------------------------------------------------------
+#------------------------------------------------------------------------
+
+CUDDBMANOBJS=$(OBJ)/cuddbman.o $(OBJ)/cuddbddstats.o
+
+$(BIN)/cuddbman.so: $(CUDDBMANOBJS) $(OBJ)/cuddbmanDynamic.o
+	../bin/ldshared $@ $(CUDDBMANOBJS) $(OBJ)/cuddbmanDynamic.o
 
 #------------------------------------------------------------------------
 
@@ -111,8 +120,6 @@ OBJS=$(OBJ)/alloc.o $(OBJ)/alloccs.o $(OBJ)/analyzer.o $(OBJ)/arr_stor.o \
 
 #------------------------------------------------------------------------
 
-CCMALLOC=$$HOME/lib/`uname -m`/ccmalloc.o
-#LIBS=-lm $(CCMALLOC) -ldl
 LIBS=-lm -ldl
 
 #------------------------------------------------------------------------
@@ -148,6 +155,22 @@ $(BIN)/mucke_static_bman: $(OBJS) $(SOBJS)
 	  libs="$$libs -lbdd"; \
 	  cd ../../src; \
 	fi; \
+	if [ ! x"$$CUDDBDD" = x ]; \
+	then \
+	  echo "[generating cuddbman objects]"; \
+	  make \
+	    $(OBJ)/cuddbman.o \
+	    $(OBJ)/cuddbddstats.o \
+	    $(OBJ)/cuddbmanStatic.o; \
+	  libs="$$libs \
+	    $(OBJ)/cuddbman.o \
+	    $(OBJ)/cuddbddstats.o \
+	    $(OBJ)/cuddbmanStatic.o"; \
+	  cd ../contrib/cudd/install/lib; \
+	  cp libcudd.a ../../../../bin/LINK; \
+	  libs="$$libs -lcudd"; \
+	  cd ../../../../src; \
+	fi; \
 	echo "[generating abcdbman objects]"; \
 	cd ../contrib/abcd/src; make ../lib/libabcd.a; cd ../../../src; \
 	cp ../contrib/abcd/lib/libabcd.a $(BIN); \
@@ -169,6 +192,9 @@ clean:
 	rm -f preinit.h precleanup.h
 	rm -f banner.c
 	rm -f Tokens TokenStrings Keywords.cc Operators.cc
+
+clean-exe:
+	rm -f $(BIN)/mucke_static_bman $(BIN)/mucke_dynamic_bman
 
 #------------------------------------------------------------------------
 
@@ -381,6 +407,14 @@ $(OBJ)/longbmanDynamic.o: longbmanDynamic.cc
 	$(CXX) -c -o $@ longbmanDynamic.cc
 $(OBJ)/longbmanStatic.o: longbmanStatic.cc
 	$(CXX) $(INCL) -c -o $@ longbmanStatic.cc
+$(OBJ)/cuddbman.o: cuddbman.cc
+	$(CXX) -c -o $@ cuddbman.cc
+$(OBJ)/cuddbddstats.o: cuddbddstats.c
+	$(CC) $(INCL) -c -o $@ cuddbddstats.c
+$(OBJ)/cuddbmanDynamic.o: cuddbmanDynamic.cc
+	$(CXX) -c -o $@ cuddbmanDynamic.cc
+$(OBJ)/cuddbmanStatic.o: cuddbmanStatic.cc
+	$(CXX) $(INCL) -c -o $@ cuddbmanStatic.cc
 $(OBJ)/macros.o: macros.cc
 	$(CXX) -c -o $@ macros.cc
 $(OBJ)/main.o: main.cc
@@ -674,6 +708,79 @@ $(OBJ)/y.tab.o: y.tab.c
 ../obj/LINK/context.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
 ../obj/LINK/context.o: print_ev.h evalint.h eval.h array.h Symbol.h pterm.h
 ../obj/LINK/context.o: term.h
+../obj/LINK/cuddbman.o: cuddbman.h booleman.h boole.h idx.h list.h iterator.h
+../obj/LINK/cuddbman.o: io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbman.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddbman.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/cuddbman.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/cuddbman.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/cuddbman.o: /usr/include/bits/types.h
+../obj/LINK/cuddbman.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/cuddbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/cuddbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbman.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddbman.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddbman.o: /usr/include/inttypes.h /usr/include/stdint.h
+../obj/LINK/cuddbman.o: /usr/include/bits/wchar.h InitFileReader.h except.h
+../obj/LINK/cuddbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/cuddbman.o: /usr/include/bits/sigset.h
+../obj/LINK/cuddbmanDynamic.o: longbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cuddbmanDynamic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbmanDynamic.o: except.h /usr/include/setjmp.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/features.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/stdc-predef.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/setjmp.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/sigset.h InitFileReader.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/math.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/inf.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/nan.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/typesizes.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/wchar.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/sys_errlist.h loader.h
+../obj/LINK/cuddbmanStatic.o: cuddbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cuddbmanStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/stdc-predef.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/wchar.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddbmanStatic.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/inttypes.h /usr/include/stdint.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/wchar.h
+../obj/LINK/cuddbmanStatic.o: ../contrib/cudd/install/include/cudd.h
 ../obj/LINK/debug.o: /usr/include/sys/types.h /usr/include/features.h
 ../obj/LINK/debug.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
 ../obj/LINK/debug.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
@@ -852,12 +959,29 @@ $(OBJ)/y.tab.o: y.tab.c
 ../obj/LINK/linkBMan.o: init.h config.h
 ../obj/LINK/linkBManStatic.o: simplebman.h booleman.h boole.h idx.h list.h
 ../obj/LINK/linkBManStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
-../obj/LINK/linkBManStatic.o: longbman.h /usr/include/dlfcn.h
+../obj/LINK/linkBManStatic.o: longbman.h cuddbman.h /usr/include/math.h
 ../obj/LINK/linkBManStatic.o: /usr/include/features.h
 ../obj/LINK/linkBManStatic.o: /usr/include/stdc-predef.h
 ../obj/LINK/linkBManStatic.o: /usr/include/sys/cdefs.h
 ../obj/LINK/linkBManStatic.o: /usr/include/bits/wordsize.h
 ../obj/LINK/linkBManStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/math-vector.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/huge_val.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/mathdef.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/linkBManStatic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/linkBManStatic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/linkBManStatic.o: /usr/include/wchar.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/linkBManStatic.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/linkBManStatic.o: /usr/include/inttypes.h /usr/include/stdint.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/wchar.h /usr/include/dlfcn.h
 ../obj/LINK/linkBManStatic.o: /usr/include/bits/dlfcn.h /usr/include/string.h
 ../obj/LINK/linkBManStatic.o: /usr/include/xlocale.h except.h
 ../obj/LINK/linkBManStatic.o: /usr/include/setjmp.h
@@ -1232,6 +1356,26 @@ $(OBJ)/y.tab.o: y.tab.c
 ../obj/LINK/Constants.o: /usr/include/bits/local_lim.h
 ../obj/LINK/Constants.o: /usr/include/linux/limits.h
 ../obj/LINK/Constants.o: /usr/include/bits/posix2_lim.h
+../obj/LINK/cuddbddstats.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddbddstats.o: /usr/include/stdc-predef.h
+../obj/LINK/cuddbddstats.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddbddstats.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/mathcalls.h
+../obj/LINK/cuddbddstats.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/typesizes.h
+../obj/LINK/cuddbddstats.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/cuddbddstats.o: /usr/include/wchar.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbddstats.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddbddstats.o: ../contrib/cudd/install/include/cudd.h
 ../obj/LINK/keywords.o: /usr/include/stdio.h /usr/include/features.h
 ../obj/LINK/keywords.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
 ../obj/LINK/keywords.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
