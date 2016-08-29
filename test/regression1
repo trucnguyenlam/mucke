@@ -3,7 +3,9 @@ enum farbe { rot, gruen , gelb};
 bool p (farbe a, farbe b) a=rot;
 #ons p;
 forall farbe a. (forall farbe b. (p(a, b) -> (b=rot | b=gruen | b=gelb)));
-// forall farbe a. (forall farbe b. ((!p(a, b)) | (b=rot | b=gruen | b=gelb)));
+forall farbe a. (forall farbe b. ((!p(a, b)) | (b=rot | b=gruen | b=gelb)));
+
+#vis p;
 
 // bool p0 (farbe a, farbe b) a=rot & (b=b);
 // #ons p0;

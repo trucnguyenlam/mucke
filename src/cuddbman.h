@@ -44,11 +44,6 @@ class CuddBMan
     CuddBooleQuantData * dcast_quant_data(BooleQuantData*);
     CuddBooleSubsData * dcast_subs_data(BooleSubsData*);
 
-    int max_variables;
-    cudd_var * _variables;
-    cudd_var * variables() { return _variables; }
-    cudd_var _var(int);
-
     BooleRepr* _substitute(BooleRepr*, BooleSubsData*);
     BooleRepr* _exists(BooleRepr*, BooleQuantData*);
     BooleRepr* _relprod(BooleRepr*, BooleQuantData*, BooleRepr*);
@@ -126,6 +121,9 @@ extern cudd_var (*PTR_cudd_one)(cudd_manager);
 extern cudd_var (*PTR_cudd_or)(cudd_manager, cudd_var, cudd_var);
 extern void (*PTR_cudd_quit)(cudd_manager);
 extern cudd_var (*PTR_cudd_minimize)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_constrain)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_restrict)(cudd_manager, cudd_var, cudd_var);
+extern cudd_var (*PTR_cudd_compact)(cudd_manager, cudd_var, cudd_var);
 extern cudd_var (*PTR_cudd_rel_prod)(cudd_manager, cudd_var, cudd_var, cudd_var);
 extern cudd_var (*PTR_cudd_intersect)(cudd_manager, cudd_var, cudd_var);
 extern int (*PTR_cudd_size)(cudd_var);
@@ -139,6 +137,9 @@ extern cudd_var (*PTR_cudd_indices_to_cube)(cudd_manager, int *, int);
 extern cudd_var (*PTR_cudd_make_prime)(cudd_manager, cudd_var, cudd_var);
 extern int (*PTR_cudd_vars)(cudd_manager);
 extern double (*PTR_cudd_count_min_term)(cudd_manager, cudd_var, int);
+extern double (*PTR_cudd_countpathstononzero)(cudd_var);
+extern int (*PTR_cudd_dumpdot)(cudd_manager, int, cudd_var *, char const *const *, char const *const *, FILE *);
+extern cudd_var (*PTR_cudd_computecube)(cudd_manager, cudd_var *, int *, int);
 
 /*------------------------------------------------------------------------*/
 extern void load_cudd_bdd_library();

@@ -1,5 +1,5 @@
-// Author:	(C) 1996-1997, 1998 Armin Biere
-// LastChange:	Sat Jul 12 17:08:14 MET DST 1997
+// Author:  (C) 1996-1997, 1998 Armin Biere
+// LastChange:  Sat Jul 12 17:08:14 MET DST 1997
 
 #include "longbman.h"
 #include "except.h"
@@ -9,7 +9,7 @@
 extern "C" {
 #include <math.h>
 #include <stdio.h>
-extern char * bdd_stats_short(bdd_manager);
+  extern char * bdd_stats_short(bdd_manager);
 };
 
 #include "loader.h"
@@ -32,11 +32,11 @@ void load_cudd_bdd_library()
 
   Loader * loader = Loader::instance();
   LibraryID * id = loader -> open("libcudd.so");
-  if(!id)
-    {
-      error << "could not install `libcudd.so'\n";
-      THROW(Exit());
-    }
+  if (!id)
+  {
+    error << "could not install `libcudd.so'\n";
+    THROW(Exit());
+  }
 
   verbose << "resolving symbols ...\n" << inc();
 
@@ -54,6 +54,9 @@ void load_cudd_bdd_library()
   resolve(cudd_or, Cudd_bddOr, "Cudd_bddOr");
   resolve(cudd_quit, Cudd_Quit, "Cudd_Quit");
   resolve(cudd_minimize, Cudd_bddMinimize, "Cudd_bddMinimize");
+  resolve(cudd_constrain, Cudd_bddConstrain, "Cudd_bddConstrain");
+  resolve(cudd_restrict, Cudd_bddRestrict, "Cudd_bddRestrict");
+  resolve(cudd_compact, Cudd_bddLICompaction, "Cudd_bddLICompaction");
   resolve(cudd_rel_prod, Cudd_bddAndAbstract, "Cudd_bddAndAbstract");
   resolve(cudd_intersect, Cudd_bddIntersect, "Cudd_bddIntersect");
   resolve(cudd_size, Cudd_DagSize, "Cudd_DagSize");
@@ -67,6 +70,9 @@ void load_cudd_bdd_library()
   resolve(cudd_make_prime, Cudd_bddMakePrime, "Cudd_bddMakePrime");
   resolve(cudd_vars, Cudd_ReadSize, "Cudd_ReadSize");
   resolve(cudd_count_min_term, Cudd_CountMinterm, "Cudd_CountMinterm");
+  resolve(cudd_countpathstononzero, Cudd_CountPathsToNonZero, "Cudd_CountPathsToNonZero");
+  resolve(cudd_dumpdot, Cudd_DumpDot, "Cudd_DumpDot");
+  resolve(cudd_computecube, Cudd_bddComputeCube, "Cudd_bddComputeCube");
 
   verbose << dec() << dec() << "done.\n";
 }

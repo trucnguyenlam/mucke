@@ -1,5 +1,5 @@
-// Author:	(C) 1996-1997, 1998 Armin Biere
-// LastChange:	Sat Jul 12 17:08:14 MET DST 1997
+// Author:  (C) 1996-1997, 1998 Armin Biere
+// LastChange:  Sat Jul 12 17:08:14 MET DST 1997
 
 /**************************** COMPILE-TIME-OPTIONS *******************/
 
@@ -10,7 +10,7 @@
 extern "C" {
 #include <math.h>
 #include <stdio.h>
-extern char * bdd_stats_short(bdd_manager);
+    extern char * bdd_stats_short(bdd_manager);
 };
 
 /*---------------------------------------------------------------------------*/
@@ -59,151 +59,151 @@ double (*PTR_bdd_satisfying_fraction)(bdd_manager, bdd);
 /*---------------------------------------------------------------------------*/
 
 class LongBooleRepr
-:
-  public BooleRepr
+    :
+    public BooleRepr
 {
-  friend class LongBMan;
+    friend class LongBMan;
 
-  bdd longbdd;
+    bdd longbdd;
 
-  bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
+    bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
 
 public:
 
-  LongBooleRepr()
-  :
-    BooleRepr(LongBMan::instance()),
-    longbdd(0)
-  {}
+    LongBooleRepr()
+        :
+        BooleRepr(LongBMan::instance()),
+        longbdd(0)
+    {}
 
-  ~LongBooleRepr() { reset(); }
+    ~LongBooleRepr() { reset(); }
 
-  void reset()
-  {
-    if(longbdd)
-      {
-        PTR_bdd_free(longbdd_manager(), longbdd);
-	longbdd = 0;
-      }
-  }
+    void reset()
+    {
+        if (longbdd)
+        {
+            PTR_bdd_free(longbdd_manager(), longbdd);
+            longbdd = 0;
+        }
+    }
 };
 
 /*---------------------------------------------------------------------------*/
 
 class LongBooleSubsData
-:
-  public BooleSubsData
+    :
+    public BooleSubsData
 {
-  friend class LongBMan;
-  bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
+    friend class LongBMan;
+    bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
 
-  bdd * _assoc_bdds;
-  int _assoc_int;
-  int _size;
+    bdd * _assoc_bdds;
+    int _assoc_int;
+    int _size;
 
-  int assoc_int() { ASSERT(_assoc_bdds); return _assoc_int; }
+    int assoc_int() { ASSERT(_assoc_bdds); return _assoc_int; }
 
-  LongBooleSubsData(const Idx<int> & map)
-  :
-    BooleSubsData(LongBMan::instance())
-  {
-    _size = 0;
-    IdxIterator<int> it(map);
-    for(it.first(); !it.isDone(); it.next())
-      {
-	int from = it.from(), to = it.to();
-	if(from != to) _size++;
-      }
+    LongBooleSubsData(const Idx<int> & map)
+        :
+        BooleSubsData(LongBMan::instance())
+    {
+        _size = 0;
+        IdxIterator<int> it(map);
+        for (it.first(); !it.isDone(); it.next())
+        {
+            int from = it.from(), to = it.to();
+            if (from != to) _size++;
+        }
 
-    if(_size)
-      {
-        _assoc_bdds = new bdd [ 2 * _size + 1 ];
-	int i = 0;
-	for(it.first(); !it.isDone(); it.next())
-	  {
-	    int from = it.from(), to = it.to();
-	    if(from != to)
-	      {
-	        bdd from_bdds =
-		  LongBMan::instance() -> variables() [ from ];
-		bdd to_bdds =
-		  LongBMan::instance() -> variables() [ to ];
+        if (_size)
+        {
+            _assoc_bdds = new bdd [ 2 * _size + 1 ];
+            int i = 0;
+            for (it.first(); !it.isDone(); it.next())
+            {
+                int from = it.from(), to = it.to();
+                if (from != to)
+                {
+                    bdd from_bdds =
+                        LongBMan::instance() -> variables() [ from ];
+                    bdd to_bdds =
+                        LongBMan::instance() -> variables() [ to ];
 
-		PTR_bdd_unfree(longbdd_manager(), from_bdds);
-		PTR_bdd_unfree(longbdd_manager(), to_bdds);
+                    PTR_bdd_unfree(longbdd_manager(), from_bdds);
+                    PTR_bdd_unfree(longbdd_manager(), to_bdds);
 
-		_assoc_bdds [ i++ ] = from_bdds;
-		_assoc_bdds [ i++ ] = to_bdds;
-	      }
-	  }
+                    _assoc_bdds [ i++ ] = from_bdds;
+                    _assoc_bdds [ i++ ] = to_bdds;
+                }
+            }
 
-	_assoc_bdds [ 2 * _size ] = 0;
-	_assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
-      }
-    else _assoc_bdds = 0;
-  }
+            _assoc_bdds [ 2 * _size ] = 0;
+            _assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
+        }
+        else _assoc_bdds = 0;
+    }
 
-  LongBooleSubsData(const Idx<bdd> & map) :
-    BooleSubsData(LongBMan::instance())
-  {
-    _size = 0;
-    IdxIterator<bdd> it(map);
-    for(it.first(); !it.isDone(); it.next())
-      {
-	int from = it.from();
-	bdd to = it.to();
+    LongBooleSubsData(const Idx<bdd> & map) :
+        BooleSubsData(LongBMan::instance())
+    {
+        _size = 0;
+        IdxIterator<bdd> it(map);
+        for (it.first(); !it.isDone(); it.next())
+        {
+            int from = it.from();
+            bdd to = it.to();
 
-	if(LongBMan::instance() -> variables() [ from ] != to)
-	  _size++;
-      }
+            if (LongBMan::instance() -> variables() [ from ] != to)
+                _size++;
+        }
 
-    if(_size)
-      {
-        _assoc_bdds = new bdd [ 2 * _size + 1 ];
-	int i = 0;
-	for(it.first(); !it.isDone(); it.next())
-	  {
-	    int from = it.from();
-	    bdd to = it.to();
+        if (_size)
+        {
+            _assoc_bdds = new bdd [ 2 * _size + 1 ];
+            int i = 0;
+            for (it.first(); !it.isDone(); it.next())
+            {
+                int from = it.from();
+                bdd to = it.to();
 
-	    if(LongBMan::instance() -> variables() [ from ] != to)
-	      {
-	        bdd from_bdds =
-		  LongBMan::instance() -> variables() [ from ];
+                if (LongBMan::instance() -> variables() [ from ] != to)
+                {
+                    bdd from_bdds =
+                        LongBMan::instance() -> variables() [ from ];
 
-		PTR_bdd_unfree(longbdd_manager(), from_bdds);
-		PTR_bdd_unfree(longbdd_manager(), to);
+                    PTR_bdd_unfree(longbdd_manager(), from_bdds);
+                    PTR_bdd_unfree(longbdd_manager(), to);
 
-		_assoc_bdds [ i++ ] = from_bdds;
-		_assoc_bdds [ i++ ] = to;
-	      }
-	  }
+                    _assoc_bdds [ i++ ] = from_bdds;
+                    _assoc_bdds [ i++ ] = to;
+                }
+            }
 
-	_assoc_bdds [ 2 * _size ] = 0;
-	_assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
-      }
-    else _assoc_bdds = 0;
-  }
+            _assoc_bdds [ 2 * _size ] = 0;
+            _assoc_int = PTR_bdd_new_assoc(longbdd_manager(), _assoc_bdds, 1);
+        }
+        else _assoc_bdds = 0;
+    }
 
-  ~LongBooleSubsData() { reset(); }
+    ~LongBooleSubsData() { reset(); }
 
 public:
 
-  bool valid() { return _assoc_bdds != 0; }
-  void reset()
-  {
-    if(_assoc_bdds)
-      {
-        PTR_bdd_free_assoc(longbdd_manager(), _assoc_int);
+    bool valid() { return _assoc_bdds != 0; }
+    void reset()
+    {
+        if (_assoc_bdds)
+        {
+            PTR_bdd_free_assoc(longbdd_manager(), _assoc_int);
 
-	for(int i=0; i<2*_size; i++)
-	  PTR_bdd_free(longbdd_manager(), _assoc_bdds [ i ]);
+            for (int i = 0; i < 2 * _size; i++)
+                PTR_bdd_free(longbdd_manager(), _assoc_bdds [ i ]);
 
-	delete _assoc_bdds;
+            delete _assoc_bdds;
 
-        _assoc_bdds = 0;
-      }
-  }
+            _assoc_bdds = 0;
+        }
+    }
 };
 
 /*---------------------------------------------------------------------------*/
@@ -217,45 +217,45 @@ void LongBMan_installAt(BooleManager ** where)
 /*---------------------------------------------------------------------------*/
 
 extern "C" {
-void longbman_installAt(BooleManager ** where) { LongBMan_installAt(where); }
+    void longbman_installAt(BooleManager ** where) { LongBMan_installAt(where); }
 };
 
 /*---------------------------------------------------------------------------*/
 
 LongBMan::LongBMan()
-:
-  current_var(0),
-  max_variables(0),
-  _variables(0)
+    :
+    current_var(0),
+    max_variables(0),
+    _variables(0)
 {
-  load_long_bdd_library();
-  _manager = PTR_bdd_init();
+    load_long_bdd_library();
+    _manager = PTR_bdd_init();
 
-  InitFileReader initFileReader(".longbmanrc");
+    InitFileReader initFileReader(".longbmanrc");
 
-  double factor = 0.25;
+    double factor = 0.25;
 
-  if(initFileReader.getValue("cache_ratio", factor))
+    if (initFileReader.getValue("cache_ratio", factor))
     {
-      int cache_ratio = int(factor * 16.0);
-      PTR_bdd_cache_ratio(manager(), cache_ratio);
+        int cache_ratio = int(factor * 16.0);
+        PTR_bdd_cache_ratio(manager(), cache_ratio);
     }
 
-  verbose << "LongBMan using cache ratio of " << factor << '\n';
+    verbose << "LongBMan using cache ratio of " << factor << '\n';
 }
 
 /*---------------------------------------------------------------------------*/
 
 LongBMan::~LongBMan()
 {
-  reset_all_reprs();
+    reset_all_reprs();
 
-  for(int i=0; i<max_variables; i++)
-    if(_variables [ i ])
-      PTR_bdd_free(manager(), _variables [ i ]);
+    for (int i = 0; i < max_variables; i++)
+        if (_variables [ i ])
+            PTR_bdd_free(manager(), _variables [ i ]);
 
-  delete _variables;
-  PTR_bdd_quit(manager());
+    delete _variables;
+    PTR_bdd_quit(manager());
 }
 
 /*---------------------------------------------------------------------------*/
@@ -263,10 +263,10 @@ LongBMan::~LongBMan()
 LongBooleRepr *
 LongBMan::dcast(BooleRepr * br)
 {
-  if(br -> manager() != this)
-    error << "dynamic cast to Long boole repr not implemented"
-          << TypeViolation();
-  return (LongBooleRepr *) br;
+    if (br -> manager() != this)
+        error << "dynamic cast to Long boole repr not implemented"
+              << TypeViolation();
+    return (LongBooleRepr *) br;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -274,10 +274,10 @@ LongBMan::dcast(BooleRepr * br)
 LongBooleQuantData *
 LongBMan::dcast_quant_data(BooleQuantData * bqd)
 {
-  if(bqd -> manager() != this)
-    error << "dynamic cast to Long Boole Quant Data not implemented"
-          << TypeViolation();
-  return (LongBooleQuantData*) bqd;
+    if (bqd -> manager() != this)
+        error << "dynamic cast to Long Boole Quant Data not implemented"
+              << TypeViolation();
+    return (LongBooleQuantData*) bqd;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -285,10 +285,10 @@ LongBMan::dcast_quant_data(BooleQuantData * bqd)
 LongBooleSubsData *
 LongBMan::dcast_subs_data(BooleSubsData * bsd)
 {
-  if(bsd -> manager() != this)
-    error << "dynamic cast to Long Boole Subs Data not implemented"
-          << TypeViolation();
-  return (LongBooleSubsData*) bsd;
+    if (bsd -> manager() != this)
+        error << "dynamic cast to Long Boole Subs Data not implemented"
+              << TypeViolation();
+    return (LongBooleSubsData*) bsd;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -296,27 +296,27 @@ LongBMan::dcast_subs_data(BooleSubsData * bsd)
 int
 LongBMan::new_var()
 {
-  if(current_var>=max_variables)
+    if (current_var >= max_variables)
     {
-      int new_max_variables = max_variables ? 2 * max_variables : 200;
-      bdd * new_variables = new bdd [ new_max_variables ];
+        int new_max_variables = max_variables ? 2 * max_variables : 200;
+        bdd * new_variables = new bdd [ new_max_variables ];
 
-      if(max_variables>0)
+        if (max_variables > 0)
         {
-          for(int i=0; i<max_variables; i++)
-	    new_variables [ i ] = _variables [ i ];
-	  delete _variables;
-	}
+            for (int i = 0; i < max_variables; i++)
+                new_variables [ i ] = _variables [ i ];
+            delete _variables;
+        }
 
-      for(int i=max_variables; i<new_max_variables; i++)
-        new_variables [ i ] = 0;
+        for (int i = max_variables; i < new_max_variables; i++)
+            new_variables [ i ] = 0;
 
-      _variables = new_variables;
-      max_variables = new_max_variables;
+        _variables = new_variables;
+        max_variables = new_max_variables;
     }
 
-  _variables [ current_var ] = PTR_bdd_new_var_last(manager());
-  return current_var++;
+    _variables [ current_var ] = PTR_bdd_new_var_last(manager());
+    return current_var++;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -324,10 +324,10 @@ LongBMan::new_var()
 bdd
 LongBMan::_var(int v)
 {
-  ASSERT(0<=v && v<current_var);
-  bdd res = _variables [ v ];
-  PTR_bdd_unfree(manager(), res);
-  return res;
+    ASSERT(0 <= v && v < current_var);
+    bdd res = _variables [ v ];
+    PTR_bdd_unfree(manager(), res);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -335,70 +335,70 @@ LongBMan::_var(int v)
 BooleRepr *
 LongBMan::var_to_Boole(int v)
 {
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = _var(v);
-  return res;
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = _var(v);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
 
 class LongBooleQuantData
-:
-  public BooleQuantData
+    :
+    public BooleQuantData
 {
-  friend class LongBMan;
-  bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
+    friend class LongBMan;
+    bdd_manager longbdd_manager() { return LongBMan::instance() -> manager(); }
 
-  bdd * _vars;
-  int _size;		// don't forget trailing zero!
-  int _assoc;
+    bdd * _vars;
+    int _size;        // don't forget trailing zero!
+    int _assoc;
 
-  int assoc() { ASSERT(_vars); return _assoc; }
-  int size() { return _size; }
+    int assoc() { ASSERT(_vars); return _assoc; }
+    int size() { return _size; }
 
-  LongBooleQuantData(IdxSet & s) : BooleQuantData(LongBMan::instance())
-  {
-    _size = 0;
-    IdxSetIterator it(s);
-    for(it.first(); !it.isDone(); it.next())
-      _size++;
+    LongBooleQuantData(IdxSet & s) : BooleQuantData(LongBMan::instance())
+    {
+        _size = 0;
+        IdxSetIterator it(s);
+        for (it.first(); !it.isDone(); it.next())
+            _size++;
 
-    if(_size)
-      {
-        _vars = new bdd [ size() + 1 ];
-	int i = 0;
-        for(it.first(); !it.isDone(); it.next(), i++)
-          {
-            int vint = it.get();
-            bdd vbdd = LongBMan::instance() -> variables() [ vint ];
- 	    _vars [ i ] = vbdd;
-	    PTR_bdd_unfree(longbdd_manager(), vbdd);
-          }
-        _vars [ size() ] = 0;		// I said: Don't forget ...
+        if (_size)
+        {
+            _vars = new bdd [ size() + 1 ];
+            int i = 0;
+            for (it.first(); !it.isDone(); it.next(), i++)
+            {
+                int vint = it.get();
+                bdd vbdd = LongBMan::instance() -> variables() [ vint ];
+                _vars [ i ] = vbdd;
+                PTR_bdd_unfree(longbdd_manager(), vbdd);
+            }
+            _vars [ size() ] = 0;       // I said: Don't forget ...
 
-        _assoc = PTR_bdd_new_assoc(longbdd_manager(), _vars, 0);
-      }
-    else _vars = 0;
-  }
+            _assoc = PTR_bdd_new_assoc(longbdd_manager(), _vars, 0);
+        }
+        else _vars = 0;
+    }
 
-  ~LongBooleQuantData() { reset(); }
+    ~LongBooleQuantData() { reset(); }
 
 public:
 
-  bool valid() { return _vars != 0; }
-  void reset()
-  {
-    if(_vars)
-      {
-        PTR_bdd_free_assoc(longbdd_manager(), _assoc);
+    bool valid() { return _vars != 0; }
+    void reset()
+    {
+        if (_vars)
+        {
+            PTR_bdd_free_assoc(longbdd_manager(), _assoc);
 
-        for(int i = 0; i<size(); i++)
-          PTR_bdd_free(longbdd_manager(), _vars [ i ]);
+            for (int i = 0; i < size(); i++)
+                PTR_bdd_free(longbdd_manager(), _vars [ i ]);
 
-        delete _vars;
-        _vars = 0;
-      }
-  }
+            delete _vars;
+            _vars = 0;
+        }
+    }
 };
 
 /*---------------------------------------------------------------------------*/
@@ -406,7 +406,7 @@ public:
 BooleQuantData *
 LongBMan::new_var_set(IdxSet & is)
 {
-  return new LongBooleQuantData(is);
+    return new LongBooleQuantData(is);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -414,7 +414,7 @@ LongBMan::new_var_set(IdxSet & is)
 BooleSubsData *
 LongBMan::new_sub(const Idx<int> & map)
 {
-  return new LongBooleSubsData(map);
+    return new LongBooleSubsData(map);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -422,15 +422,15 @@ LongBMan::new_sub(const Idx<int> & map)
 BooleSubsData *
 LongBMan::new_sub(const Idx<BooleRepr*> & map)
 {
-  Idx<bdd> m;
-  IdxIterator<BooleRepr*> it(map);
-  for(it.first(); !it.isDone(); it.next())
+    Idx<bdd> m;
+    IdxIterator<BooleRepr*> it(map);
+    for (it.first(); !it.isDone(); it.next())
     {
-      bdd to = dcast(it.to()) -> longbdd;
-      m.map(it.from(), to);
+        bdd to = dcast(it.to()) -> longbdd;
+        m.map(it.from(), to);
     }
 
-  return new LongBooleSubsData(m);
+    return new LongBooleSubsData(m);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -438,23 +438,23 @@ LongBMan::new_sub(const Idx<BooleRepr*> & map)
 BooleRepr *
 LongBMan::_exists(BooleRepr * operand_br, BooleQuantData * bqd)
 {
-  LongBooleRepr * operand = dcast(operand_br);
-  LongBooleQuantData * qd = dcast_quant_data(bqd);
+    LongBooleRepr * operand = dcast(operand_br);
+    LongBooleQuantData * qd = dcast_quant_data(bqd);
 
-  LongBooleRepr * res = new LongBooleRepr;
+    LongBooleRepr * res = new LongBooleRepr;
 
-  if(!qd -> valid())
+    if (!qd -> valid())
     {
-      res -> longbdd = operand -> longbdd;
-      PTR_bdd_unfree(manager(), res -> longbdd);
+        res -> longbdd = operand -> longbdd;
+        PTR_bdd_unfree(manager(), res -> longbdd);
     }
-  else
+    else
     {
-      PTR_bdd_assoc(manager(), qd -> assoc());
-      res -> longbdd = PTR_bdd_exists(manager(), operand -> longbdd);
+        PTR_bdd_assoc(manager(), qd -> assoc());
+        res -> longbdd = PTR_bdd_exists(manager(), operand -> longbdd);
     }
 
-  return res;
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -462,17 +462,17 @@ LongBMan::_exists(BooleRepr * operand_br, BooleQuantData * bqd)
 BooleRepr *
 LongBMan::_relprod(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 {
-  LongBooleQuantData * qd = dcast_quant_data(bqd);
+    LongBooleQuantData * qd = dcast_quant_data(bqd);
 
-  if(qd -> valid())
+    if (qd -> valid())
     {
-      LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-      LongBooleRepr * res = new LongBooleRepr;
-      PTR_bdd_assoc(manager(), qd -> assoc());
-      res -> longbdd = PTR_bdd_rel_prod(manager(), a -> longbdd, b -> longbdd);
-      return res;
+        LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+        LongBooleRepr * res = new LongBooleRepr;
+        PTR_bdd_assoc(manager(), qd -> assoc());
+        res -> longbdd = PTR_bdd_rel_prod(manager(), a -> longbdd, b -> longbdd);
+        return res;
     }
-  else return andop(abr,bbr);
+    else return andop(abr, bbr);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -480,48 +480,48 @@ LongBMan::_relprod(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 BooleRepr *
 LongBMan::_forall(BooleRepr * operand_br, BooleQuantData * bqd)
 {
-  LongBooleRepr * operand = dcast(operand_br);
-  LongBooleQuantData * qd = dcast_quant_data(bqd);
+    LongBooleRepr * operand = dcast(operand_br);
+    LongBooleQuantData * qd = dcast_quant_data(bqd);
 
-  LongBooleRepr * res = new LongBooleRepr;
+    LongBooleRepr * res = new LongBooleRepr;
 
-  if(!qd -> valid())
+    if (!qd -> valid())
     {
-      res -> longbdd = operand -> longbdd;
-      PTR_bdd_unfree(manager(), res -> longbdd);
+        res -> longbdd = operand -> longbdd;
+        PTR_bdd_unfree(manager(), res -> longbdd);
     }
-  else
+    else
     {
-      PTR_bdd_assoc(manager(), qd -> assoc());
-      res -> longbdd = PTR_bdd_forall(manager(), operand -> longbdd);
+        PTR_bdd_assoc(manager(), qd -> assoc());
+        res -> longbdd = PTR_bdd_forall(manager(), operand -> longbdd);
     }
 
-  return res;
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
 LongBMan::_forallImplies(
-  BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
+    BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 {
-  LongBooleQuantData * qd = dcast_quant_data(bqd);
+    LongBooleQuantData * qd = dcast_quant_data(bqd);
 
-  if(qd -> valid())
+    if (qd -> valid())
     {
-      LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-      LongBooleRepr * res = new LongBooleRepr;
-      PTR_bdd_assoc(manager(), qd -> assoc());
+        LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+        LongBooleRepr * res = new LongBooleRepr;
+        PTR_bdd_assoc(manager(), qd -> assoc());
 
-      bdd tmp = PTR_bdd_not(manager(), b -> longbdd);
-      res -> longbdd = PTR_bdd_rel_prod(manager(), a -> longbdd, tmp);
-      PTR_bdd_free(manager(), tmp);
-      tmp = PTR_bdd_not(manager(), res -> longbdd);
-      PTR_bdd_free(manager(), res -> longbdd);
-      res -> longbdd = tmp;
-      return res;
+        bdd tmp = PTR_bdd_not(manager(), b -> longbdd);
+        res -> longbdd = PTR_bdd_rel_prod(manager(), a -> longbdd, tmp);
+        PTR_bdd_free(manager(), tmp);
+        tmp = PTR_bdd_not(manager(), res -> longbdd);
+        PTR_bdd_free(manager(), res -> longbdd);
+        res -> longbdd = tmp;
+        return res;
     }
-  else return implies(abr,bbr);
+    else return implies(abr, bbr);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -529,28 +529,28 @@ LongBMan::_forallImplies(
 BooleRepr *
 LongBMan::_forallOr(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 {
-  LongBooleQuantData * qd = dcast_quant_data(bqd);
+    LongBooleQuantData * qd = dcast_quant_data(bqd);
 
-  if(qd -> valid())
+    if (qd -> valid())
     {
-      LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-      LongBooleRepr * res = new LongBooleRepr;
-      PTR_bdd_assoc(manager(), qd -> assoc());
+        LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+        LongBooleRepr * res = new LongBooleRepr;
+        PTR_bdd_assoc(manager(), qd -> assoc());
 
-      bdd not_a = PTR_bdd_not(manager(), a -> longbdd);
-      bdd not_b = PTR_bdd_not(manager(), b -> longbdd);
+        bdd not_a = PTR_bdd_not(manager(), a -> longbdd);
+        bdd not_b = PTR_bdd_not(manager(), b -> longbdd);
 
-      res -> longbdd = PTR_bdd_rel_prod(manager(), not_a, not_b);
+        res -> longbdd = PTR_bdd_rel_prod(manager(), not_a, not_b);
 
-      PTR_bdd_free(manager(), not_a);
-      PTR_bdd_free(manager(), not_b);
+        PTR_bdd_free(manager(), not_a);
+        PTR_bdd_free(manager(), not_b);
 
-      bdd tmp = PTR_bdd_not(manager(), res -> longbdd);
-      PTR_bdd_free(manager(), res -> longbdd);
-      res -> longbdd = tmp;
-      return res;
+        bdd tmp = PTR_bdd_not(manager(), res -> longbdd);
+        PTR_bdd_free(manager(), res -> longbdd);
+        res -> longbdd = tmp;
+        return res;
     }
-  else return orop(abr,bbr);
+    else return orop(abr, bbr);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -558,23 +558,23 @@ LongBMan::_forallOr(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 BooleRepr *
 LongBMan::_substitute(BooleRepr * operand_br, BooleSubsData * bsd)
 {
-  LongBooleRepr * operand = dcast(operand_br);
-  LongBooleSubsData * sd = dcast_subs_data(bsd);
+    LongBooleRepr * operand = dcast(operand_br);
+    LongBooleSubsData * sd = dcast_subs_data(bsd);
 
-  LongBooleRepr * res = new LongBooleRepr;
+    LongBooleRepr * res = new LongBooleRepr;
 
-  if(!sd -> valid())
+    if (!sd -> valid())
     {
-      res -> longbdd = operand -> longbdd;
-      PTR_bdd_unfree(manager(), res -> longbdd);
+        res -> longbdd = operand -> longbdd;
+        PTR_bdd_unfree(manager(), res -> longbdd);
     }
-  else
+    else
     {
-      PTR_bdd_assoc(manager(), sd -> assoc_int());
-      res -> longbdd = PTR_bdd_substitute(manager(), operand -> longbdd);
+        PTR_bdd_assoc(manager(), sd -> assoc_int());
+        res -> longbdd = PTR_bdd_substitute(manager(), operand -> longbdd);
     }
 
-  return res;
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -582,11 +582,11 @@ LongBMan::_substitute(BooleRepr * operand_br, BooleSubsData * bsd)
 BooleRepr *
 LongBMan::copy(BooleRepr * br)
 {
-  LongBooleRepr * a = dcast(br);
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = a -> longbdd;
-  PTR_bdd_unfree(manager(), a -> longbdd);
-  return res;
+    LongBooleRepr * a = dcast(br);
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = a -> longbdd;
+    PTR_bdd_unfree(manager(), a -> longbdd);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -594,21 +594,21 @@ LongBMan::copy(BooleRepr * br)
 BooleRepr *
 LongBMan::bool_to_Boole(bool b)
 {
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = b ? PTR_bdd_one(manager()) : PTR_bdd_zero(manager());
-  return res;
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = b ? PTR_bdd_one(manager()) : PTR_bdd_zero(manager());
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
 LongBMan::binary(
-  BooleRepr * abr, BooleRepr * bbr, bdd (*f)(bdd_manager,bdd,bdd) )
+    BooleRepr * abr, BooleRepr * bbr, bdd (*f)(bdd_manager, bdd, bdd) )
 {
-  LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = (*f)(manager(), a -> longbdd, b -> longbdd);
-  return res;
+    LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = (*f)(manager(), a -> longbdd, b -> longbdd);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -616,22 +616,22 @@ LongBMan::binary(
 BooleRepr *
 LongBMan::ite(BooleRepr * cbr, BooleRepr * tbr, BooleRepr * ebr)
 {
-  LongBooleRepr * c = dcast(cbr), * t = dcast(tbr), * e = dcast(ebr);
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd =
-    PTR_bdd_ite(manager(), c -> longbdd, t -> longbdd, e -> longbdd);
-  return res;
+    LongBooleRepr * c = dcast(cbr), * t = dcast(tbr), * e = dcast(ebr);
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd =
+        PTR_bdd_ite(manager(), c -> longbdd, t -> longbdd, e -> longbdd);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::andop(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_and); }
+LongBMan::andop(BooleRepr * a, BooleRepr * b) { return binary(a, b, PTR_bdd_and); }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::seilpmi(BooleRepr * a, BooleRepr * b) { return implies(b,a); }
+LongBMan::seilpmi(BooleRepr * a, BooleRepr * b) { return implies(b, a); }
 
 /*---------------------------------------------------------------------------*/
 
@@ -640,12 +640,12 @@ LongBMan::seilpmi(BooleRepr * a, BooleRepr * b) { return implies(b,a); }
 BooleRepr *
 LongBMan::implies(BooleRepr * abr, BooleRepr * bbr)
 {
-  LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-  LongBooleRepr * res = new LongBooleRepr;
-  bdd not_a = PTR_bdd_not(manager(), a -> longbdd);
-  res -> longbdd = PTR_bdd_or(manager(), not_a, b -> longbdd);
-  PTR_bdd_free(manager(), not_a);
-  return res;
+    LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+    LongBooleRepr * res = new LongBooleRepr;
+    bdd not_a = PTR_bdd_not(manager(), a -> longbdd);
+    res -> longbdd = PTR_bdd_or(manager(), not_a, b -> longbdd);
+    PTR_bdd_free(manager(), not_a);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -653,7 +653,7 @@ LongBMan::implies(BooleRepr * abr, BooleRepr * bbr)
 BooleRepr *
 LongBMan::equiv(BooleRepr * a, BooleRepr * b)
 {
-  return binary(a,b,PTR_bdd_xnor);
+    return binary(a, b, PTR_bdd_xnor);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -661,39 +661,39 @@ LongBMan::equiv(BooleRepr * a, BooleRepr * b)
 BooleRepr *
 LongBMan::notequiv(BooleRepr * a, BooleRepr * b)
 {
-  return binary(a,b,PTR_bdd_xor);
+    return binary(a, b, PTR_bdd_xor);
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
 LongBMan::simplify_assuming(BooleRepr * a, BooleRepr * b
-)
+                           )
 {
-  return binary(a,b,PTR_bdd_reduce);
+    return binary(a, b, PTR_bdd_reduce);
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr * LongBMan::cofactor(BooleRepr * a, BooleRepr * b)
 {
-  return binary(a,b,PTR_bdd_cofactor);
+    return binary(a, b, PTR_bdd_cofactor);
 }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-LongBMan::orop(BooleRepr * a, BooleRepr * b) { return binary(a,b,PTR_bdd_or); }
+LongBMan::orop(BooleRepr * a, BooleRepr * b) { return binary(a, b, PTR_bdd_or); }
 
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
 LongBMan::notop(BooleRepr * abr)
 {
-  LongBooleRepr * a = dcast(abr);
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = PTR_bdd_not(manager(), a -> longbdd);
-  return res;
+    LongBooleRepr * a = dcast(abr);
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = PTR_bdd_not(manager(), a -> longbdd);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -701,41 +701,41 @@ LongBMan::notop(BooleRepr * abr)
 BooleRepr *
 LongBMan::onecube(BooleRepr * abr, IdxSet & set)
 {
-  LongBooleRepr * a = dcast(abr);
-  ASSERT(a -> longbdd != PTR_bdd_zero(manager()));
+    LongBooleRepr * a = dcast(abr);
+    ASSERT(a -> longbdd != PTR_bdd_zero(manager()));
 
 # if 0
-  bdd tmp = PTR_bdd_satisfy(manager(), a -> longbdd);
+    bdd tmp = PTR_bdd_satisfy(manager(), a -> longbdd);
 
-  IdxSetIterator it(set);
-  for(it.first(); !it.isDone(); it.next())
+    IdxSetIterator it(set);
+    for (it.first(); !it.isDone(); it.next())
     {
-      bdd var = _var(it.get());
-      if(!PTR_bdd_depends_on(manager(), a -> longbdd, var))
+        bdd var = _var(it.get());
+        if (!PTR_bdd_depends_on(manager(), a -> longbdd, var))
         {
-	  bdd not_var = PTR_bdd_not(manager(), var);
-	  bdd and = PTR_bdd_and(manager(), not_var, tmp);
-	  PTR_bdd_free(manager(), not_var);
-	  PTR_bdd_free(manager(), tmp);
-	  tmp = and;
-	}
-      PTR_bdd_free(manager(), var);
+            bdd not_var = PTR_bdd_not(manager(), var);
+            bdd and = PTR_bdd_and(manager(), not_var, tmp);
+            PTR_bdd_free(manager(), not_var);
+            PTR_bdd_free(manager(), tmp);
+            tmp = and;
+        }
+        PTR_bdd_free(manager(), var);
     }
 #else
 
-  bdd tmp;
+    bdd tmp;
 
-  {
-    LongBooleQuantData qd(set);
-    PTR_bdd_assoc(manager(), qd.assoc());
-    tmp = PTR_bdd_satisfy_support(manager(), a -> longbdd);
-  }
+    {
+        LongBooleQuantData qd(set);
+        PTR_bdd_assoc(manager(), qd.assoc());
+        tmp = PTR_bdd_satisfy_support(manager(), a -> longbdd);
+    }
 
 #endif
 
-  LongBooleRepr * res = new LongBooleRepr;
-  res -> longbdd = tmp;
-  return res;
+    LongBooleRepr * res = new LongBooleRepr;
+    res -> longbdd = tmp;
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -743,16 +743,16 @@ LongBMan::onecube(BooleRepr * abr, IdxSet & set)
 float
 LongBMan::onsetsize(BooleRepr * abr, IdxSet & set)
 {
-  LongBooleRepr * a = dcast(abr);
-  int size_of_set = 0;
-  {
-    IdxSetIterator it(set);
-    for(it.first(); !it.isDone(); it.next())
-      size_of_set ++;
-  }
-  ASSERT(PTR_bdd_vars(manager()) == current_var);
-  double fraction = PTR_bdd_satisfying_fraction(manager(), a -> longbdd);
-  return (float) pow(2.0, (double) size_of_set) * fraction;
+    LongBooleRepr * a = dcast(abr);
+    int size_of_set = 0;
+    {
+        IdxSetIterator it(set);
+        for (it.first(); !it.isDone(); it.next())
+            size_of_set ++;
+    }
+    ASSERT(PTR_bdd_vars(manager()) == current_var);
+    double fraction = PTR_bdd_satisfying_fraction(manager(), a -> longbdd);
+    return (float) pow(2.0, (double) size_of_set) * fraction;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -760,8 +760,8 @@ LongBMan::onsetsize(BooleRepr * abr, IdxSet & set)
 bool
 LongBMan::isTrue(BooleRepr * bbr)
 {
-  LongBooleRepr * b = dcast(bbr);
-  return b -> longbdd == PTR_bdd_one(manager());
+    LongBooleRepr * b = dcast(bbr);
+    return b -> longbdd == PTR_bdd_one(manager());
 }
 
 /*---------------------------------------------------------------------------*/
@@ -769,8 +769,8 @@ LongBMan::isTrue(BooleRepr * bbr)
 bool
 LongBMan::isFalse(BooleRepr * bbr)
 {
-  LongBooleRepr * b = dcast(bbr);
-  return b -> longbdd == PTR_bdd_zero(manager());
+    LongBooleRepr * b = dcast(bbr);
+    return b -> longbdd == PTR_bdd_zero(manager());
 }
 
 /*---------------------------------------------------------------------------*/
@@ -778,8 +778,8 @@ LongBMan::isFalse(BooleRepr * bbr)
 bool
 LongBMan::areEqual(BooleRepr * abr, BooleRepr * bbr)
 {
-  LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-  return a -> longbdd == b -> longbdd;
+    LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+    return a -> longbdd == b -> longbdd;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -792,11 +792,11 @@ LongBMan::isValid(BooleRepr * br) { return dcast(br) -> longbdd != 0; }
 bool
 LongBMan::doesImply(BooleRepr * abr, BooleRepr * bbr)
 {
-  LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
-  bdd tmp = PTR_bdd_implies(manager(),a -> longbdd, b -> longbdd);
-  bool res = (tmp == PTR_bdd_zero(manager()));
-  PTR_bdd_free(manager(), tmp);
-  return res;
+    LongBooleRepr * a = dcast(abr), * b = dcast(bbr);
+    bdd tmp = PTR_bdd_implies(manager(), a -> longbdd, b -> longbdd);
+    bool res = (tmp == PTR_bdd_zero(manager()));
+    PTR_bdd_free(manager(), tmp);
+    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -804,9 +804,9 @@ LongBMan::doesImply(BooleRepr * abr, BooleRepr * bbr)
 const char *
 LongBMan::stats()
 {
-  sprintf(stats_buffer, "LongBMan: %d (LongBooleRepr's)\n%s",
-    num_reprs, bdd_stats_short(manager()));
-  return stats_buffer;
+    sprintf(stats_buffer, "LongBMan: %d (LongBooleRepr's)\n%s",
+            num_reprs, bdd_stats_short(manager()));
+    return stats_buffer;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -814,8 +814,8 @@ LongBMan::stats()
 int
 LongBMan::size(BooleRepr * abr)
 {
-  LongBooleRepr * a = dcast(abr);
-  return PTR_bdd_size(manager(), a -> longbdd, 1);
+    LongBooleRepr * a = dcast(abr);
+    return PTR_bdd_size(manager(), a -> longbdd, 1);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -823,7 +823,7 @@ LongBMan::size(BooleRepr * abr)
 void
 LongBMan::visualize(BooleRepr *)
 {
-  warning << "visualization in `longbman.so' not implemented\n";
+    warning << "visualization in `longbman.so' not implemented\n";
 }
 
 /*---------------------------------------------------------------------------*/

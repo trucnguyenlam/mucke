@@ -1,0 +1,15 @@
+# AUTOMATICALLY GENERATED -- DO NOT EDIT
+
+architecture=linux
+generate=macros
+define_debug=no
+define_statistics=yes
+manual_bit_stuffing=yes
+split_left_successor=yes
+use_doubles=yes
+use_power2=no
+multiplicative_hashing=no
+define_call_stats=no
+define_distribution_stats=no
+define_priority=no
+use_shared=no

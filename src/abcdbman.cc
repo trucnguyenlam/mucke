@@ -52,7 +52,7 @@ ABCD   (*PTR_ABCD_or)(ABCD_Manager, ABCD, ABCD)=0;
 ABCD   (*PTR_ABCD_reduce)(ABCD_Manager, ABCD, ABCD)=0;
 ABCD   (*PTR_ABCD_relprod)(ABCD_Manager, ABCD, ABCD, ABCD var_set)=0;
 int    (*PTR_ABCD_size)(ABCD_Manager, ABCD)=0;
-char * (*PTR_ABCD_statistics)(ABCD_Manager)=0; 
+char * (*PTR_ABCD_statistics)(ABCD_Manager)=0;
 ABCD   (*PTR_ABCD_var)(ABCD_Manager, int variable_idx, char *)=0;
 void   (*PTR_ABCD_visualize)(ABCD_Manager, ABCD)=0;
 
@@ -149,11 +149,11 @@ public:
   }
 
   ABCD_Manager abcd_manager()
-  { 
+  {
     return ((ABCDBMan*)manager()) -> manager();
   }
 
-  void reset() { valid = false; } 
+  void reset() { valid = false; }
 };
 
 /*---------------------------------------------------------------------------*/
@@ -168,7 +168,7 @@ class ABCDBooleQuantData
   ABCD abcd;
 
 public:
-  
+
   ABCDBooleQuantData(IdxSet & s)
   :
     BooleQuantData(ABCDBMan::instance()),
@@ -192,7 +192,7 @@ public:
   }
 
   ABCD_Manager abcd_manager()
-  { 
+  {
     return ((ABCDBMan*)manager()) -> manager();
   }
 
@@ -253,7 +253,7 @@ public:
   }
 
   ABCD_Manager abcd_manager()
-  { 
+  {
     return ((ABCDBMan*)manager()) -> manager();
   }
 

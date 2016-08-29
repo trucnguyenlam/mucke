@@ -3,6 +3,8 @@
 
 /**************************** COMPILE-TIME-OPTIONS *******************/
 
+#include <map>
+
 #include "cuddbman.h"
 #include "io.h"
 #include "InitFileReader.h"
@@ -39,6 +41,9 @@ cudd_var (*PTR_cudd_one)(cudd_manager) = 0;
 cudd_var (*PTR_cudd_or)(cudd_manager, cudd_var, cudd_var) = 0;
 void (*PTR_cudd_quit)(cudd_manager) = 0;
 cudd_var (*PTR_cudd_minimize)(cudd_manager, cudd_var, cudd_var) = 0;
+cudd_var (*PTR_cudd_constrain)(cudd_manager, cudd_var, cudd_var) = 0;
+cudd_var (*PTR_cudd_restrict)(cudd_manager, cudd_var, cudd_var) = 0;
+cudd_var (*PTR_cudd_compact)(cudd_manager, cudd_var, cudd_var) = 0;
 cudd_var (*PTR_cudd_rel_prod)(cudd_manager, cudd_var, cudd_var, cudd_var) = 0;
 cudd_var (*PTR_cudd_intersect)(cudd_manager, cudd_var, cudd_var) = 0;
 int (*PTR_cudd_size)(cudd_var) = 0;
@@ -52,6 +57,9 @@ cudd_var (*PTR_cudd_indices_to_cube)(cudd_manager, int *, int) = 0;
 cudd_var (*PTR_cudd_make_prime)(cudd_manager, cudd_var, cudd_var) = 0;
 int (*PTR_cudd_vars)(cudd_manager) = 0;
 double (*PTR_cudd_count_min_term)(cudd_manager, cudd_var, int) = 0;
+double (*PTR_cudd_countpathstononzero)(cudd_var) = 0;
+int (*PTR_cudd_dumpdot)(cudd_manager, int, cudd_var *, char const *const *, char const *const *, FILE *) = 0;
+cudd_var (*PTR_cudd_computecube)(cudd_manager, cudd_var *, int *, int) = 0;
 
 
 /*---------------------------------------------------------------------------*/
@@ -72,38 +80,9 @@ extern "C" {
 /*---------------------------------------------------------------------------*/
 
 CuddBMan::CuddBMan() :
-    current_var(0),
-    max_variables(0),
-    _variables(0)
+    current_var(0)
 {
     load_cudd_bdd_library();
-    // TODO: set variable by configuration file
-
-    // InitFileReader initFileReader(".abcdbmanrc");
-
-    // double factor = 0.4, MB = 30;
-
-    // if(initFileReader.getValue("cache_ratio", factor))
-    //   {
-    //     verbose << "using cache ratio " << factor
-    //             << " from file `.abcdbmanrc'" << '\n';
-    //   }
-    // else verbose << "using default cache ratio " << factor << '\n';
-
-    // if(initFileReader.getValue("MB", MB))
-    //   {
-    //      verbose << "using initial memory " << MB
-    //              << " MB from file `.abcdbmanrc'" << '\n';
-
-    //     _manager = PTR_ABCD_init_MB((int) MB, (float) factor);
-    //   }
-    // else
-    //   {
-    //     verbose << "ABCD library takes (almost) all available memory";
-    //     _manager = PTR_ABCD_init_take_all_Memory();
-    //     verbose << " (" << PTR_ABCD_get_MB_usage(_manager) << " MB)\n";
-    //   }
-
     _manager = PTR_cudd_init(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, 0);
 
 }
@@ -112,15 +91,6 @@ CuddBMan::CuddBMan() :
 CuddBMan::~CuddBMan()
 {
     reset_all_reprs();
-    for (int i = 0; i < max_variables; i++)
-        if (_variables [ i ])
-        {
-            // PTR_cudd_free(_variables [ i ]);
-            PTR_cudd_recursive_free(manager(), _variables [ i ]);
-        }
-
-    delete _variables;
-
     PTR_cudd_quit(manager());
 }
 
@@ -133,34 +103,41 @@ class CuddBooleRepr
     friend class CuddBMan;
     friend class CuddBooleSubsData;
 
+    bool valid;
     cudd_var cuddbdd;
-
 public:
 
     CuddBooleRepr() :
         BooleRepr(CuddBMan::instance()),
+        valid(false),
         cuddbdd(0)
+    {}
+
+    CuddBooleRepr(cudd_var b) :
+        BooleRepr(CuddBMan::instance()),
+        valid(true),
+        cuddbdd(b)
     {}
 
     ~CuddBooleRepr() { reset(); }
 
-    cudd_manager cuddbdd_manager() { return CuddBMan::instance() -> manager(); }
+    cudd_manager manager() { return CuddBMan::instance() -> manager(); }
 
     void reset()
     {
         if (cuddbdd)
         {
-            PTR_cudd_recursive_free(cuddbdd_manager(), cuddbdd);
+            PTR_cudd_recursive_free(manager(), cuddbdd);
             // PTR_cudd_free(cuddbdd);
             cuddbdd = 0;
         }
+        valid = false;
     }
 };
 
 /*---------------------------------------------------------------------------
     Class CuddBooleQuantData
     Description:
-
 */
 
 class CuddBooleQuantData
@@ -175,48 +152,28 @@ class CuddBooleQuantData
 public:
 
     CuddBooleQuantData(IdxSet & s) :
-        BooleQuantData(CuddBMan::instance()),
-        valid(true)
+        BooleQuantData(CuddBMan::instance())
     {
-        cudd_var tmp = PTR_cudd_one(cuddbdd_manager());
+        cudd_var tmp = PTR_cudd_one(manager());
         PTR_cudd_unfree(tmp);
-
         IdxSetIterator it(s);
         for (it.first(); !it.isDone(); it.next())
         {
-            tmp = PTR_cudd_and(cuddbdd_manager(), tmp, PTR_cudd_var(cuddbdd_manager(), it.get()));
+            tmp = PTR_cudd_and(manager(), tmp, PTR_cudd_var(manager(), it.get()));
         }
         cuddbdd = tmp;
         PTR_cudd_unfree(cuddbdd);
-        PTR_cudd_recursive_free(cuddbdd_manager(), tmp);
-        // int _size = 0;
-        // IdxSetIterator it(s);
-        // for (it.first(); !it.isDone(); it.next()) {
-        //     _size++;
-        // }
-        // if (_size)
-        // {
-        //     int * indices = new int[_size + 1];
-        //     int i = 0;
-        //     for (it.first(); !it.isDone(); it.next(), i++)
-        //     {
-        //         indices[i] = it.get();
-        //     }
-        //     cuddbdd = PTR_cudd_indices_to_cube(cudd_manager(), indices, _size + 1);
-        //     PTR_cudd_unfree(cuddbdd);
-        // }
-        // else {
-        //     valid = false;
-        // }
+        PTR_cudd_recursive_free(manager(), tmp);
+        valid = true;
     }
 
     ~CuddBooleQuantData() { reset(); }
 
-    cudd_manager cuddbdd_manager() { return CuddBMan::instance() -> manager(); }
+    cudd_manager manager() { return CuddBMan::instance() -> manager(); }
     void reset() {
         if (cuddbdd)
         {
-            PTR_cudd_recursive_free(cuddbdd_manager(), cuddbdd);
+            PTR_cudd_recursive_free(manager(), cuddbdd);
             // PTR_cudd_free(cuddbdd);
             cuddbdd = 0;
         }
@@ -228,7 +185,6 @@ public:
 /*---------------------------------------------------------------------------
     CuddBooleSubsData
     This class represent ...
-
 */
 
 class CuddBooleSubsData
@@ -236,84 +192,83 @@ class CuddBooleSubsData
     public BooleSubsData
 {
     friend class CuddBMan;
-    cudd_manager cuddbdd_manager() { return CuddBMan::instance() -> manager(); }
+    cudd_manager manager() { return CuddBMan::instance() -> manager(); }
 
-    int * _from_ints;
-    cudd_var * _to_bdds;
     int _size;
+    cudd_var * subs_vector;
 
-    CuddBooleSubsData(const Idx<int> & map)
+    CuddBooleSubsData(const Idx<int> & varmap)
         :
         BooleSubsData(CuddBMan::instance())
     {
         _size = 0;
-        IdxIterator<int> it(map);
+        std::map<int, int> mymap;
+        IdxIterator<int> it(varmap);
         for (it.first(); !it.isDone(); it.next())
         {
             int from = it.from(), to = it.to();
-            if (from != to) _size++;
+            if (from != to) {
+                mymap[from] = to;
+                _size++;
+            }
         }
 
         if (_size)
         {
-            _from_ints = new int [ _size ];
-            _to_bdds = new cudd_var [ _size ];
-            int i = 0;
-            for (it.first(); !it.isDone(); it.next())
+            int totalvar = PTR_cudd_vars(manager());
+            subs_vector = new cudd_var[totalvar];
+            for (int i = 0; i < totalvar; i++)
             {
-                int from = it.from(), to = it.to();
-                if (from != to)
+                if (mymap.count(i) > 0)
                 {
-                    _from_ints [ i ] = from;
-                    cudd_var to_bdds = CuddBMan::instance() -> variables() [ to ];
-                    PTR_cudd_unfree(to_bdds);
-                    _to_bdds [ i ] = to_bdds;
-                    i++;
+                    subs_vector[i] = PTR_cudd_var(manager(), mymap.at(i));
                 }
+                else
+                {
+                    subs_vector[i] = PTR_cudd_var(manager(), i);
+                }
+                PTR_cudd_unfree(subs_vector[i]);
             }
         }
         else {
-            _from_ints = 0;
-            _to_bdds = 0;
         }
 
     }
 
-    CuddBooleSubsData(const Idx<cudd_var> & map) :
+    CuddBooleSubsData(const Idx<cudd_var> & varmap) :
         BooleSubsData(CuddBMan::instance())
     {
         _size = 0;
-        IdxIterator<cudd_var> it(map);
+        std::map<int, cudd_var> mymap;
+        IdxIterator<cudd_var> it(varmap);
         for (it.first(); !it.isDone(); it.next())
         {
             int from = it.from();
             cudd_var to = it.to();
-
-            if (CuddBMan::instance() -> variables() [ from ] != to)
+            if (PTR_cudd_var(manager(), from) != to)
+            {
+                mymap[from] = to;
                 _size++;
+            }
         }
         if (_size)
         {
-            _from_ints = new int [ _size ];
-            _to_bdds = new cudd_var [ _size ];
-            int i = 0;
-            for (it.first(); !it.isDone(); it.next())
+            int totalvar = PTR_cudd_vars(manager());
+            subs_vector = new cudd_var[totalvar];
+            for (int i = 0; i < totalvar; i++)
             {
-                int from = it.from();
-                cudd_var to = it.to();
-                PTR_cudd_unfree(to);
-
-                if (CuddBMan::instance() -> variables() [ from ] != to)
+                if (mymap.count(i) > 0)
                 {
-                    _from_ints [ i ] = from;
-                    _to_bdds [ i ] = to;
-                    i++;
+                    subs_vector[i] = mymap.at(i);
                 }
+                else
+                {
+                    subs_vector[i] = PTR_cudd_var(manager(), i);
+                }
+                PTR_cudd_unfree(subs_vector[i]);
             }
         }
         else {
-            _from_ints = 0;
-            _to_bdds = 0;
         }
 
     }
@@ -324,22 +279,11 @@ class CuddBooleSubsData
 
 public:
 
-    bool valid() { return (_from_ints != 0); }
+    bool valid() { return (_size > 0); }
     void reset()
     {
-        if (_from_ints)
-        {
-            delete _from_ints;
-            _from_ints = 0;
-        }
-        if (_to_bdds)
-        {
-            for (int i = 0; i < _size; i++) {
-                PTR_cudd_recursive_free(cuddbdd_manager(), _to_bdds [ i ]);
-            }
-            delete _to_bdds;
-            _to_bdds = 0;
-        }
+        subs_vector = 0;
+        _size = 0;
     }
 
 };
@@ -384,40 +328,7 @@ CuddBMan::dcast_subs_data(BooleSubsData * bsd)
 int
 CuddBMan::new_var()
 {
-    if (current_var >= max_variables)
-    {
-        int new_max_variables = max_variables ? 2 * max_variables : 200;
-        cudd_var * new_variables = new cudd_var [ new_max_variables ];
-
-        if (max_variables > 0)
-        {
-            for (int i = 0; i < max_variables; i++) {
-                new_variables [ i ] = _variables [ i ];
-            }
-            delete _variables;
-        }
-
-        for (int i = max_variables; i < new_max_variables; i++) {
-            new_variables [ i ] = 0;
-        }
-
-        _variables = new_variables;
-        max_variables = new_max_variables;
-    }
-
-    _variables [ current_var ] = PTR_cudd_new_var_last(manager());
-    PTR_cudd_unfree(_variables [ current_var ]);
     return current_var++;
-}
-
-/*---------------------------------------------------------------------------*/
-
-cudd_var
-CuddBMan::_var(int v)
-{
-    ASSERT(0 <= v && v < current_var);
-    cudd_var res = _variables [ v ];
-    return res;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -426,7 +337,8 @@ BooleRepr *
 CuddBMan::var_to_Boole(int v)
 {
     CuddBooleRepr * res = new CuddBooleRepr;
-    res -> cuddbdd = _var(v);
+    res -> cuddbdd = PTR_cudd_var(manager(), v);
+    PTR_cudd_unfree(res -> cuddbdd);
     return res;
 }
 
@@ -518,8 +430,8 @@ CuddBMan::_forallImplies(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 
     /* (forall E. A -> B) = !(exists E. A & !B) */
     res -> cuddbdd = PTR_cudd_rel_prod(manager(), a -> cuddbdd, PTR_cudd_not(b -> cuddbdd), qd -> cuddbdd);
-    PTR_cudd_unfree(res -> cuddbdd);
     res -> cuddbdd = PTR_cudd_not(res -> cuddbdd);
+    PTR_cudd_unfree(res -> cuddbdd);
     return res;
 }
 
@@ -535,8 +447,8 @@ CuddBMan::_forallOr(BooleRepr * abr, BooleQuantData * bqd, BooleRepr * bbr)
 
     /* (forall E. A | B) = !(exists E. !A & !B) */
     res -> cuddbdd = PTR_cudd_rel_prod(manager(), PTR_cudd_not(a -> cuddbdd), PTR_cudd_not(b -> cuddbdd), qd -> cuddbdd);
-    PTR_cudd_unfree(res -> cuddbdd);
     res -> cuddbdd = PTR_cudd_not(res -> cuddbdd);
+    PTR_cudd_unfree(res -> cuddbdd);
     return res;
 }
 
@@ -551,17 +463,7 @@ CuddBMan::_substitute(BooleRepr * operand_br, BooleSubsData * bsd)
 
     if (sd -> valid())
     {
-        // res->cuddbdd = Cudd_bddSwapVariables(manager(), operand->cuddbdd, sd->_from_bdds, sd->_to_bdds, sd->_size);
-        // PTR_cudd_unfree(res -> cuddbdd);
-        // return res;
-        int i;
-        cudd_var tmp = operand->cuddbdd;
-        PTR_cudd_unfree(tmp);
-        for (i = 0; i < sd->_size; i++)
-        {
-            tmp = PTR_cudd_compose(manager(), tmp, sd->_to_bdds[i], sd->_from_ints[i]);
-        }
-        res->cuddbdd = tmp;
+        res->cuddbdd = PTR_cudd_vector_compose(manager(), operand->cuddbdd, sd->subs_vector);
         PTR_cudd_unfree(res -> cuddbdd);
         return res;
     }
@@ -654,7 +556,7 @@ CuddBMan::notequiv(BooleRepr * a, BooleRepr * b) {return binary(a, b, PTR_cudd_x
 /*---------------------------------------------------------------------------*/
 
 BooleRepr *
-CuddBMan::simplify_assuming(BooleRepr * a, BooleRepr * b) {return binary(a, b, PTR_cudd_minimize); }
+CuddBMan::simplify_assuming(BooleRepr * a, BooleRepr * b) {return binary(a, b, PTR_cudd_constrain); }
 
 /*---------------------------------------------------------------------------*/
 
@@ -700,14 +602,12 @@ CuddBMan::onsetsize(BooleRepr * abr, IdxSet & set)
     ASSERT(PTR_cudd_vars(manager()) == current_var);
 
     int size_of_set = 0;
-    {
         IdxSetIterator it(set);
         for (it.first(); !it.isDone(); it.next()) {
             size_of_set ++;
         }
-    }
-    // TODO
-    double fraction = PTR_cudd_count_min_term(manager(), a -> cuddbdd, current_var);
+
+    double fraction = PTR_cudd_countpathstononzero(a -> cuddbdd) / pow(2.0, (double) size_of_set);
     return (float) pow(2.0, (double) size_of_set) * fraction;
 }
 
@@ -761,8 +661,7 @@ CuddBMan::doesImply(BooleRepr * abr, BooleRepr * bbr)
 const char *
 CuddBMan::stats()
 {
-    // TODO
-    sprintf(stats_buffer, "CuddBMan: (CuddBooleRepr's)\n");
+    sprintf(stats_buffer, "CuddBMan: %d (CuddBooleRepr's)\n%s", num_reprs, cudd_stats_short(manager()));
     return stats_buffer;
 }
 
@@ -781,7 +680,14 @@ void
 CuddBMan::visualize(BooleRepr * abr)
 {
     CuddBooleRepr * a = dcast(abr);
-    // TODO
+    char buffer[200];
+    sprintf(buffer, "cudd_bdd%u.dot", (unsigned int) abr);
+    FILE *outfile;
+    outfile = fopen(buffer, "w");
+    cudd_var * dump = new cudd_var[1];
+    dump[0] = a->cuddbdd;
+    PTR_cudd_dumpdot(manager(), 1, dump, 0, 0, outfile);
+    fclose(outfile);
 }
 
 /*---------------------------------------------------------------------------*/

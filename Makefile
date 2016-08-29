@@ -27,4 +27,7 @@ distclean:
 
 realclean: distclean
 
-.PHONY: all clean config depend distclean realclean
+config:
+	./configure --static --longbdd=/home/trucnguyenlam/Development/MUCKE/contrib/bddlib.D.E.Long/bddlib --cuddbdd=`pwd`/contrib/cudd/install
+
+.PHONY: all clean config depend distclean realclean config

@@ -14,6 +14,7 @@ extern "C" {
 extern void simplebman_installAt(BooleManager**);
 extern void longbman_installAt(BooleManager**);
 extern void cuddbman_installAt(BooleManager**);
+extern void cuddcppbman_installAt(BooleManager**);
 extern void abcdbman_installAt(BooleManager**);
 };
 
@@ -46,11 +47,15 @@ bool linkBMan_doTheLink()
       installAt = &cuddbman_installAt;
     }
   else
+  if(strcmp(bmanID, "libcudd.a") == 0)
+    {
+      installAt = &cuddcppbman_installAt;
+    }
+  else
     {
       if(strcmp(bmanID, "longbman.so") != 0)
         warning << "unknown boole manager `" << bmanID << "'\n"
 	        << "using `longbman.so' instead\n";
-
       installAt = &longbman_installAt;
     }
 

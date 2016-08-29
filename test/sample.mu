@@ -6,6 +6,7 @@ bool b2;
 bool b3;
 };
 
+
 class Global {
 bool v1;
 bool v2;
@@ -27,6 +28,9 @@ c ~+ d
  |(m=0)
  |(m=1)
 );
+
+#size CopyLocals;
+
 bool CopyGlobals(
 Module m,
 Global c,
@@ -101,16 +105,16 @@ r ~+ r'
 /******************************************************************************/
 
 bool LocalInit(
- Module   mod, 
- PrCount  pc,  
- Local    CL   
-)              
- mod  <  pc,   
- pc   <  CL    
+ Module   mod,
+ PrCount  pc,
+ Local    CL
+)
+ mod  <  pc,
+ pc   <  CL
 ( false
-  | (  mod=0 & 
+  | (  mod=0 &
 (pc.b1=0 & pc.b2=0 & pc.b3=0) )
-  | (  mod=1 & 
+  | (  mod=1 &
 (pc.b1=0 & pc.b2=0 & pc.b3=0) )
 );
 
@@ -207,18 +211,18 @@ bool programInt1(
  G   ~+ dG
 (false
 | ((cm=2)&(false|(
-                    /* ASSIGN */ 
+                    /* ASSIGN */
 (cp.b1=0 & cp.b2=0 & cp.b3=0)&(dp.b1=1 & dp.b2=0 & dp.b3=0)&(dG.v2=false )
 &(dG.v3=false )
 &(dG.v4=false )
 )))
 | ((cm=0)&(false|(
-                    /* ASSIGN */ 
+                    /* ASSIGN */
 (cp.b1=0 & cp.b2=0 & cp.b3=0)&(dp.b1=1 & dp.b2=0 & dp.b3=0)&(dG.v2=false )
 &(dG.v3=false )
 &(dG.v4=true )
 )|(
-                    /* ASSIGN */ 
+                    /* ASSIGN */
 (cp.b1=1 & cp.b2=0 & cp.b3=0)&(dp.b1=0 & dp.b2=1 & dp.b3=0)&(dG.v2=false )
 &(dG.v3=true )
 &(dG.v4=false )
@@ -234,14 +238,14 @@ bool programInt2(
  Module  cm,
  PrCount cp,
  PrCount dp,
- Local   L, 
- Global  G  
-)          
- cm <  cp, 
+ Local   L,
+ Global  G
+)
+ cm <  cp,
  cp  ~+ dp,
- cp  <  L, 
- L  <  G   
-(false    
+ cp  <  L,
+ L  <  G
+(false
 | ((cm=2)&
 ((false
 |(
@@ -305,7 +309,7 @@ bool CopyVariables_ProgramInt(
  cL  ~+ dL,
  cL  <  cG,
  cG  ~+ dG
-(false 
+(false
 | (true
 &((dL.v0=cL.v0))
 &((dG.v1=cG.v1) )
@@ -320,11 +324,11 @@ bool CopyVariables_ProgramInt(
 bool enforce(
  Module  m,
  Local   L,
- Global  G 
-)          
- m <  L,   
- L   <  G  
-(false    
+ Global  G
+)
+ m <  L,
+ L   <  G
+(false
   | ( m=2  )
   | ( m=0  )
   | ( m=1  )
@@ -371,9 +375,9 @@ mu bool Init_Reach(
   | initPC(s_pc)
 
 
-  // forward propagation on internal transitions 
+  // forward propagation on internal transitions
 
-  |  ( exists 
+  |  ( exists
            PrCount t_pc,
            Local   t_CL,
            Global  t_G.
@@ -403,7 +407,7 @@ mu bool Init_Reach(
 
 
 bool GlobalInit(Global CG)
-( exists 
+( exists
          Module  s_mod,
          PrCount s_pc,
          Local   s_CL.
@@ -420,42 +424,42 @@ bool GlobalInit(Global CG)
 
 
 
-bool copy_g_and_h_3( Globals s_G, Globals t_G) 
+bool copy_g_and_h_3( Globals s_G, Globals t_G)
  s_G ~+ t_G
 (   true
-    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0 
-    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1 
-    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2 
-    & s_G.g3 =t_G.g3 
+    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0
+    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1
+    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2
+    & s_G.g3 =t_G.g3
 );
 
-bool copy_g_and_h_2( Globals s_G, Globals t_G) 
+bool copy_g_and_h_2( Globals s_G, Globals t_G)
  s_G ~+ t_G
 (   true
-    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0 
-    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1 
-    & s_G.g2 =t_G.g2 
-    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3 
-);
-
-
-bool copy_g_and_h_1( Globals s_G, Globals t_G) 
- s_G ~+ t_G
-(   true
-    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0 
-    & s_G.g1 =t_G.g1 
-    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2 
-    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3 
+    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0
+    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1
+    & s_G.g2 =t_G.g2
+    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3
 );
 
 
-bool copy_g_and_h_0( Globals s_G, Globals t_G) 
+bool copy_g_and_h_1( Globals s_G, Globals t_G)
  s_G ~+ t_G
 (   true
-    & s_G.g0 =t_G.g0 
-    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1 
-    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2 
-    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3 
+    & s_G.g0 =t_G.g0 & s_G.h0 =t_G.h0
+    & s_G.g1 =t_G.g1
+    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2
+    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3
+);
+
+
+bool copy_g_and_h_0( Globals s_G, Globals t_G)
+ s_G ~+ t_G
+(   true
+    & s_G.g0 =t_G.g0
+    & s_G.g1 =t_G.g1 & s_G.h1 =t_G.h1
+    & s_G.g2 =t_G.g2 & s_G.h2 =t_G.h2
+    & s_G.g3 =t_G.g3 & s_G.h3 =t_G.h3
 );
 
 
@@ -493,7 +497,7 @@ mu bool Sequ_Reach(
   // early termination
 
 
-  | ( exists 
+  | ( exists
             blocktype  t_block,
             CS         t_r,
             Module     t_mod,
@@ -517,7 +521,7 @@ mu bool Sequ_Reach(
   // initial conf
   |  (
          s_block = thread1
-         & initPC(s_pc) 
+         & initPC(s_pc)
          & s_mod=1
          & GlobalInit(s_G.g0)
          & s_r=0
@@ -528,7 +532,7 @@ mu bool Sequ_Reach(
          &  ( forall PrCount t_pc. (!target( 2, t_pc)))
      )
 
-   
+
 
 
   // increase round_nuber for thread1 (the first block)
@@ -540,29 +544,29 @@ mu bool Sequ_Reach(
                   & increaseCS( t_r, s_r )
                   & Sequ_Reach( thread1, t_r, s_mod, s_pc, s_CL, s_G ) //T1
                   & ( exists Globals a_G.
-                       (     Sequ_Reach( have, t_r, s_mod, s_pc, s_CL, a_G ) // HAVE    
+                       (     Sequ_Reach( have, t_r, s_mod, s_pc, s_CL, a_G ) // HAVE
                            & copy_g_h( a_G, s_G, t_r )
                            & folding( s_G, a_G, s_r )
                        )
-                    ) 
+                    )
               )
           )
     )
 
 /*
-                                    |--------------|  
-                                    | T1   ||  H   | 
-                                    |      ||      | 
-                                    | s_G  || a_G  | 
-                                    |      ||      | 
-                                    |      ||      | 
+                                    |--------------|
+                                    | T1   ||  H   |
+                                    |      ||      |
+                                    | s_G  || a_G  |
+                                    |      ||      |
+                                    |      ||      |
                                     |      ||      |
                                     |--------------|
 */
 
   /*********************************************************************************/
 
-   // forgetting local states for thread1 or thread0  
+   // forgetting local states for thread1 or thread0
   | ( exists blocktype  t_block,
              Module     t_mod,
              PrCount    t_pc,
@@ -571,7 +575,7 @@ mu bool Sequ_Reach(
              (    Sequ_Reach( t_block, s_r, t_mod, t_pc, t_CL, t_G )
                 & ( false
                     |  ( (s_block=thread1noloc) & (t_block=thread1) )
-                    |  ( (s_block=thread0noloc) & (t_block=thread0) )  
+                    |  ( (s_block=thread0noloc) & (t_block=thread0) )
                   )
                 & copy_g_g( t_G, s_G, s_r )
                 & copy_h_h( t_G, s_G, s_r )
@@ -587,7 +591,7 @@ mu bool Sequ_Reach(
   |  (   s_block = thread0
          & s_r=0
          & initPC(s_pc)
-         & s_mod=0  
+         & s_mod=0
          & ( exists  Globals t_G.
                   (  (    Sequ_Reach( thread1noloc, s_r, s_mod, s_pc, s_CL, t_G )
                         | Sequ_Reach( thread0noloc, s_r, s_mod, s_pc, s_CL, t_G )
@@ -619,16 +623,16 @@ mu bool Sequ_Reach(
                             & increaseCS( t_r, s_r )
                           )
                       )
-                  )           
+                  )
                 & Sequ_Reach( want, s_r, s_mod, s_pc, s_CL, b_G ) //WANT s_mod, s_pc, s_CL are free
                 & copy_g_g( b_G, s_G, s_r )
- 
+
               )
            )
     )
-                              
+
 /*
-                                     ------------------  
+                                     ------------------
                                     |  ------  ------  |
                                     | | T0   ||  H   | |
                                     | |      ||      | |
@@ -662,13 +666,13 @@ mu bool Sequ_Reach(
     )
 
 /*
-                                       ------  ------  
-                                      | T1   ||  H   | 
-                                      |      ||      | 
-                                      | a_G  || s_G  | 
-                                      |      ||      | 
-                                      |      | ------  
-                                      |      |  
+                                       ------  ------
+                                      | T1   ||  H   |
+                                      |      ||      |
+                                      | a_G  || s_G  |
+                                      |      ||      |
+                                      |      | ------
+                                      |      |
                                        ------
 
 */
@@ -696,26 +700,26 @@ mu bool Sequ_Reach(
     )
 
 /*
-                                   |----------------|  
-                                   | | T0   ||  H   | 
-                                   | |      ||      | 
-                                   | | a_G  || s_G  | 
-                                   | |      ||      | 
-                                   | |      | ------| 
+                                   |----------------|
+                                   | | T0   ||  H   |
+                                   | |      ||      |
+                                   | | a_G  || s_G  |
+                                   | |      ||      |
+                                   | |      | ------|
                                    | |      | b_G  W|
                                    |----------------|
 */
   /*********************************************************************************/
-  // have block 
+  // have block
 
 
   // have blocks generated from the last block
   | (    s_block=have
          & copy_g_h( s_G, s_G, s_r )
          & (
-                (   !(s_r=0) 
+                (   !(s_r=0)
                   & !(s_r=3) //3 is a PARAM for 4 rounds
-                  &  Sequ_Reach( want, s_r, s_mod, s_pc, s_CL, s_G ) 
+                  &  Sequ_Reach( want, s_r, s_mod, s_pc, s_CL, s_G )
                 )
               | (    s_r=0
                   &  Sequ_Reach( thread0noloc, s_r, s_mod, s_pc, s_CL, s_G )
@@ -728,7 +732,7 @@ mu bool Sequ_Reach(
   | (    s_block=have
          & ( s_r=0 | Sequ_Reach( want, s_r, s_mod, s_pc, s_CL, s_G ) )
          & ( exists Globals b_G.
-                  (     ( exists Globals a_G.   
+                  (     ( exists Globals a_G.
                             (    Sequ_Reach( thread0noloc, s_r, s_mod, s_pc, s_CL, a_G )
                                & (   copy_g_g( s_G, a_G, s_r )
                                    & copy_g_h( b_G, a_G, s_r )
@@ -744,26 +748,26 @@ mu bool Sequ_Reach(
     )
 
 /*
-                                    |--------------|  
-                                    | T0   ||  H   | 
-                                    |      ||      | 
-                                    | a_G  || b_G  | 
-                                    |      ||      | 
-                                    |      ||      | 
+                                    |--------------|
+                                    | T0   ||  H   |
+                                    |      ||      |
+                                    | a_G  || b_G  |
+                                    |      ||      |
+                                    |      ||      |
                                     |      ||      |
                                     |--------------|
                                           s_G    W
 */
 
- 
+
 //*********************************************************************************/
-// forward propagation on internal transitions 
+// forward propagation on internal transitions
 
 
 //*************** 0
-  |  ( 
+  |  (
         ( s_r=0 & s_G.g0.v1 =0 & (s_block=thread0 | s_block=thread1) )
-      & (exists 
+      & (exists
            PrCount t_pc,
            Local   t_CL,
            Globals t_G.
@@ -790,12 +794,12 @@ mu bool Sequ_Reach(
          )
     )
 
-                 
+
 
 //*************** 1
-  |  ( 
+  |  (
         (s_r=1  &  s_G.g1.v1=0 & (s_block=thread0 | s_block=thread1) )
-      & (exists 
+      & (exists
            PrCount t_pc,
            Local   t_CL,
            Globals t_G.
@@ -828,7 +832,7 @@ mu bool Sequ_Reach(
 
 
 //*************** 2
-  |  ( 
+  |  (
         ( s_r=2  &  s_G.g2.v1=0 & (s_block=thread0 | s_block=thread1) )
       & (exists
            PrCount t_pc,
@@ -865,7 +869,7 @@ mu bool Sequ_Reach(
 //*************** 3
 
   |  (  (s_r=3  &  s_G.g3.v1=0 & (s_block=thread0 | s_block=thread1) )
-      & (exists 
+      & (exists
            PrCount t_pc,
            Local   t_CL,
            Globals t_G.
@@ -905,7 +909,7 @@ mu bool Sequ_Reach(
 
 (
 
-    ( exists 
+    ( exists
             PrCount t_pc,
             Local   t_CL,
             Global  t_G.
@@ -914,7 +918,7 @@ mu bool Sequ_Reach(
         )
      )
 
-  | ( exists 
+  | ( exists
             blocktype  t_block,
             CS         t_r,
             Module     t_mod,
