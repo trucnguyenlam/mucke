@@ -72,3 +72,5 @@
 
 bin/
 obj/
+
+*.tar.gz
