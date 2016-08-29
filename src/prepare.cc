@@ -95,7 +95,7 @@ bool Preparator::check(Graph<Term>&g)
   return term() &&
          check_alldefined() &&
 	 check_scc() &&
-	 check_fundef_dependencies() &&
+	 // check_fundef_dependencies() &&   // disable to make the analysis faster (truc)
          // check_monotonicity() &&		// does not work yet
          check_allocations() &&
 	 check_dependencies(g)
