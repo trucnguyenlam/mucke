@@ -1,3 +1,2 @@
- ☐ Add cudd library into mucke
-   ☐ Download library
-   ☐ Integrate API, look for ABCD call
+ - make C++ version of CUDD more efficient
+ - make C version of CUDD work (problem of count ref)
