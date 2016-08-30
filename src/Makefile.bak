@@ -5,8 +5,8 @@ CXXFLAGS=-g -fPIC -fno-strict-aliasing -fpermissive -Wno-write-strings
 
 #------------------------------------------------------------------------
 
-CXX=g++ $(CXXFLAGS) -Wall
 CC=gcc $(FLAGS) -Wall
+CXX=g++ $(CXXFLAGS) -Wall
 CCNOWARN=gcc $(FLAGS) -W
 LD=g++
 YACC=yacc
@@ -494,3 +494,953 @@ $(OBJ)/y.tab.o: y.tab.c
 
 .PHONY: all clean distclean dynamic static
 # DO NOT DELETE
+
+../obj/LINK/BDDsimple.o: BDDsimple.h idx.h list.h iterator.h io.h stack.h
+../obj/LINK/BDDsimple.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/BDDsimple.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/wordsize.h
+../obj/LINK/BDDsimple.o: /usr/include/gnu/stubs.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/waitflags.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/endian.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/byteswap.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/types.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/typesizes.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/BDDsimple.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/BDDsimple.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/BDDsimple.o: /usr/include/sys/sysmacros.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/BDDsimple.o: /usr/include/alloca.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/stdlib-float.h debug.h
+../obj/LINK/BDDsimple.o: /usr/include/math.h /usr/include/bits/math-vector.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/huge_val.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/huge_valf.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/huge_vall.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/mathdef.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/BDDsimple.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/BDDsimple.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/BDDsimple.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/BDDsimple.o: /usr/include/string.h /usr/include/xlocale.h
+../obj/LINK/InitFileReader.o: InitFileReader.h list.h iterator.h io.h stack.h
+../obj/LINK/InitFileReader.o: /usr/include/string.h /usr/include/features.h
+../obj/LINK/InitFileReader.o: /usr/include/stdc-predef.h
+../obj/LINK/InitFileReader.o: /usr/include/sys/cdefs.h
+../obj/LINK/InitFileReader.o: /usr/include/bits/wordsize.h
+../obj/LINK/InitFileReader.o: /usr/include/gnu/stubs.h /usr/include/xlocale.h
+../obj/LINK/InitFileReader.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/InitFileReader.o: /usr/include/bits/typesizes.h
+../obj/LINK/InitFileReader.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/InitFileReader.o: /usr/include/wchar.h
+../obj/LINK/InitFileReader.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/InitFileReader.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/Parser.o: Parser.h io.h stack.h iterator.h pterm.h Scanner.h
+../obj/LINK/Parser.o: Token.h Tokens except.h /usr/include/setjmp.h
+../obj/LINK/Parser.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/Parser.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/Parser.o: /usr/include/gnu/stubs.h /usr/include/bits/setjmp.h
+../obj/LINK/Parser.o: /usr/include/bits/sigset.h init.h config.h debug.h
+../obj/LINK/Scanner.o: io.h stack.h iterator.h debug.h init.h config.h
+../obj/LINK/Scanner.o: Scanner.h Token.h Tokens String.h except.h
+../obj/LINK/Scanner.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/Scanner.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/Scanner.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/Scanner.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/Scanner.o: pterm.h
+../obj/LINK/Symbol.o: /usr/include/string.h /usr/include/features.h
+../obj/LINK/Symbol.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/Symbol.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/Symbol.o: /usr/include/xlocale.h alloc.h iterator.h stack.h
+../obj/LINK/Symbol.o: alloccs.h array.h debug.h bitmatrix.h idx.h list.h io.h
+../obj/LINK/Symbol.o: cHash.h config.h except.h /usr/include/setjmp.h
+../obj/LINK/Symbol.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/Symbol.o: init.h macros.h pterm.h String.h Symbol.h term.h
+../obj/LINK/Symbol.o: Token.h Tokens
+../obj/LINK/Timer.o: Timer.h /usr/include/sys/times.h /usr/include/features.h
+../obj/LINK/Timer.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/Timer.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/Timer.o: /usr/include/time.h /usr/include/bits/types.h
+../obj/LINK/Timer.o: /usr/include/bits/typesizes.h /usr/include/stdio.h
+../obj/LINK/Timer.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/Timer.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/Timer.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/Token.o: Token.h io.h stack.h iterator.h Tokens Operators.cc
+../obj/LINK/Token.o: Keywords.cc TokenStrings
+../obj/LINK/abcdbman.o: abcdbman.h booleman.h boole.h idx.h list.h iterator.h
+../obj/LINK/abcdbman.o: io.h stack.h config.h Ref.h debug.h
+../obj/LINK/abcdbman.o: ../contrib/abcd/src/ABCD.h /usr/include/stdio.h
+../obj/LINK/abcdbman.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/abcdbman.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/abcdbman.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+../obj/LINK/abcdbman.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/abcdbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/abcdbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/abcdbman.o: /usr/include/bits/sys_errlist.h InitFileReader.h
+../obj/LINK/abcdbman.o: /usr/include/math.h /usr/include/bits/math-vector.h
+../obj/LINK/abcdbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/abcdbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/abcdbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/abcdbman.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/abcdbman.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/abcdbman.o: /usr/include/bits/mathcalls.h except.h
+../obj/LINK/abcdbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/abcdbman.o: /usr/include/bits/sigset.h
+../obj/LINK/abcdbmanDynamic.o: abcdbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/abcdbmanDynamic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/abcdbmanDynamic.o: ../contrib/abcd/src/ABCD.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/stdc-predef.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/sys/cdefs.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/wordsize.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/gnu/stubs.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/types.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/typesizes.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/wchar.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/sys_errlist.h except.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/setjmp.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/setjmp.h
+../obj/LINK/abcdbmanDynamic.o: /usr/include/bits/sigset.h loader.h
+../obj/LINK/abcdbmanStatic.o: abcdbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/abcdbmanStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/abcdbmanStatic.o: ../contrib/abcd/src/ABCD.h /usr/include/stdio.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/features.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/stdc-predef.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/sys/cdefs.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/bits/wordsize.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/bits/types.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/wchar.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/abcdbmanStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/alloc.o: alloc.h iterator.h stack.h io.h debug.h except.h
+../obj/LINK/alloc.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/alloc.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/alloc.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/alloc.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/alloc.o: String.h config.h Symbol.h array.h pterm.h
+../obj/LINK/alloccs.o: alloc.h iterator.h stack.h alloccs.h array.h debug.h
+../obj/LINK/alloccs.o: bitmatrix.h idx.h list.h io.h macros.h String.h
+../obj/LINK/alloccs.o: config.h Symbol.h pterm.h
+../obj/LINK/analyzer.o: alloc.h iterator.h stack.h alloccs.h array.h debug.h
+../obj/LINK/analyzer.o: bitmatrix.h idx.h list.h io.h analyzer.h pterm.h
+../obj/LINK/analyzer.o: evalwitcs.h evalint.h eval.h evalshowmapper.h
+../obj/LINK/analyzer.o: evalalloccs.h except.h /usr/include/setjmp.h
+../obj/LINK/analyzer.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/analyzer.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/analyzer.o: /usr/include/gnu/stubs.h /usr/include/bits/setjmp.h
+../obj/LINK/analyzer.o: /usr/include/bits/sigset.h mu_stream.h macros.h
+../obj/LINK/analyzer.o: String.h config.h Symbol.h term.h Timer.h tnlabels.h
+../obj/LINK/analyzer.o: Ref.h Token.h Tokens
+../obj/LINK/arr_stor.o: arr_stor.h iter_vec.h io.h stack.h iterator.h dlist.h
+../obj/LINK/arr_stor.o: debug.h repr.h alloc.h config.h idx.h list.h
+../obj/LINK/arr_stor.o: manager.h Ref.h dyn_arr.h except.h
+../obj/LINK/arr_stor.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/arr_stor.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/arr_stor.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/arr_stor.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/binset.o: binset.h except.h /usr/include/setjmp.h
+../obj/LINK/binset.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/binset.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/binset.o: /usr/include/gnu/stubs.h /usr/include/bits/setjmp.h
+../obj/LINK/binset.o: /usr/include/bits/sigset.h io.h stack.h iterator.h
+../obj/LINK/bitmatrix.o: bitmatrix.h idx.h list.h iterator.h io.h stack.h
+../obj/LINK/boole.o: array.h debug.h iterator.h boole.h idx.h list.h io.h
+../obj/LINK/boole.o: stack.h config.h Ref.h booleman.h except.h
+../obj/LINK/boole.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/boole.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/boole.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/boole.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/booleman.o: booleman.h boole.h idx.h list.h iterator.h io.h
+../obj/LINK/booleman.o: stack.h config.h Ref.h debug.h init.h
+../obj/LINK/brepr.o: brepr.h booleman.h boole.h idx.h list.h iterator.h io.h
+../obj/LINK/brepr.o: stack.h config.h Ref.h debug.h cHash.h repr.h alloc.h
+../obj/LINK/brepr.o: manager.h init.h macros.h String.h Symbol.h array.h
+../obj/LINK/brepr.o: pterm.h /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/brepr.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/brepr.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/brepr.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/brepr.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/brepr.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/brepr.o: /usr/include/bits/sys_errlist.h except.h
+../obj/LINK/brepr.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/brepr.o: /usr/include/bits/sigset.h
+../obj/LINK/cHash.o: cHash.h config.h Primes.h debug.h
+../obj/LINK/cache.o: cache.h cHash.h config.h repr.h alloc.h iterator.h
+../obj/LINK/cache.o: stack.h debug.h idx.h list.h io.h manager.h Ref.h
+../obj/LINK/cexbuild.o: cexbuild.h evalmmc.h evalint.h eval.h array.h debug.h
+../obj/LINK/cexbuild.o: iterator.h evalpred.h graph.h cHash.h config.h
+../obj/LINK/cexbuild.o: dlist.h list.h repr.h alloc.h stack.h idx.h io.h
+../obj/LINK/cexbuild.o: manager.h Ref.h cache.h iter_vec.h evaltnc.h
+../obj/LINK/cexbuild.o: npnftab.h context.h tnlabels.h evalwitexp.h prepare.h
+../obj/LINK/cleanup.o: precleanup.h /usr/include/stdlib.h
+../obj/LINK/cleanup.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/cleanup.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/cleanup.o: /usr/include/gnu/stubs.h /usr/include/bits/waitflags.h
+../obj/LINK/cleanup.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/cleanup.o: /usr/include/bits/endian.h
+../obj/LINK/cleanup.o: /usr/include/bits/byteswap.h /usr/include/bits/types.h
+../obj/LINK/cleanup.o: /usr/include/bits/typesizes.h
+../obj/LINK/cleanup.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/cleanup.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/cleanup.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/cleanup.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/cleanup.o: /usr/include/sys/sysmacros.h
+../obj/LINK/cleanup.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/cleanup.o: /usr/include/bits/stdlib-float.h config.h
+../obj/LINK/configurator.o: configurator.h except.h /usr/include/setjmp.h
+../obj/LINK/configurator.o: /usr/include/features.h
+../obj/LINK/configurator.o: /usr/include/stdc-predef.h
+../obj/LINK/configurator.o: /usr/include/sys/cdefs.h
+../obj/LINK/configurator.o: /usr/include/bits/wordsize.h
+../obj/LINK/configurator.o: /usr/include/gnu/stubs.h
+../obj/LINK/configurator.o: /usr/include/bits/setjmp.h
+../obj/LINK/configurator.o: /usr/include/bits/sigset.h io.h stack.h
+../obj/LINK/configurator.o: iterator.h init.h config.h mu_stream.h String.h
+../obj/LINK/context.o: context.h io.h stack.h iterator.h repr.h alloc.h
+../obj/LINK/context.o: debug.h config.h idx.h list.h manager.h Ref.h except.h
+../obj/LINK/context.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/context.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/context.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/context.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/context.o: print_ev.h evalint.h eval.h array.h Symbol.h pterm.h
+../obj/LINK/context.o: term.h
+../obj/LINK/cuddbman.o: cuddbman.h booleman.h boole.h idx.h list.h iterator.h
+../obj/LINK/cuddbman.o: io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbman.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddbman.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbman.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/cuddbman.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/cuddbman.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/cuddbman.o: /usr/include/bits/types.h
+../obj/LINK/cuddbman.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/cuddbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/cuddbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbman.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddbman.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddbman.o: /usr/include/inttypes.h /usr/include/stdint.h
+../obj/LINK/cuddbman.o: /usr/include/bits/wchar.h InitFileReader.h except.h
+../obj/LINK/cuddbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/cuddbman.o: /usr/include/bits/sigset.h
+../obj/LINK/cuddbmanDynamic.o: longbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cuddbmanDynamic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbmanDynamic.o: except.h /usr/include/setjmp.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/features.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/stdc-predef.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/setjmp.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/sigset.h InitFileReader.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/math.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/inf.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/nan.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/typesizes.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/wchar.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbmanDynamic.o: /usr/include/bits/sys_errlist.h loader.h
+../obj/LINK/cuddbmanStatic.o: cuddbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cuddbmanStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/stdc-predef.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/wchar.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddbmanStatic.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/inttypes.h /usr/include/stdint.h
+../obj/LINK/cuddbmanStatic.o: /usr/include/bits/wchar.h
+../obj/LINK/cuddbmanStatic.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddcppbman.o: cuddcppbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cuddcppbman.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cuddcppbman.o: ../contrib/cudd/install/include/cuddObj.hh
+../obj/LINK/cuddcppbman.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/cuddcppbman.o: InitFileReader.h /usr/include/math.h
+../obj/LINK/cuddcppbman.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/cuddcppbman.o: /usr/include/sys/cdefs.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddcppbman.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/types.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/cuddcppbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/sys_errlist.h except.h
+../obj/LINK/cuddcppbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/cuddcppbman.o: /usr/include/bits/sigset.h
+../obj/LINK/debug.o: /usr/include/sys/types.h /usr/include/features.h
+../obj/LINK/debug.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/debug.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/debug.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/debug.o: /usr/include/time.h /usr/include/endian.h
+../obj/LINK/debug.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/debug.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/debug.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/debug.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/debug.o: /usr/include/sys/sysmacros.h
+../obj/LINK/debug.o: /usr/include/bits/pthreadtypes.h /usr/include/signal.h
+../obj/LINK/debug.o: /usr/include/bits/signum.h /usr/include/bits/siginfo.h
+../obj/LINK/debug.o: /usr/include/bits/sigaction.h
+../obj/LINK/debug.o: /usr/include/bits/sigcontext.h
+../obj/LINK/debug.o: /usr/include/bits/sigstack.h /usr/include/sys/ucontext.h
+../obj/LINK/debug.o: /usr/include/bits/sigthread.h io.h stack.h iterator.h
+../obj/LINK/debug.o: except.h /usr/include/setjmp.h
+../obj/LINK/debug.o: /usr/include/bits/setjmp.h
+../obj/LINK/eval.o: eval.h array.h debug.h iterator.h
+../obj/LINK/evalalldef.o: evalalldef.h evalint.h eval.h array.h debug.h
+../obj/LINK/evalalldef.o: iterator.h term.h Symbol.h config.h io.h stack.h
+../obj/LINK/evalalldef.o: pterm.h
+../obj/LINK/evalalloc.o: alloccs.h array.h debug.h iterator.h bitmatrix.h
+../obj/LINK/evalalloc.o: idx.h list.h io.h stack.h evalalloc.h evalint.h
+../obj/LINK/evalalloc.o: eval.h sortedlist.h dlist.h hashedset.h
+../obj/LINK/evalalloc.o: evalalloccs.h repr.h alloc.h config.h manager.h
+../obj/LINK/evalalloc.o: Ref.h scc.h String.h Symbol.h pterm.h term.h
+../obj/LINK/evalalloccs.o: alloccs.h array.h debug.h iterator.h bitmatrix.h
+../obj/LINK/evalalloccs.o: idx.h list.h io.h stack.h evalalloccs.h evalint.h
+../obj/LINK/evalalloccs.o: eval.h
+../obj/LINK/evalallocone.o: alloccs.h array.h debug.h iterator.h bitmatrix.h
+../obj/LINK/evalallocone.o: idx.h list.h io.h stack.h alloc.h evalallocone.h
+../obj/LINK/evalallocone.o: evalint.h eval.h evalalloccs.h except.h
+../obj/LINK/evalallocone.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/evalallocone.o: /usr/include/stdc-predef.h
+../obj/LINK/evalallocone.o: /usr/include/sys/cdefs.h
+../obj/LINK/evalallocone.o: /usr/include/bits/wordsize.h
+../obj/LINK/evalallocone.o: /usr/include/gnu/stubs.h
+../obj/LINK/evalallocone.o: /usr/include/bits/setjmp.h
+../obj/LINK/evalallocone.o: /usr/include/bits/sigset.h Symbol.h config.h
+../obj/LINK/evalallocone.o: pterm.h term.h
+../obj/LINK/evaldpnd.o: term.h Symbol.h array.h debug.h iterator.h config.h
+../obj/LINK/evaldpnd.o: io.h stack.h pterm.h graph.h cHash.h dlist.h
+../obj/LINK/evaldpnd.o: sortedlist.h evaldpnd.h evalint.h eval.h
+../obj/LINK/evalfundefdep.o: evalfundefdep.h evalint.h eval.h array.h debug.h
+../obj/LINK/evalfundefdep.o: iterator.h io.h stack.h list.h Symbol.h config.h
+../obj/LINK/evalfundefdep.o: pterm.h scc.h term.h
+../obj/LINK/evalint.o: evalint.h eval.h array.h debug.h iterator.h term.h
+../obj/LINK/evalint.o: except.h /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/evalint.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/evalint.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/evalint.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/evalint.o: io.h stack.h init.h config.h
+../obj/LINK/evalmin.o: evalmin.h evalint.h eval.h array.h debug.h iterator.h
+../obj/LINK/evalmin.o: iter_vec.h io.h stack.h dlist.h context.h repr.h
+../obj/LINK/evalmin.o: alloc.h config.h idx.h list.h manager.h Ref.h term.h
+../obj/LINK/evalmmc.o: evalmmc.h evalint.h eval.h array.h debug.h iterator.h
+../obj/LINK/evalmmc.o: evalpred.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/evalmmc.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/evalmmc.o: cache.h iter_vec.h storage.h except.h
+../obj/LINK/evalmmc.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/evalmmc.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/evalmmc.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/evalmmc.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/evalmmc.o: print_ev.h term.h
+../obj/LINK/evalmon.o: debug.h evalscc.h evalint.h eval.h array.h iterator.h
+../obj/LINK/evalmon.o: stack.h evalmon.h scc.h list.h term.h Symbol.h
+../obj/LINK/evalmon.o: config.h io.h pterm.h monotonic.h
+../obj/LINK/evalpred.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/evalpred.o: iterator.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/evalpred.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/evalpred.o: cache.h Symbol.h pterm.h except.h
+../obj/LINK/evalpred.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/evalpred.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/evalpred.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/evalpred.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/evalpred.o: term.h print_ev.h evalalloc.h sortedlist.h
+../obj/LINK/evalpred.o: hashedset.h
+../obj/LINK/evalscc.o: Symbol.h array.h debug.h iterator.h config.h io.h
+../obj/LINK/evalscc.o: stack.h pterm.h evalscc.h evalint.h eval.h except.h
+../obj/LINK/evalscc.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/evalscc.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/evalscc.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/evalscc.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/evalscc.o: macros.h scc.h list.h term.h
+../obj/LINK/evalshowmapper.o: evalshowmapper.h evalint.h eval.h array.h
+../obj/LINK/evalshowmapper.o: debug.h iterator.h stack.h term.h
+../obj/LINK/evalshowmapper.o: /usr/include/string.h /usr/include/features.h
+../obj/LINK/evalshowmapper.o: /usr/include/stdc-predef.h
+../obj/LINK/evalshowmapper.o: /usr/include/sys/cdefs.h
+../obj/LINK/evalshowmapper.o: /usr/include/bits/wordsize.h
+../obj/LINK/evalshowmapper.o: /usr/include/gnu/stubs.h /usr/include/xlocale.h
+../obj/LINK/evaltermmapper.o: evaltermmapper.h evalint.h eval.h array.h
+../obj/LINK/evaltermmapper.o: debug.h iterator.h
+../obj/LINK/evaltnc.o: evalint.h eval.h array.h debug.h iterator.h evaltnc.h
+../obj/LINK/evaltnc.o: npnftab.h iter_vec.h io.h stack.h dlist.h context.h
+../obj/LINK/evaltnc.o: repr.h alloc.h config.h idx.h list.h manager.h Ref.h
+../obj/LINK/evaltnc.o: tnlabels.h evalwitexp.h term.h
+../obj/LINK/evalwitcs.o: evalwitcs.h evalint.h eval.h array.h debug.h
+../obj/LINK/evalwitcs.o: iterator.h list.h tnlabels.h Ref.h io.h stack.h
+../obj/LINK/evalwitexp.o: evalshowmapper.h evalint.h eval.h array.h debug.h
+../obj/LINK/evalwitexp.o: iterator.h evalwitexp.h io.h stack.h term.h
+../obj/LINK/evalwitexp.o: Symbol.h config.h pterm.h
+../obj/LINK/except.o: /usr/include/signal.h /usr/include/features.h
+../obj/LINK/except.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/except.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/except.o: /usr/include/bits/sigset.h /usr/include/bits/types.h
+../obj/LINK/except.o: /usr/include/bits/typesizes.h
+../obj/LINK/except.o: /usr/include/bits/signum.h /usr/include/time.h
+../obj/LINK/except.o: /usr/include/bits/siginfo.h
+../obj/LINK/except.o: /usr/include/bits/sigaction.h
+../obj/LINK/except.o: /usr/include/bits/sigcontext.h
+../obj/LINK/except.o: /usr/include/bits/sigstack.h
+../obj/LINK/except.o: /usr/include/sys/ucontext.h
+../obj/LINK/except.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/except.o: /usr/include/bits/sigthread.h /usr/include/stdlib.h
+../obj/LINK/except.o: /usr/include/bits/waitflags.h
+../obj/LINK/except.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/except.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/except.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/except.o: /usr/include/sys/types.h /usr/include/sys/select.h
+../obj/LINK/except.o: /usr/include/bits/select.h /usr/include/bits/time.h
+../obj/LINK/except.o: /usr/include/sys/sysmacros.h /usr/include/alloca.h
+../obj/LINK/except.o: /usr/include/bits/stdlib-float.h except.h
+../obj/LINK/except.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h io.h
+../obj/LINK/except.o: stack.h iterator.h debug.h
+../obj/LINK/file.o: file.h config.h /usr/include/stdio.h
+../obj/LINK/file.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/file.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/file.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+../obj/LINK/file.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/file.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/file.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/file.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/forallbd.o: forallbd.h evalint.h eval.h array.h debug.h
+../obj/LINK/forallbd.o: iterator.h term.h
+../obj/LINK/graph.o: graph.h cHash.h config.h dlist.h iterator.h debug.h
+../obj/LINK/idx.o: idx.h list.h iterator.h io.h stack.h
+../obj/LINK/init.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/init.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/init.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/init.o: /usr/include/bits/waitflags.h
+../obj/LINK/init.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/init.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/init.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/init.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+../obj/LINK/init.o: /usr/include/time.h /usr/include/sys/select.h
+../obj/LINK/init.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+../obj/LINK/init.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+../obj/LINK/init.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/init.o: /usr/include/bits/stdlib-float.h debug.h init.h config.h
+../obj/LINK/init.o: io.h stack.h iterator.h preinit.h
+../obj/LINK/io.o: file.h config.h init.h io.h stack.h iterator.h String.h
+../obj/LINK/io.o: terminal.h /usr/include/string.h /usr/include/features.h
+../obj/LINK/io.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/io.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/io.o: /usr/include/xlocale.h /usr/include/stdio.h
+../obj/LINK/io.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/io.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/io.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/io.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/iter_vec.o: Symbol.h array.h debug.h iterator.h config.h io.h
+../obj/LINK/iter_vec.o: stack.h pterm.h evalmmc.h evalint.h eval.h evalpred.h
+../obj/LINK/iter_vec.o: graph.h cHash.h dlist.h list.h repr.h alloc.h idx.h
+../obj/LINK/iter_vec.o: manager.h Ref.h cache.h iter_vec.h except.h
+../obj/LINK/iter_vec.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/iter_vec.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/iter_vec.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/iter_vec.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/iter_vec.o: term.h
+../obj/LINK/iterator.o: iterator.h io.h stack.h except.h
+../obj/LINK/iterator.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/iterator.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/iterator.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/iterator.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/linkBMan.o: init.h config.h
+../obj/LINK/linkBManStatic.o: simplebman.h booleman.h boole.h idx.h list.h
+../obj/LINK/linkBManStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/linkBManStatic.o: longbman.h cuddcppbman.h
+../obj/LINK/linkBManStatic.o: ../contrib/cudd/install/include/cuddObj.hh
+../obj/LINK/linkBManStatic.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/linkBManStatic.o: /usr/include/dlfcn.h /usr/include/features.h
+../obj/LINK/linkBManStatic.o: /usr/include/stdc-predef.h
+../obj/LINK/linkBManStatic.o: /usr/include/sys/cdefs.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/wordsize.h
+../obj/LINK/linkBManStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/dlfcn.h /usr/include/string.h
+../obj/LINK/linkBManStatic.o: /usr/include/xlocale.h except.h
+../obj/LINK/linkBManStatic.o: /usr/include/setjmp.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/setjmp.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/sigset.h
+../obj/LINK/loadBMan.o: init.h config.h
+../obj/LINK/loadBManDynamic.o: booleman.h boole.h idx.h list.h iterator.h
+../obj/LINK/loadBManDynamic.o: io.h stack.h config.h Ref.h debug.h except.h
+../obj/LINK/loadBManDynamic.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/loadBManDynamic.o: /usr/include/stdc-predef.h
+../obj/LINK/loadBManDynamic.o: /usr/include/sys/cdefs.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/wordsize.h
+../obj/LINK/loadBManDynamic.o: /usr/include/gnu/stubs.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/setjmp.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/sigset.h loader.h
+../obj/LINK/loadBManDynamic.o: /usr/include/dlfcn.h /usr/include/bits/dlfcn.h
+../obj/LINK/loadBManDynamic.o: /usr/include/ctype.h /usr/include/bits/types.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/typesizes.h
+../obj/LINK/loadBManDynamic.o: /usr/include/endian.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/endian.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/byteswap.h
+../obj/LINK/loadBManDynamic.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/loadBManDynamic.o: /usr/include/xlocale.h /usr/include/string.h
+../obj/LINK/loader.o: config.h debug.h io.h stack.h iterator.h loader.h
+../obj/LINK/loader.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/loader.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/loader.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/loader.o: /usr/include/bits/waitflags.h
+../obj/LINK/loader.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/loader.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/loader.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/loader.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/loader.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/loader.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/loader.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/loader.o: /usr/include/sys/sysmacros.h
+../obj/LINK/loader.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/loader.o: /usr/include/bits/stdlib-float.h /usr/include/strings.h
+../obj/LINK/loader.o: /usr/include/xlocale.h /usr/include/string.h
+../obj/LINK/loader.o: /usr/include/dlfcn.h /usr/include/bits/dlfcn.h
+../obj/LINK/longbman.o: longbman.h booleman.h boole.h idx.h list.h iterator.h
+../obj/LINK/longbman.o: io.h stack.h config.h Ref.h debug.h InitFileReader.h
+../obj/LINK/longbman.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/longbman.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/longbman.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/longbman.o: /usr/include/bits/math-vector.h
+../obj/LINK/longbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/longbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/longbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/longbman.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/longbman.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/longbman.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/longbman.o: /usr/include/bits/types.h
+../obj/LINK/longbman.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/longbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/longbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/longbman.o: /usr/include/bits/sys_errlist.h except.h
+../obj/LINK/longbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/longbman.o: /usr/include/bits/sigset.h
+../obj/LINK/longbmanDynamic.o: longbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/longbmanDynamic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/longbmanDynamic.o: except.h /usr/include/setjmp.h
+../obj/LINK/longbmanDynamic.o: /usr/include/features.h
+../obj/LINK/longbmanDynamic.o: /usr/include/stdc-predef.h
+../obj/LINK/longbmanDynamic.o: /usr/include/sys/cdefs.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/wordsize.h
+../obj/LINK/longbmanDynamic.o: /usr/include/gnu/stubs.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/setjmp.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/sigset.h InitFileReader.h
+../obj/LINK/longbmanDynamic.o: /usr/include/math.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/math-vector.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/huge_val.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/huge_valf.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/huge_vall.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/inf.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/nan.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/mathdef.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/mathcalls.h
+../obj/LINK/longbmanDynamic.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/typesizes.h
+../obj/LINK/longbmanDynamic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/longbmanDynamic.o: /usr/include/wchar.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/longbmanDynamic.o: /usr/include/bits/sys_errlist.h loader.h
+../obj/LINK/longbmanStatic.o: longbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/longbmanStatic.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/longbmanStatic.o: ../contrib/bddlib.D.E.Long/bdduser.h
+../obj/LINK/longbmanStatic.o: /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/longbmanStatic.o: /usr/include/stdc-predef.h
+../obj/LINK/longbmanStatic.o: /usr/include/sys/cdefs.h
+../obj/LINK/longbmanStatic.o: /usr/include/bits/wordsize.h
+../obj/LINK/longbmanStatic.o: /usr/include/gnu/stubs.h
+../obj/LINK/longbmanStatic.o: /usr/include/bits/types.h
+../obj/LINK/longbmanStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/longbmanStatic.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/longbmanStatic.o: /usr/include/wchar.h
+../obj/LINK/longbmanStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/longbmanStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/longbmanStatic.o: ../contrib/bddlib.D.E.Long/memuser.h
+../obj/LINK/main.o: analyzer.h pterm.h array.h debug.h iterator.h banner.h
+../obj/LINK/main.o: configurator.h Scanner.h io.h stack.h Token.h Tokens
+../obj/LINK/main.o: init.h config.h Parser.h except.h /usr/include/setjmp.h
+../obj/LINK/main.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/main.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/main.o: /usr/include/gnu/stubs.h /usr/include/bits/setjmp.h
+../obj/LINK/main.o: /usr/include/bits/sigset.h term.h testPredEval.h
+../obj/LINK/mem.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/mem.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/mem.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/mem.o: /usr/include/bits/waitflags.h
+../obj/LINK/mem.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/mem.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/mem.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/mem.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+../obj/LINK/mem.o: /usr/include/time.h /usr/include/sys/select.h
+../obj/LINK/mem.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+../obj/LINK/mem.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+../obj/LINK/mem.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/mem.o: /usr/include/bits/stdlib-float.h /usr/include/string.h
+../obj/LINK/mem.o: /usr/include/xlocale.h /usr/include/signal.h
+../obj/LINK/mem.o: /usr/include/bits/signum.h /usr/include/bits/siginfo.h
+../obj/LINK/mem.o: /usr/include/bits/sigaction.h
+../obj/LINK/mem.o: /usr/include/bits/sigcontext.h
+../obj/LINK/mem.o: /usr/include/bits/sigstack.h /usr/include/sys/ucontext.h
+../obj/LINK/mem.o: /usr/include/bits/sigthread.h
+../obj/LINK/mu_stream.o: mu_stream.h io.h stack.h iterator.h String.h
+../obj/LINK/mu_stream.o: config.h /usr/include/string.h
+../obj/LINK/mu_stream.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/mu_stream.o: /usr/include/sys/cdefs.h
+../obj/LINK/mu_stream.o: /usr/include/bits/wordsize.h
+../obj/LINK/mu_stream.o: /usr/include/gnu/stubs.h /usr/include/xlocale.h
+../obj/LINK/npnftab.o: context.h io.h stack.h iterator.h repr.h alloc.h
+../obj/LINK/npnftab.o: debug.h config.h idx.h list.h manager.h Ref.h
+../obj/LINK/npnftab.o: evalmmc.h evalint.h eval.h array.h evalpred.h graph.h
+../obj/LINK/npnftab.o: cHash.h dlist.h cache.h iter_vec.h evalshowmapper.h
+../obj/LINK/npnftab.o: evalwitcs.h except.h /usr/include/setjmp.h
+../obj/LINK/npnftab.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/npnftab.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/npnftab.o: /usr/include/gnu/stubs.h /usr/include/bits/setjmp.h
+../obj/LINK/npnftab.o: /usr/include/bits/sigset.h forallbd.h npnftab.h
+../obj/LINK/npnftab.o: evaltnc.h tnlabels.h evalwitexp.h print_ev.h term.h
+../obj/LINK/npnftab.o: terminal.h file.h
+../obj/LINK/pinfo.o: config.h io.h stack.h iterator.h pinfo.h Timer.h
+../obj/LINK/pinfo.o: /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/pinfo.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/pinfo.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/pinfo.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/pinfo.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/pinfo.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/pinfo.o: /usr/include/bits/sys_errlist.h /usr/include/unistd.h
+../obj/LINK/pinfo.o: /usr/include/bits/posix_opt.h
+../obj/LINK/pinfo.o: /usr/include/bits/environments.h
+../obj/LINK/pinfo.o: /usr/include/bits/confname.h /usr/include/getopt.h
+../obj/LINK/pinfo.o: /usr/include/sys/times.h /usr/include/time.h
+../obj/LINK/pinfo.o: /usr/include/sys/types.h /usr/include/endian.h
+../obj/LINK/pinfo.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/pinfo.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/pinfo.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/pinfo.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/pinfo.o: /usr/include/sys/sysmacros.h
+../obj/LINK/pinfo.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/prepare.o: evalalldef.h evalint.h eval.h array.h debug.h
+../obj/LINK/prepare.o: iterator.h evalalloc.h sortedlist.h dlist.h
+../obj/LINK/prepare.o: hashedset.h evaldpnd.h evalfundefdep.h evalmon.h
+../obj/LINK/prepare.o: evalscc.h stack.h graph.h cHash.h config.h io.h
+../obj/LINK/prepare.o: prepare.h term.h
+../obj/LINK/print_ev.o: print_ev.h evalint.h eval.h array.h debug.h
+../obj/LINK/print_ev.o: iterator.h io.h stack.h alloc.h idx.h list.h Symbol.h
+../obj/LINK/print_ev.o: config.h pterm.h term.h
+../obj/LINK/relation.o: relation.h list.h iterator.h
+../obj/LINK/repr.o: repr.h alloc.h iterator.h stack.h debug.h config.h idx.h
+../obj/LINK/repr.o: list.h io.h manager.h Ref.h init.h except.h
+../obj/LINK/repr.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/repr.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/repr.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/repr.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/repr.o: Symbol.h array.h pterm.h
+../obj/LINK/scc.o: list.h iterator.h scc.h
+../obj/LINK/simplebman.o: simplebman.h booleman.h boole.h idx.h list.h
+../obj/LINK/simplebman.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/simplebman.o: BDDsimple.h /usr/include/stdlib.h
+../obj/LINK/simplebman.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/simplebman.o: /usr/include/sys/cdefs.h
+../obj/LINK/simplebman.o: /usr/include/bits/wordsize.h
+../obj/LINK/simplebman.o: /usr/include/gnu/stubs.h
+../obj/LINK/simplebman.o: /usr/include/bits/waitflags.h
+../obj/LINK/simplebman.o: /usr/include/bits/waitstatus.h
+../obj/LINK/simplebman.o: /usr/include/endian.h /usr/include/bits/endian.h
+../obj/LINK/simplebman.o: /usr/include/bits/byteswap.h
+../obj/LINK/simplebman.o: /usr/include/bits/types.h
+../obj/LINK/simplebman.o: /usr/include/bits/typesizes.h
+../obj/LINK/simplebman.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/simplebman.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/simplebman.o: /usr/include/sys/select.h
+../obj/LINK/simplebman.o: /usr/include/bits/select.h
+../obj/LINK/simplebman.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/simplebman.o: /usr/include/sys/sysmacros.h
+../obj/LINK/simplebman.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/simplebman.o: /usr/include/alloca.h
+../obj/LINK/simplebman.o: /usr/include/bits/stdlib-float.h init.h
+../obj/LINK/simplebman.o: InitFileReader.h /usr/include/stdio.h
+../obj/LINK/simplebman.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/simplebman.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/simplebman.o: /usr/include/bits/sys_errlist.h except.h
+../obj/LINK/simplebman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
+../obj/LINK/storage.o: storage.h repr.h alloc.h iterator.h stack.h debug.h
+../obj/LINK/storage.o: config.h idx.h list.h io.h manager.h Ref.h iter_vec.h
+../obj/LINK/storage.o: dlist.h arr_stor.h dyn_arr.h except.h
+../obj/LINK/storage.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/storage.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/storage.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/storage.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/term.o: init.h config.h term.h termint.h io.h stack.h iterator.h
+../obj/LINK/term.o: list.h monotonic.h array.h debug.h eval.h
+../obj/LINK/terminal.o: terminal.h file.h config.h /usr/include/stdio.h
+../obj/LINK/terminal.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/terminal.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/terminal.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+../obj/LINK/terminal.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/terminal.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/terminal.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/terminal.o: /usr/include/bits/sys_errlist.h /usr/include/string.h
+../obj/LINK/terminal.o: /usr/include/xlocale.h /usr/include/sys/types.h
+../obj/LINK/terminal.o: /usr/include/time.h /usr/include/endian.h
+../obj/LINK/terminal.o: /usr/include/bits/endian.h
+../obj/LINK/terminal.o: /usr/include/bits/byteswap.h
+../obj/LINK/terminal.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/terminal.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/terminal.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/terminal.o: /usr/include/sys/sysmacros.h
+../obj/LINK/terminal.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/terminal.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+../obj/LINK/terminal.o: /usr/include/bits/environments.h
+../obj/LINK/terminal.o: /usr/include/bits/confname.h /usr/include/getopt.h
+../obj/LINK/terminal.o: /usr/include/termios.h /usr/include/bits/termios.h
+../obj/LINK/terminal.o: /usr/include/sys/ttydefaults.h /usr/include/signal.h
+../obj/LINK/terminal.o: /usr/include/bits/signum.h
+../obj/LINK/terminal.o: /usr/include/bits/siginfo.h
+../obj/LINK/terminal.o: /usr/include/bits/sigaction.h
+../obj/LINK/terminal.o: /usr/include/bits/sigcontext.h
+../obj/LINK/terminal.o: /usr/include/bits/sigstack.h
+../obj/LINK/terminal.o: /usr/include/sys/ucontext.h
+../obj/LINK/terminal.o: /usr/include/bits/sigthread.h
+../obj/LINK/termint.o: eval.h array.h debug.h iterator.h except.h
+../obj/LINK/termint.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/termint.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/termint.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/termint.o: /usr/include/bits/setjmp.h /usr/include/bits/sigset.h
+../obj/LINK/termint.o: io.h stack.h idx.h list.h macros.h repr.h alloc.h
+../obj/LINK/termint.o: config.h manager.h Ref.h scc.h Symbol.h pterm.h
+../obj/LINK/termint.o: termint.h term.h monotonic.h Token.h Tokens
+../obj/LINK/testPredEval.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/testPredEval.o: iterator.h graph.h cHash.h config.h dlist.h
+../obj/LINK/testPredEval.o: list.h repr.h alloc.h stack.h idx.h io.h
+../obj/LINK/testPredEval.o: manager.h Ref.h cache.h term.h prepare.h
+../obj/LINK/testcex.o: cexbuild.h evaldpnd.h evalint.h eval.h array.h debug.h
+../obj/LINK/testcex.o: iterator.h graph.h cHash.h config.h dlist.h term.h
+../obj/LINK/testcex.o: io.h stack.h Symbol.h pterm.h
+../obj/LINK/testdump.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/testdump.o: iterator.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/testdump.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/testdump.o: cache.h prepare.h term.h String.h Symbol.h pterm.h
+../obj/LINK/testons.o: evalpred.h evalint.h eval.h array.h debug.h iterator.h
+../obj/LINK/testons.o: graph.h cHash.h config.h dlist.h list.h repr.h alloc.h
+../obj/LINK/testons.o: stack.h idx.h io.h manager.h Ref.h cache.h prepare.h
+../obj/LINK/testons.o: term.h Symbol.h pterm.h /usr/include/stdlib.h
+../obj/LINK/testons.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/testons.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/testons.o: /usr/include/gnu/stubs.h /usr/include/bits/waitflags.h
+../obj/LINK/testons.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/testons.o: /usr/include/bits/endian.h
+../obj/LINK/testons.o: /usr/include/bits/byteswap.h /usr/include/bits/types.h
+../obj/LINK/testons.o: /usr/include/bits/typesizes.h
+../obj/LINK/testons.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/testons.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/testons.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/testons.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/testons.o: /usr/include/sys/sysmacros.h
+../obj/LINK/testons.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/testons.o: /usr/include/bits/stdlib-float.h /usr/include/stdio.h
+../obj/LINK/testons.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/testons.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/testons.o: /usr/include/bits/sys_errlist.h /usr/include/math.h
+../obj/LINK/testons.o: /usr/include/bits/math-vector.h
+../obj/LINK/testons.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/testons.o: /usr/include/bits/huge_val.h
+../obj/LINK/testons.o: /usr/include/bits/huge_valf.h
+../obj/LINK/testons.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/testons.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/testons.o: /usr/include/bits/mathcalls.h
+../obj/LINK/testreset.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/testreset.o: iterator.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/testreset.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/testreset.o: cache.h String.h Symbol.h pterm.h term.h
+../obj/LINK/testsize.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/testsize.o: iterator.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/testsize.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/testsize.o: cache.h prepare.h term.h Symbol.h pterm.h
+../obj/LINK/testsize.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/testsize.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/testsize.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/testsize.o: /usr/include/bits/waitflags.h
+../obj/LINK/testsize.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/testsize.o: /usr/include/bits/endian.h
+../obj/LINK/testsize.o: /usr/include/bits/byteswap.h
+../obj/LINK/testsize.o: /usr/include/bits/types.h
+../obj/LINK/testsize.o: /usr/include/bits/typesizes.h
+../obj/LINK/testsize.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/testsize.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/testsize.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/testsize.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/testsize.o: /usr/include/sys/sysmacros.h
+../obj/LINK/testsize.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/testsize.o: /usr/include/alloca.h
+../obj/LINK/testsize.o: /usr/include/bits/stdlib-float.h /usr/include/stdio.h
+../obj/LINK/testsize.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/testsize.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/testsize.o: /usr/include/bits/sys_errlist.h /usr/include/math.h
+../obj/LINK/testsize.o: /usr/include/bits/math-vector.h
+../obj/LINK/testsize.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/testsize.o: /usr/include/bits/huge_val.h
+../obj/LINK/testsize.o: /usr/include/bits/huge_valf.h
+../obj/LINK/testsize.o: /usr/include/bits/huge_vall.h /usr/include/bits/inf.h
+../obj/LINK/testsize.o: /usr/include/bits/nan.h /usr/include/bits/mathdef.h
+../obj/LINK/testsize.o: /usr/include/bits/mathcalls.h
+../obj/LINK/teststats.o: repr.h alloc.h iterator.h stack.h debug.h config.h
+../obj/LINK/teststats.o: idx.h list.h io.h manager.h Ref.h
+../obj/LINK/testundump.o: evalpred.h evalint.h eval.h array.h debug.h
+../obj/LINK/testundump.o: iterator.h graph.h cHash.h config.h dlist.h list.h
+../obj/LINK/testundump.o: repr.h alloc.h stack.h idx.h io.h manager.h Ref.h
+../obj/LINK/testundump.o: cache.h prepare.h term.h String.h Symbol.h pterm.h
+../obj/LINK/testvis.o: evalpred.h evalint.h eval.h array.h debug.h iterator.h
+../obj/LINK/testvis.o: graph.h cHash.h config.h dlist.h list.h repr.h alloc.h
+../obj/LINK/testvis.o: stack.h idx.h io.h manager.h Ref.h cache.h prepare.h
+../obj/LINK/testvis.o: term.h Symbol.h pterm.h /usr/include/stdlib.h
+../obj/LINK/testvis.o: /usr/include/features.h /usr/include/stdc-predef.h
+../obj/LINK/testvis.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+../obj/LINK/testvis.o: /usr/include/gnu/stubs.h /usr/include/bits/waitflags.h
+../obj/LINK/testvis.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/testvis.o: /usr/include/bits/endian.h
+../obj/LINK/testvis.o: /usr/include/bits/byteswap.h /usr/include/bits/types.h
+../obj/LINK/testvis.o: /usr/include/bits/typesizes.h
+../obj/LINK/testvis.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/testvis.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/testvis.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/testvis.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/testvis.o: /usr/include/sys/sysmacros.h
+../obj/LINK/testvis.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/testvis.o: /usr/include/bits/stdlib-float.h /usr/include/stdio.h
+../obj/LINK/testvis.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/testvis.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/testvis.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/tnlabels.o: tnlabels.h Ref.h io.h stack.h iterator.h
+../obj/LINK/useBRepr.o: init.h config.h io.h stack.h iterator.h brepr.h
+../obj/LINK/useBRepr.o: booleman.h boole.h idx.h list.h Ref.h debug.h cHash.h
+../obj/LINK/useBRepr.o: repr.h alloc.h manager.h
+../obj/LINK/useLongBMan.o: init.h config.h longbman.h booleman.h boole.h
+../obj/LINK/useLongBMan.o: idx.h list.h iterator.h io.h stack.h Ref.h debug.h
+../obj/LINK/useSimpleBMan.o: io.h stack.h iterator.h init.h config.h
+../obj/LINK/useSimpleBMan.o: simplebman.h booleman.h boole.h idx.h list.h
+../obj/LINK/useSimpleBMan.o: Ref.h debug.h
+../obj/LINK/Constants.o: /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/Constants.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/Constants.o: /usr/include/bits/wordsize.h
+../obj/LINK/Constants.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+../obj/LINK/Constants.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/Constants.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/Constants.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/Constants.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/Constants.o: /usr/include/limits.h /usr/include/bits/posix1_lim.h
+../obj/LINK/Constants.o: /usr/include/bits/local_lim.h
+../obj/LINK/Constants.o: /usr/include/linux/limits.h
+../obj/LINK/Constants.o: /usr/include/bits/posix2_lim.h
+../obj/LINK/cuddstats.o: /usr/include/math.h /usr/include/features.h
+../obj/LINK/cuddstats.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/cuddstats.o: /usr/include/bits/wordsize.h
+../obj/LINK/cuddstats.o: /usr/include/gnu/stubs.h
+../obj/LINK/cuddstats.o: /usr/include/bits/math-vector.h
+../obj/LINK/cuddstats.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cuddstats.o: /usr/include/bits/huge_val.h
+../obj/LINK/cuddstats.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cuddstats.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cuddstats.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cuddstats.o: /usr/include/bits/mathdef.h
+../obj/LINK/cuddstats.o: /usr/include/bits/mathcalls.h /usr/include/stdio.h
+../obj/LINK/cuddstats.o: /usr/include/bits/types.h
+../obj/LINK/cuddstats.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/cuddstats.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/cuddstats.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cuddstats.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/cuddstats.o: ../contrib/cudd/install/include/cudd.h
+../obj/LINK/keywords.o: /usr/include/stdio.h /usr/include/features.h
+../obj/LINK/keywords.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/keywords.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/keywords.o: /usr/include/bits/types.h
+../obj/LINK/keywords.o: /usr/include/bits/typesizes.h /usr/include/libio.h
+../obj/LINK/keywords.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/keywords.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/keywords.o: /usr/include/bits/sys_errlist.h /usr/include/ctype.h
+../obj/LINK/keywords.o: /usr/include/endian.h /usr/include/bits/endian.h
+../obj/LINK/keywords.o: /usr/include/bits/byteswap.h
+../obj/LINK/keywords.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/keywords.o: /usr/include/xlocale.h /usr/include/stdlib.h
+../obj/LINK/keywords.o: /usr/include/bits/waitflags.h
+../obj/LINK/keywords.o: /usr/include/bits/waitstatus.h
+../obj/LINK/keywords.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/keywords.o: /usr/include/sys/select.h /usr/include/bits/select.h
+../obj/LINK/keywords.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/keywords.o: /usr/include/sys/sysmacros.h
+../obj/LINK/keywords.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/keywords.o: /usr/include/alloca.h
+../obj/LINK/keywords.o: /usr/include/bits/stdlib-float.h
+../obj/LINK/keywords.o: /usr/include/string.h
+../obj/LINK/longbddstats.o: ../contrib/bddlib.D.E.Long/bddint.h
+../obj/LINK/longbddstats.o: /usr/include/setjmp.h /usr/include/features.h
+../obj/LINK/longbddstats.o: /usr/include/stdc-predef.h
+../obj/LINK/longbddstats.o: /usr/include/sys/cdefs.h
+../obj/LINK/longbddstats.o: /usr/include/bits/wordsize.h
+../obj/LINK/longbddstats.o: /usr/include/gnu/stubs.h
+../obj/LINK/longbddstats.o: /usr/include/bits/setjmp.h
+../obj/LINK/longbddstats.o: /usr/include/bits/sigset.h
+../obj/LINK/longbddstats.o: ../contrib/bddlib.D.E.Long/bdduser.h
+../obj/LINK/longbddstats.o: /usr/include/stdio.h /usr/include/bits/types.h
+../obj/LINK/longbddstats.o: /usr/include/bits/typesizes.h
+../obj/LINK/longbddstats.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/longbddstats.o: /usr/include/wchar.h
+../obj/LINK/longbddstats.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/longbddstats.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/longbddstats.o: ../contrib/bddlib.D.E.Long/memuser.h
+../obj/LINK/pterm.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/pterm.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/pterm.o: /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h
+../obj/LINK/pterm.o: /usr/include/bits/waitflags.h
+../obj/LINK/pterm.o: /usr/include/bits/waitstatus.h /usr/include/endian.h
+../obj/LINK/pterm.o: /usr/include/bits/endian.h /usr/include/bits/byteswap.h
+../obj/LINK/pterm.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+../obj/LINK/pterm.o: /usr/include/bits/byteswap-16.h /usr/include/sys/types.h
+../obj/LINK/pterm.o: /usr/include/time.h /usr/include/sys/select.h
+../obj/LINK/pterm.o: /usr/include/bits/select.h /usr/include/bits/sigset.h
+../obj/LINK/pterm.o: /usr/include/bits/time.h /usr/include/sys/sysmacros.h
+../obj/LINK/pterm.o: /usr/include/bits/pthreadtypes.h /usr/include/alloca.h
+../obj/LINK/pterm.o: /usr/include/bits/stdlib-float.h /usr/include/stdio.h
+../obj/LINK/pterm.o: /usr/include/libio.h /usr/include/_G_config.h
+../obj/LINK/pterm.o: /usr/include/wchar.h /usr/include/bits/stdio_lim.h
+../obj/LINK/pterm.o: /usr/include/bits/sys_errlist.h /usr/include/string.h
+../obj/LINK/pterm.o: /usr/include/xlocale.h pterm.h
+../obj/LINK/solarispinfo.o: config.h
+../obj/LINK/y.tab.o: pterm.h

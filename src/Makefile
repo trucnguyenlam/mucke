@@ -5,8 +5,8 @@ CXXFLAGS=-g -fPIC -fno-strict-aliasing -fpermissive -Wno-write-strings
 
 #------------------------------------------------------------------------
 
-CXX=g++ $(CXXFLAGS) -Wall
 CC=gcc $(FLAGS) -Wall
+CXX=g++ $(CXXFLAGS) -Wall
 CCNOWARN=gcc $(FLAGS) -W
 LD=g++
 YACC=yacc

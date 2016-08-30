@@ -681,7 +681,7 @@ CuddBMan::visualize(BooleRepr * abr)
 {
     CuddBooleRepr * a = dcast(abr);
     char buffer[200];
-    sprintf(buffer, "cudd_bdd%u.dot", (unsigned int) abr);
+    sprintf(buffer, "cudd_bdd%lu.dot", (size_t) abr);
     FILE *outfile;
     outfile = fopen(buffer, "w");
     cudd_var * dump = new cudd_var[1];

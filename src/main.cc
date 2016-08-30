@@ -16,11 +16,11 @@ INITCLASS(
   DebugInitializer,
   debugPreInitializer,
   "Debugging Code",
-  {
-    if(!IOStream::initialized()) return false;
-    verbose << "initializing debugging ...\n";
-    pterm_install_print_routines(printStrForC, printIntForC);
-  }
+{
+  if (!IOStream::initialized()) return false;
+  verbose << "initializing debugging ...\n";
+  pterm_install_print_routines(printStrForC, printIntForC);
+}
 )
 
 extern bool show_banner;
@@ -37,36 +37,36 @@ int main(int argc, char ** argv)
     PreInitAll();
     Initializer::InitAll(verbose_startup);
 
-    if(show_banner) output << Banner;
+    if (show_banner) output << Banner;
 
-    while(!wantToQuit)
-      {
-        try {
-          pterm p = Parser::instance() -> go();
-          Term * t = 0;
-	  if(p) t = Analyzer::instance() -> analyze(p);
-	  if(t) { testPredEval(t); delete t; }
-  	  pterm_delete_all();
-        }
-        catch(Interrupt) {
-          warning << "Interrupt (press CTRL-C twice to exit)\n";
-  	  pterm_delete_all();
-        }
-	catch(OverloadedSymbol) {
-	  pterm_delete_all();
-	}
-	catchend;
+    while (!wantToQuit)
+    {
+      try {
+        pterm p = Parser::instance() -> go();
+        Term * t = 0;
+        if (p) t = Analyzer::instance() -> analyze(p);
+        if (t) { testPredEval(t); delete t; }
+        pterm_delete_all();
       }
+      catch (Interrupt) {
+        warning << "Interrupt (press CTRL-C twice to exit)\n";
+        pterm_delete_all();
+      }
+      catch (OverloadedSymbol) {
+        pterm_delete_all();
+      }
+      catchend;
+    }
   }
-  catch(Exit) {
+  catch (Exit) {
   }
-  catch(Abort) {
+  catch (Abort) {
     output << "!! Abort !!" << '\n';
   }
   catchall {
     internal << "sorry, this is an internal error" << '\n'
-             << "please send a bug report to: "
-             << "biere@inf.ethz.ch" << '\n';
+    << "please send a bug report to: "
+    << "biere@inf.ethz.ch" << '\n';
     THROW(Internal());
   }
 

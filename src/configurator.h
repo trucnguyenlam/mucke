@@ -5,20 +5,20 @@ class AvoidNastyWarning;
 
 class Configurator
 {
-  friend class AvoidNastyWarning;
+    friend class AvoidNastyWarning;
 
-  Configurator() { }
-  ~Configurator() { }
+    Configurator() { }
+    ~Configurator() { }
 
-  static Configurator * _instance;
+    static Configurator * _instance;
 
-  void usage();
+    void usage();
 
 public:
 
-  static Configurator * instance() { return _instance; }
+    static Configurator * instance() { return _instance; }
 
-  void commandLineArgs(int argc, char ** argv);
+    void commandLineArgs(int argc, char ** argv);
 };
 
 #endif

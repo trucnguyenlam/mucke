@@ -111,7 +111,7 @@ for dir in bin obj
 do
   if [[ ! -d $dir/$BARCH ]]
   then
-    mkdir "$dir/$BARCH"
+    mkdir -p "$dir/$BARCH"
   fi
   cd $dir ||
   rm -f LINK
@@ -173,7 +173,7 @@ case $SARCH in
 esac
 
 echo "  constants ..."
-${CPP} src/Constants.c | \
+${CPP} src/Constants.c |  grep -E "^[^#]" | indent | \
 sed -e '/_MY_/!d' -e 's/_MY_\([a-zA-Z0-9_]*\)/\1/' >> src/new_config.h
 
 echo "  have to define bool ..."
@@ -238,6 +238,10 @@ echo 'CUDDBDD="'$CUDDBDD'"' >> .configuration
 #--------------------------------------------------------------------------
 # Configure subtargets ----------------------------------------------------
 #--------------------------------------------------------------------------
+echo "configuring ABCD library of Armin Biere"
+cd contrib/abcd/src
+./configure
+cd ../../..
 
 if [ ! x"$LONGBDD" = x ]
 then
@@ -249,12 +253,7 @@ fi
 
 if [ ! x"$CUDDBDD" = x ]
 then
-  echo "configuring cudd .. TODO"
-  # TODO
+  echo "configuring CUDD library of Fabio Somenzi"
+  cd contrib/cudd
+  cd ../../
 fi
-
-echo "configuring ABCD:"
-
-cd contrib/abcd/src
-./configure
-cd ../../..
