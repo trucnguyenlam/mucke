@@ -1,5 +1,5 @@
 # This is a make file for Linux + Solaris to make a shared
-# version of the bdd library of D.E. Long. 
+# version of the bdd library of D.E. Long.
 #
 # (1) Type ./configure <dir> where <dir> is the directory where you
 # unpacked the bddlib.tar.gz archive.
@@ -12,7 +12,7 @@
 # You can get the archive from http://www.cs.cmu.edu/~modelcheck.
 # This library comes in a tar-archive `bddlib.tar' and with
 # `tar xf bddlib.tar' you will get
-# 
+#
 #   mem/dist.tar
 #   bddlib/dist.tar
 #   boole/dist.tar
@@ -25,7 +25,7 @@ INCL=-I.#-I../mem
 DEFS=#-DUSE_MALLOC_FREE
 
 #CFLAGS = $(DEFS) $(INCL) -fPIC -g
-CFLAGS = $(DEFS) $(INCL) -fPIC -O2 -fomit-frame-pointer
+# CFLAGS = $(DEFS) $(INCL) -fPIC -O2 -fomit-frame-pointer
 CFLAGS = $(DEFS) $(INCL) -fPIC -O3
 
 OBJS=bdd.o bddapply.o bddassoc.o bddblk.o bddcache.o bddcmp.o bddcomp.o \

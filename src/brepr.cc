@@ -1,4 +1,4 @@
-/* (C) 1996-1999 Armin Biere, University of Karlsruhe 
+/* (C) 1996-1999 Armin Biere, University of Karlsruhe
  * (C) 2000 Armin Biere, ETH Zuerich
  * $Id: brepr.cc,v 1.6 2008-03-03 11:40:40 biere Exp $
  */
@@ -165,7 +165,7 @@ BooleQuantification::BooleQuantification(
 
 /*---------------------------------------------------------------------------*/
 
-Quantification * 
+Quantification *
 BooleQuantification::create(Allocation * w, const IdxSet & s)
 {
   return new BooleQuantification(w, s);
@@ -204,13 +204,13 @@ BooleQuantification::create_projection(Allocation * a, int i, AccessList * al)
 	      if(j!=k)
 	        {
 	          new_al.insert(j);
-		  
+
 		  {
 		    int start, end, delta;
 
 		    BoolePredicateManager::instance() ->
 		      indices(a, i, &new_al, start, end, delta);
-		    
+
 		    for(int l=start; l<=end; l+=delta)
 		      boole_var_set.put(l);
 		  }
@@ -316,7 +316,7 @@ BoolePredicateManager::sizeOfBlocksBeforeBucket(
 	    max = size;
 	  count++;
 	}
-     
+
       res += count * max;
     }
 
@@ -449,13 +449,13 @@ x0 x <= c0 c
      x0 = c0 /\ x <= c
 
 <=> c0 = 0 /\ ( x0 < 0 \/ x0 = 0 /\ x <= c) \/
-    c0 = 1 /\ ( x0 < 1 \/ x0 = 1 /\ x <= c) 
+    c0 = 1 /\ ( x0 < 1 \/ x0 = 1 /\ x <= c)
 
 <=> c0 = 0 /\ ( 0   \/ !x0 /\ x <= c) \/
-    c0 = 1 /\ ( !x0 \/ x0  /\ x <= c) 
+    c0 = 1 /\ ( !x0 \/ x0  /\ x <= c)
 
 <=> c0 = 0 /\ ( !x0 /\ x <= c) \/
-    c0 = 1 /\ ( !x0 \/ x <= c) 
+    c0 = 1 /\ ( !x0 \/ x <= c)
 */
 
 void
@@ -531,7 +531,7 @@ BoolePredicateManager::constant_to_predicate(
 
 /*---------------------------------------------------------------------------*/
 
-PredRepr * 
+PredRepr *
 BoolePredicateManager::onecube(
   Allocation * alloc,
   PredRepr * prp,
@@ -603,7 +603,7 @@ void BoolePredicateManager::is_in_range_of(Allocation * alloc, Boole & b)
           AllocationBucket * bucket = (*alloc) [ i ];
           is_in_range_of(alloc, b, i, bucket);
         }
-      
+
       range_cache -> insert(alloc, new Boole(b));
     }
 }
@@ -668,7 +668,7 @@ void BoolePredicateManager::is_in_range_of(
 BoolePredicate * BoolePredicateManager::generate_range(Allocation * alloc)
 {
   BoolePredicate * res;
-  
+
   res = new BoolePredicate;
   is_in_range_of(alloc, res -> b);
 
@@ -827,7 +827,7 @@ BoolePredicateManager * BoolePredicateManager::instance()
 /*---------------------------------------------------------------------------*/
 
 static bool allocCmp(const Allocation *a, const Allocation *b)
-{ 
+{
   return a == b;
 }
 
@@ -1126,7 +1126,7 @@ PredRepr * BoolePredicateManager::relprod(
 	}
 
       ASSERT(bs -> data);
-      
+
       res -> b.relprod(bq -> data, tmp, bs -> data);
       numLazyApplications++;
       numSpecialQuantors++;
@@ -1268,14 +1268,11 @@ BoolePredicateManager::prepare(BooleSubstitution * bs)
 
   for(it.first(); !it.isDone(); it.next() )
     {
-      int start_from, start_to,
-          end_from, end_to, delta_from, delta_to, j, i;
+      int start_from = 0, start_to = 0, end_from = 0, end_to = 0, delta_from = 0, delta_to = 0, j = 0, i = 0;
 
-      indices(bs -> from, it.from(), it.to().from_al,
-              start_from, end_from, delta_from);
+      indices(bs -> from, it.from(), it.to().from_al, start_from, end_from, delta_from);
 
-      indices(bs -> to, it.to().i, it.to().to_al,
-              start_to, end_to, delta_to);
+      indices(bs -> to, it.to().i, it.to().to_al, start_to, end_to, delta_to);
 #     ifdef DEBUG
         {
            if(!(
@@ -1304,7 +1301,7 @@ BoolePredicateManager::prepare(BooleSubstitution * bs)
             }
         }
     }
-      
+
   if(!it2.isDone())
     {
       for(it2.first(); !it2.isDone(); it2.next())
@@ -1398,7 +1395,7 @@ void BoolePredicateManager::addTo_IdxStrMapper(
       new_start = start + sizeOfTypesBeforeInt(type, i) * delta;
       new_delta = delta;
     }
-  
+
   addTo_IdxStrMapper(prefix, res, new_type, new_start, new_delta);
 }
 
@@ -1494,7 +1491,7 @@ Array<char *> * BoolePredicateManager::prepare_IdxStrMapper(
       type =  bucket -> type();
       addTo_IdxStrMapper(varnames -> operator [] (i), res, type, start, delta);
     }
-  
+
   return res;
 }
 
@@ -1509,7 +1506,7 @@ void BoolePredicateManager::dump(
   int i;
 
   ASSERT(varnames -> size() == alloc -> size());
-  
+
   names = prepare_IdxStrMapper(varnames, alloc);
 
   p = dcast(apr);

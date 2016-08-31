@@ -239,7 +239,12 @@ echo 'CUDDBDD="'$CUDDBDD'"' >> .configuration
 # Configure subtargets ----------------------------------------------------
 #--------------------------------------------------------------------------
 echo "configuring ABCD library of Armin Biere"
-cd contrib/abcd/src
+cd contrib/abcd/
+rm -rf bin
+rm -rf lib
+mkdir -p bin
+mkdir -p lib
+cd src
 ./configure
 cd ../../..
 
@@ -255,5 +260,9 @@ if [ ! x"$CUDDBDD" = x ]
 then
   echo "configuring CUDD library of Fabio Somenzi"
   cd contrib/cudd
+  ./configure --prefix=`pwd`/install --enable-shared --enable-obj
+  rm -rf install
+  make install
+  make distclean
   cd ../../
 fi

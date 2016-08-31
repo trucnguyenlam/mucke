@@ -1,0 +1,5 @@
+enum farbe { rot, gruen};
+
+bool p (farbe a) a=rot;
+exists farbe b. (p(b));
+

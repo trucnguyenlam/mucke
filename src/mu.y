@@ -5,6 +5,9 @@
 extern int yyerror(const char*);
 extern int yylex();
 
+#define YYMAXDEPTH 1000000
+#define YYINITDEPTH 100000
+
 #define YYSTYPE pterm
 
 extern const char * token_to_str(int);
@@ -98,7 +101,7 @@ command
 :
 typeDef ';'
 {
-  parseTree = $1; 
+  parseTree = $1;
 }
 |
 expr ';'

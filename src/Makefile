@@ -1,7 +1,8 @@
-#------------------------------------------------------------------------
+OPTIMIZE=-O3
 
-FLAGS=-g -fPIC -fno-strict-aliasing -Wno-write-strings
-CXXFLAGS=-g -fPIC -fno-strict-aliasing -fpermissive -Wno-write-strings
+#------------------------------------------------------------------------
+FLAGS=-g -fPIC -Wno-write-strings $(OPTIMIZE)
+CXXFLAGS=-g -fPIC -fpermissive -Wno-write-strings $(OPTIMIZE)
 
 #------------------------------------------------------------------------
 
@@ -108,7 +109,8 @@ OBJS=$(OBJ)/alloc.o $(OBJ)/alloccs.o $(OBJ)/analyzer.o $(OBJ)/arr_stor.o \
   $(OBJ)/file.o $(OBJ)/forallbd.o $(OBJ)/graph.o $(OBJ)/idx.o \
   $(OBJ)/InitFileReader.o $(OBJ)/io.o $(OBJ)/iterator.o $(OBJ)/iter_vec.o \
   $(OBJ)/linkBMan.o $(OBJ)/loadBMan.o $(OBJ)/loader.o $(OBJ)/macros.o \
-  $(OBJ)/main.o $(OBJ)/mem.o $(OBJ)/mu_stream.o $(OBJ)/npnftab.o \
+  $(OBJ)/main.o \
+  $(OBJ)/mu_stream.o $(OBJ)/npnftab.o \
   $(OBJ)/Parser.o $(OBJ)/pinfo.o $(OBJ)/prepare.o  $(OBJ)/Primes.o \
   $(OBJ)/print_ev.o $(OBJ)/pterm.o $(OBJ)/repr.o $(OBJ)/reprint.o \
   $(OBJ)/Scanner.o $(OBJ)/scc.o $(OBJ)/solarispinfo.o $(OBJ)/storage.o \
@@ -117,6 +119,7 @@ OBJS=$(OBJ)/alloc.o $(OBJ)/alloccs.o $(OBJ)/analyzer.o $(OBJ)/arr_stor.o \
   $(OBJ)/testreset.o $(OBJ)/testsize.o $(OBJ)/teststats.o $(OBJ)/testvis.o \
   $(OBJ)/Timer.o $(OBJ)/tnlabels.o $(OBJ)/Token.o $(OBJ)/useBRepr.o \
   $(OBJ)/y.tab.o $(OBJ)/init.o
+  # $(OBJ)/mem.o \
 
 #------------------------------------------------------------------------
 
@@ -226,7 +229,9 @@ banner.c: banner.tmpl
 #------------------------------------------------------------------------
 
 INIT=booleman.cc cleanup.cc evalint.cc io.cc linkBMan.cc loadBMan.cc \
-  main.cc mem.cc pinfo.cc Symbol.cc term.cc useBRepr.cc
+  main.cc \
+  pinfo.cc Symbol.cc term.cc useBRepr.cc
+  # mem.cc
 
 preinit.h: $(INIT)
 	../bin/genpreinit $(INIT)
@@ -423,8 +428,8 @@ $(OBJ)/macros.o: macros.cc
 	$(CXX) -c -o $@ macros.cc
 $(OBJ)/main.o: main.cc
 	$(CXX) -c -o $@ main.cc
-$(OBJ)/mem.o: mem.cc
-	$(CXX) -c -o $@ mem.cc
+# $(OBJ)/mem.o: mem.cc
+# 	$(CXX) -c -o $@ mem.cc
 $(OBJ)/mu_stream.o: mu_stream.cc
 	$(CXX) -c -o $@ mu_stream.cc
 $(OBJ)/npnftab.o: npnftab.cc
