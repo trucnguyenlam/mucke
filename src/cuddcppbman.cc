@@ -20,6 +20,12 @@ extern "C" {
 #include "except.h"
 
 /*---------------------------------------------------------------------------*/
+/* exported variables -------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+int global_cudd_reduction_type = 0;
+
+/*---------------------------------------------------------------------------*/
 
 CuddCPPBMan * CuddCPPBMan::_instance = 0;
 
@@ -493,9 +499,18 @@ CuddCPPBMan::simplify_assuming(BooleRepr * a, BooleRepr * b)
                        * bbr = dcast(b);
     CuddCPPBooleRepr * res = new CuddCPPBooleRepr;
 
-    res -> bdd = abr -> bdd.Constrain(bbr -> bdd);
-    // res -> bdd = abr -> bdd.Restrict(bbr -> bdd);
-    // res -> bdd = abr -> bdd.LICompaction(bbr -> bdd);
+    if (global_cudd_reduction_type == 0)
+    {
+        res -> bdd = abr -> bdd.Constrain(bbr -> bdd);
+    }
+    else if (global_cudd_reduction_type == 1)
+    {
+        res -> bdd = abr -> bdd.Restrict(bbr -> bdd);
+    }
+    else
+    {
+        res -> bdd = abr -> bdd.LICompaction(bbr -> bdd);
+    }
 
     return res;
 }

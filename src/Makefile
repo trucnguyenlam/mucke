@@ -1,4 +1,5 @@
 OPTIMIZE=-O3
+OPTIMIZE=
 
 #------------------------------------------------------------------------
 FLAGS=-g -fPIC -Wno-write-strings $(OPTIMIZE)

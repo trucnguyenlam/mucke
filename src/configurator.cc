@@ -31,6 +31,8 @@ extern bool global_use_lazy_substitutions;
 extern bool global_use_relational_product;
 extern bool global_dump_to_file;
 
+extern int global_cudd_reduction_type;
+
 #if 0
 char * bmanID = "simplebman.so";
 #else
@@ -193,6 +195,18 @@ void Configurator::commandLineArgs(int argc, char ** argv)
             else if (cmp(argv[i], "-rev") ||
                      cmp(argv[i], "-reverse-allocone"))
                 global_allocate_reverse = true;
+            else if (cmp(argv[i], "-cudd-constrain"))
+            {
+                global_cudd_reduction_type = 0;
+            }
+            else if (cmp(argv[i], "-cudd-restrict"))
+            {
+                global_cudd_reduction_type = 1;
+            }
+            else if (cmp(argv[i], "-cudd-compact"))
+            {
+                global_cudd_reduction_type = 2;
+            }
             else if (cmp(argv[i], "-h") ||
                      cmp(argv[i], "-?"))
             {
