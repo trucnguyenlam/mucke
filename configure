@@ -272,7 +272,7 @@ if [ ! x"$CUDDBDD" = x ]
 then
   echo "configuring CUDD library of Fabio Somenzi"
   cd contrib/cudd
-  ./configure --prefix=`pwd`/install --enable-shared --enable-obj
+  ./configure --prefix=`pwd`/install --enable-shared --enable-obj CFLAGS="-Wall -Wextra -g -O3 -std=c99" CXXFLAGS="-Wall -Wextra -g -O3"
   rm -rf install
   make install
   make distclean
