@@ -224,3 +224,1412 @@ distclean: clean
 	rm -f config.h config.cache ../bin/generate
 	rm -f *~ Makefile.bak
 # DO NOT DELETE
+
+../obj/ABCD.o: abcd_types.h /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/ABCD.o: /usr/include/sys/_symbol_aliasing.h
+../obj/ABCD.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+../obj/ABCD.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/ABCD.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/ABCD.o: /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h
+../obj/ABCD.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/ABCD.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+../obj/ABCD.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd.o: abcd_types.h /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/abcd.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+../obj/abcd.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd.o: /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+../obj/abcd.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+../obj/abcd.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_cache.o: abcd_cache_int.h abcd_types_int.h abcd_types.h abcd_manager.h
+../obj/abcd_cache.o: abcd_manager_int.h config.h abcd_node.h abcd_node_int.h
+../obj/abcd_cache.o: abcd_util.h /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_cache.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_cache.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_cache.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_cache.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_cache.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_cache.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_cache.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_cache.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_cache.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_cache.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_cache.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_cache.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_cache.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_cache.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_cache.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_cache.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_cache.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_cache_int.o: abcd_types_int.h abcd_types.h
+../obj/abcd_manager.o: abcd_manager_int.h config.h abcd_node.h abcd_manager.h
+../obj/abcd_manager.o: abcd_node_int.h abcd_types_int.h abcd_types.h abcd_util.h
+../obj/abcd_manager.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_manager.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_manager.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_manager.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_manager.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_manager.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_manager.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_manager.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_manager.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_manager.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_manager.o: /usr/include/i386/_mcontext.h
+../obj/abcd_manager.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_manager.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_manager.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_manager.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_manager.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_manager.o: /usr/include/sys/_endian.h
+../obj/abcd_manager.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_manager.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_manager.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_manager.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_manager_int.o: config.h abcd_node.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_manager_int.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_manager_int.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_manager_int.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_manager_int.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_manager_int.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_manager_int.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_manager_int.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_manager_int.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_manager_int.o: /usr/include/machine/_mcontext.h
+../obj/abcd_manager_int.o: /usr/include/i386/_mcontext.h
+../obj/abcd_manager_int.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_manager_int.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_uid_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int8_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_manager_int.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_manager_int.o: /usr/include/sys/_endian.h
+../obj/abcd_manager_int.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_manager_int.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_manager_int.o: /usr/include/alloca.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_null.h
+../obj/abcd_manager_int.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_node.o: config.h abcd_manager.h abcd_manager_int.h abcd_node.h
+../obj/abcd_node.o: abcd_node_int.h abcd_types_int.h abcd_types.h abcd_util.h
+../obj/abcd_node.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_node.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_node.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_node.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_node.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_node.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_node.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_node.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_node.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_node.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_node.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_node.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_node.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_node.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_node.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_node.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_node.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_node.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_node.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_node.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_node.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_node.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_node.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_node_int.o: config.h abcd_types_int.h abcd_types.h
+../obj/abcd_types_int.o: abcd_types.h
+../obj/abcd_util.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_util.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_util.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_util.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_util.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_util.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_util.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_util.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_util.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_util.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_util.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_util.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_util.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_util.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_util.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_util.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_util.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_util.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_util.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_mode_t.h config.h abcd_types.h
+../obj/ABCD.o: config.h abcd.h abcd_types.h /usr/include/stdio.h
+../obj/ABCD.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/ABCD.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+../obj/ABCD.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/ABCD.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/ABCD.o: /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h
+../obj/ABCD.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/ABCD.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+../obj/ABCD.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/ABCD.o: abcd_types_int.h abcd_manager.h abcd_manager_int.h abcd_node.h
+../obj/ABCD.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/ABCD.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/ABCD.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/ABCD.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/ABCD.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/ABCD.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/ABCD.o: /usr/include/sys/_types/_ucontext.h
+../obj/ABCD.o: /usr/include/sys/_types/_sigset_t.h /usr/include/sys/_types/_uid_t.h
+../obj/ABCD.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/ABCD.o: /usr/include/sys/_types/_int8_t.h /usr/include/sys/_types/_int16_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_int32_t.h /usr/include/sys/_types/_int64_t.h
+../obj/ABCD.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/ABCD.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_intptr_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_uintptr_t.h /usr/include/_types/_intmax_t.h
+../obj/ABCD.o: /usr/include/_types/_uintmax_t.h /usr/include/sys/_types/_timeval.h
+../obj/ABCD.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/ABCD.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/ABCD.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/ABCD.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_rune_t.h /usr/include/sys/_types/_wchar_t.h
+../obj/ABCD.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/ABCD.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h
+../obj/ABCD.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+../obj/ABCD.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+../obj/ABCD.o: /usr/include/secure/_string.h
+../obj/abcd.o: config.h abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+../obj/abcd.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd.o: /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+../obj/abcd.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+../obj/abcd.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd.o: abcd_types_int.h abcd_manager.h abcd_manager_int.h abcd_node.h
+../obj/abcd.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/abcd.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd.o: /usr/include/sys/_types/_sigset_t.h /usr/include/sys/_types/_uid_t.h
+../obj/abcd.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd.o: /usr/include/sys/_types/_int8_t.h /usr/include/sys/_types/_int16_t.h
+../obj/abcd.o: /usr/include/sys/_types/_int32_t.h /usr/include/sys/_types/_int64_t.h
+../obj/abcd.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd.o: /usr/include/sys/_types/_uintptr_t.h /usr/include/_types/_intmax_t.h
+../obj/abcd.o: /usr/include/_types/_uintmax_t.h /usr/include/sys/_types/_timeval.h
+../obj/abcd.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd.o: /usr/include/sys/_types/_rune_t.h /usr/include/sys/_types/_wchar_t.h
+../obj/abcd.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h
+../obj/abcd.o: /usr/include/string.h /usr/include/sys/_types/_rsize_t.h
+../obj/abcd.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+../obj/abcd.o: /usr/include/secure/_string.h
+../obj/abcd_and.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_and.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_and.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_and.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_and.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_and.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_and.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_and.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_and.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_and.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_and.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_and.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_and.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_and.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_and.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_and.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_and.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_int64_t.h /usr/include/_types/_uint8_t.h
+../obj/abcd_and.o: /usr/include/_types/_uint16_t.h /usr/include/_types/_uint32_t.h
+../obj/abcd_and.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_and.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_and.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_and.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_and.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_and.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_and.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_and.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h abcd_cache_int.h
+../obj/abcd_cache.o: abcd_cache.h abcd_cache_int.h abcd_types_int.h abcd_types.h
+../obj/abcd_cache.o: abcd_manager.h abcd_manager_int.h config.h abcd_node.h
+../obj/abcd_cache.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/abcd_cache.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+../obj/abcd_cache.o: /usr/include/_types.h /usr/include/sys/_types.h
+../obj/abcd_cache.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_cache.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_cache.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_cache.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_cache.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_cache.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_cache.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_cache.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_cache.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_cache.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_cache.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_cache.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_cache.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_cache.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_cache.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_cache.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_cache.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_cofactor.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_cofactor.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_cofactor.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_cofactor.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_cofactor.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_cofactor.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_cofactor.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_cofactor.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_cofactor.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_cofactor.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_cofactor.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_cofactor.o: /usr/include/machine/_mcontext.h
+../obj/abcd_cofactor.o: /usr/include/i386/_mcontext.h
+../obj/abcd_cofactor.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_cofactor.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_cofactor.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_cofactor.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_cofactor.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_cofactor.o: /usr/include/sys/_endian.h
+../obj/abcd_cofactor.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_cofactor.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_cofactor.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_cofactor.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_cofactor.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_cofactor.o: abcd_cache_int.h
+../obj/abcd_compose.o: abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd_compose.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_compose.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_compose.o: /usr/include/Availability.h
+../obj/abcd_compose.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_compose.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_compose.o: /usr/include/i386/_types.h
+../obj/abcd_compose.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_compose.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_compose.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_compose.o: abcd_types_int.h abcd_node_int.h abcd_util.h
+../obj/abcd_compose.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_compose.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_compose.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_compose.o: /usr/include/i386/_mcontext.h
+../obj/abcd_compose.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_compose.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_compose.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_compose.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_compose.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_compose.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_compose.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_compose.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_compose.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_compose.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_compose.o: /usr/include/sys/_endian.h
+../obj/abcd_compose.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_compose.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_compose.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_compose.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_compose.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_compose.o: abcd_cache_int.h
+../obj/abcd_dump.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_dump.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_dump.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_dump.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_dump.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_dump.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_dump.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_dump.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_dump.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_dump.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_dump.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_dump.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_dump.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_dump.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_dump.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_dump.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_dump.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_dump.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_dump.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_dump.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_mode_t.h /usr/include/stdio.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/stdio.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_dump.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+../obj/abcd_dump.o: /usr/include/secure/_common.h abcd_node.h config.h
+../obj/abcd_dump.o: abcd_manager.h abcd_manager_int.h abcd_types_int.h abcd_types.h
+../obj/abcd_dump.o: abcd_node_int.h abcd_util.h
+../obj/abcd_equiv.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_equiv.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_equiv.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_equiv.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_equiv.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_equiv.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_equiv.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_equiv.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_equiv.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_equiv.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_equiv.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_equiv.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_equiv.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_equiv.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_equiv.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_equiv.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_equiv.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_equiv.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_equiv.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_equiv.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_equiv.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_equiv.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_equiv.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_equiv.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h abcd_cache_int.h
+../obj/abcd_exists.o: config.h abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd_exists.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_exists.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_exists.o: /usr/include/Availability.h
+../obj/abcd_exists.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_exists.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_exists.o: /usr/include/i386/_types.h
+../obj/abcd_exists.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_exists.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_exists.o: abcd_node.h abcd_manager.h abcd_manager_int.h abcd_types_int.h
+../obj/abcd_exists.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/abcd_exists.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_exists.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_exists.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_exists.o: /usr/include/i386/_mcontext.h
+../obj/abcd_exists.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_exists.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_exists.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_exists.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_exists.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_exists.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_exists.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_exists.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_exists.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_exists.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_exists.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_exists.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_exists.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_exists.o: abcd_cache_int.h
+../obj/abcd_fraction.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_fraction.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_fraction.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_fraction.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_fraction.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_fraction.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_fraction.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_fraction.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_fraction.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_fraction.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_fraction.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_fraction.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_fraction.o: /usr/include/machine/_mcontext.h
+../obj/abcd_fraction.o: /usr/include/i386/_mcontext.h
+../obj/abcd_fraction.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_fraction.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_fraction.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_fraction.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_fraction.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_fraction.o: /usr/include/sys/_endian.h
+../obj/abcd_fraction.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_fraction.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_fraction.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_fraction.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_fraction.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_fraction.o: abcd_cache_int.h
+../obj/abcd_intersects.o: abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd_intersects.o: /usr/include/sys/cdefs.h
+../obj/abcd_intersects.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_intersects.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_intersects.o: /usr/include/Availability.h
+../obj/abcd_intersects.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_intersects.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_intersects.o: /usr/include/i386/_types.h
+../obj/abcd_intersects.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_intersects.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_intersects.o: abcd_cache.h abcd_cache_int.h abcd_types_int.h
+../obj/abcd_intersects.o: abcd_manager.h abcd_manager_int.h config.h abcd_node.h
+../obj/abcd_intersects.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/abcd_intersects.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_intersects.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_intersects.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_intersects.o: /usr/include/machine/_mcontext.h
+../obj/abcd_intersects.o: /usr/include/i386/_mcontext.h
+../obj/abcd_intersects.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_intersects.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_uid_t.h
+../obj/abcd_intersects.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_int8_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_intersects.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_intersects.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_intersects.o: /usr/include/sys/_endian.h
+../obj/abcd_intersects.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_intersects.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_intersects.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_intersects.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_intersects.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_ite.o: abcd.h abcd_types.h /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/abcd_ite.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_ite.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_ite.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+../obj/abcd_ite.o: /usr/include/_types.h /usr/include/sys/_types.h
+../obj/abcd_ite.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_ite.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_size_t.h /usr/include/sys/_types/_null.h
+../obj/abcd_ite.o: /usr/include/sys/stdio.h /usr/include/sys/_types/_off_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+../obj/abcd_ite.o: /usr/include/secure/_common.h abcd_node.h config.h abcd_manager.h
+../obj/abcd_ite.o: abcd_manager_int.h abcd_types_int.h abcd_node_int.h abcd_util.h
+../obj/abcd_ite.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_pid_t.h /usr/include/sys/_types/_id_t.h
+../obj/abcd_ite.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../obj/abcd_ite.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_ite.o: /usr/include/machine/_mcontext.h /usr/include/i386/_mcontext.h
+../obj/abcd_ite.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_ite.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_ite.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_int64_t.h /usr/include/_types/_uint8_t.h
+../obj/abcd_ite.o: /usr/include/_types/_uint16_t.h /usr/include/_types/_uint32_t.h
+../obj/abcd_ite.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_ite.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_ite.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_ite.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_ite.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+../obj/abcd_ite.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_ite.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h abcd_cache_int.h
+../obj/abcd_manager.o: abcd_manager_int.h config.h abcd_node.h abcd_manager.h
+../obj/abcd_manager.o: abcd_node_int.h abcd_types_int.h abcd_types.h abcd_util.h
+../obj/abcd_manager.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_manager.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_manager.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_manager.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_manager.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_manager.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_manager.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_manager.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_manager.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_manager.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_manager.o: /usr/include/i386/_mcontext.h
+../obj/abcd_manager.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_manager.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_manager.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_manager.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_manager.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_manager.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_manager.o: /usr/include/sys/_endian.h
+../obj/abcd_manager.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_manager.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_manager.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_manager.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_manager.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_manager_int.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/abcd_manager_int.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_manager_int.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_manager_int.o: /usr/include/Availability.h
+../obj/abcd_manager_int.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_manager_int.o: /usr/include/i386/_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_manager_int.o: /usr/include/secure/_stdio.h
+../obj/abcd_manager_int.o: /usr/include/secure/_common.h /usr/include/string.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_rsize_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+../obj/abcd_manager_int.o: /usr/include/secure/_string.h config.h abcd_cache.h
+../obj/abcd_manager_int.o: abcd_cache_int.h abcd_types_int.h abcd_types.h
+../obj/abcd_manager_int.o: abcd_manager.h abcd_manager_int.h abcd_node.h
+../obj/abcd_manager_int.o: abcd_node_int.h abcd_util.h /usr/include/stdlib.h
+../obj/abcd_manager_int.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_manager_int.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_manager_int.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_manager_int.o: /usr/include/machine/_mcontext.h
+../obj/abcd_manager_int.o: /usr/include/i386/_mcontext.h
+../obj/abcd_manager_int.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_manager_int.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_uid_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int8_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_manager_int.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_manager_int.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_manager_int.o: /usr/include/sys/_endian.h
+../obj/abcd_manager_int.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_manager_int.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_manager_int.o: /usr/include/alloca.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_manager_int.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_manager_int.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_node.o: config.h abcd_manager.h abcd_manager_int.h abcd_node.h
+../obj/abcd_node.o: abcd_node_int.h abcd_types_int.h abcd_types.h abcd_util.h
+../obj/abcd_node.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_node.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_node.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_node.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_node.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_node.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_node.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_node.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_node.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_node.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_node.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_node.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_node.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_node.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_node.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_node.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_node.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_node.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_timeval.h /usr/include/machine/endian.h
+../obj/abcd_node.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+../obj/abcd_node.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_node.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_node.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_node.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_node.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_onecube.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_onecube.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_onecube.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_onecube.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_onecube.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_onecube.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_onecube.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_onecube.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_onecube.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_onecube.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_onecube.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_onecube.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_onecube.o: /usr/include/i386/_mcontext.h
+../obj/abcd_onecube.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_onecube.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_onecube.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_onecube.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_onecube.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_onecube.o: /usr/include/sys/_endian.h
+../obj/abcd_onecube.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_onecube.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_onecube.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_onecube.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_onecube.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_print.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_print.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_print.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_print.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_print.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_print.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_print.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_print.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_print.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_print.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_print.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_print.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_print.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_print.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_print.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_print.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_print.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_print.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_print.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_print.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_print.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_print.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_print.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_print.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_print.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_print.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h abcd_cache_int.h
+../obj/abcd_print.o: /usr/include/stdio.h /usr/include/sys/_types/_va_list.h
+../obj/abcd_print.o: /usr/include/sys/stdio.h /usr/include/sys/_types/_off_t.h
+../obj/abcd_print.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+../obj/abcd_print.o: /usr/include/secure/_common.h
+../obj/abcd_reduce.o: abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd_reduce.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_reduce.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_reduce.o: /usr/include/Availability.h
+../obj/abcd_reduce.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_reduce.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_reduce.o: /usr/include/i386/_types.h
+../obj/abcd_reduce.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_reduce.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_reduce.o: abcd_cache.h abcd_cache_int.h abcd_types_int.h abcd_manager.h
+../obj/abcd_reduce.o: abcd_manager_int.h config.h abcd_node.h abcd_node_int.h
+../obj/abcd_reduce.o: abcd_util.h /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_reduce.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_reduce.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_reduce.o: /usr/include/i386/_mcontext.h
+../obj/abcd_reduce.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_reduce.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_reduce.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_reduce.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_reduce.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_reduce.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_reduce.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_reduce.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_reduce.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_reduce.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_reduce.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_reduce.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_reduce.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_relprod.o: abcd.h abcd_types.h /usr/include/stdio.h
+../obj/abcd_relprod.o: /usr/include/sys/cdefs.h /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_relprod.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_relprod.o: /usr/include/Availability.h
+../obj/abcd_relprod.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_relprod.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_relprod.o: /usr/include/i386/_types.h
+../obj/abcd_relprod.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_relprod.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_relprod.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_relprod.o: abcd_types_int.h abcd_node_int.h abcd_util.h
+../obj/abcd_relprod.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_relprod.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_relprod.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_relprod.o: /usr/include/i386/_mcontext.h
+../obj/abcd_relprod.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_relprod.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_relprod.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_relprod.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_relprod.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_relprod.o: /usr/include/sys/_endian.h
+../obj/abcd_relprod.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_relprod.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_relprod.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_relprod.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_relprod.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_relprod.o: abcd_cache_int.h
+../obj/abcd_stats.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/abcd_stats.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_stats.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_stats.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+../obj/abcd_stats.o: /usr/include/_types.h /usr/include/sys/_types.h
+../obj/abcd_stats.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_stats.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_ssize_t.h /usr/include/secure/_stdio.h
+../obj/abcd_stats.o: /usr/include/secure/_common.h /usr/include/string.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_rsize_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_errno_t.h /usr/include/strings.h
+../obj/abcd_stats.o: /usr/include/secure/_string.h config.h abcd_cache.h
+../obj/abcd_stats.o: abcd_cache_int.h abcd_types_int.h abcd_types.h abcd_manager.h
+../obj/abcd_stats.o: abcd_manager_int.h abcd_node.h abcd_node_int.h abcd_util.h
+../obj/abcd_stats.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_stats.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_stats.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_stats.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/abcd_stats.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_stats.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_stats.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_stats.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_stats.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_stats.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_stats.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_stats.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_stats.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_wchar_t.h /usr/include/machine/types.h
+../obj/abcd_stats.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_stats.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_support.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_support.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_support.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_support.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_support.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_support.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_support.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_support.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_support.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/abcd_support.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/abcd_support.o: /usr/include/i386/_mcontext.h
+../obj/abcd_support.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_support.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_support.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_support.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_support.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_support.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_support.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_support.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_support.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_support.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_support.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_support.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_support.o: /usr/include/sys/_endian.h
+../obj/abcd_support.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_support.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_support.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_support.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_mode_t.h abcd.h abcd_types.h
+../obj/abcd_support.o: /usr/include/stdio.h /usr/include/sys/_types/_va_list.h
+../obj/abcd_support.o: /usr/include/sys/stdio.h /usr/include/sys/_types/_off_t.h
+../obj/abcd_support.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_support.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_support.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_support.o: abcd_types_int.h abcd_node_int.h abcd_util.h
+../obj/abcd_unnegate.o: abcd_node.h config.h abcd_manager.h abcd_manager_int.h
+../obj/abcd_unnegate.o: abcd_types_int.h abcd_types.h abcd_node_int.h abcd_util.h
+../obj/abcd_unnegate.o: /usr/include/stdlib.h /usr/include/Availability.h
+../obj/abcd_unnegate.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types.h /usr/include/sys/cdefs.h
+../obj/abcd_unnegate.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_unnegate.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_unnegate.o: /usr/include/machine/_types.h /usr/include/i386/_types.h
+../obj/abcd_unnegate.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_unnegate.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_unnegate.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_unnegate.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_unnegate.o: /usr/include/machine/_mcontext.h
+../obj/abcd_unnegate.o: /usr/include/i386/_mcontext.h
+../obj/abcd_unnegate.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_unnegate.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_uid_t.h /usr/include/sys/resource.h
+../obj/abcd_unnegate.o: /usr/include/stdint.h /usr/include/sys/_types/_int8_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_unnegate.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_unnegate.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_unnegate.o: /usr/include/sys/_endian.h
+../obj/abcd_unnegate.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_unnegate.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_unnegate.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_null.h /usr/include/machine/types.h
+../obj/abcd_unnegate.o: /usr/include/i386/types.h /usr/include/sys/_types/_dev_t.h
+../obj/abcd_unnegate.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_unnegate.o: abcd_cache_int.h
+../obj/abcd_util.o: /usr/include/signal.h /usr/include/sys/cdefs.h
+../obj/abcd_util.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_util.o: /usr/include/sys/_posix_availability.h /usr/include/_types.h
+../obj/abcd_util.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_util.o: /usr/include/i386/_types.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_util.o: /usr/include/sys/signal.h /usr/include/sys/appleapiopts.h
+../obj/abcd_util.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+../obj/abcd_util.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_util.o: /usr/include/machine/_mcontext.h /usr/include/i386/_mcontext.h
+../obj/abcd_util.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_util.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_uid_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_t.h /usr/include/sys/time.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_def.h
+../obj/abcd_util.o: /usr/include/sys/_types/_timespec.h
+../obj/abcd_util.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_util.o: /usr/include/sys/_types/_timeval64.h
+../obj/abcd_util.o: /usr/include/sys/_types/_time_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_suseconds_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_setsize.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_set.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_clr.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_isset.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_zero.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fd_copy.h /usr/include/time.h
+../obj/abcd_util.o: /usr/include/sys/_types/_clock_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_null.h /usr/include/sys/_select.h
+../obj/abcd_util.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int8_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_util.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/abcd_util.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_util.o: /usr/include/_types/_intmax_t.h /usr/include/_types/_uintmax_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/types.h
+../obj/abcd_util.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_util.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_util.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_util.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_util.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_blkcnt_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_blksize_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_gid_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_in_addr_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_in_port_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ino_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ino64_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_key_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_mode_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_nlink_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_useconds_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_rsize_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_errno_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_cond_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_condattr_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_mutex_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_mutexattr_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_once_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_rwlock_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_rwlockattr_t.h
+../obj/abcd_util.o: /usr/include/sys/_pthread/_pthread_key_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fsblkcnt_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_fsfilcnt_t.h /usr/include/stdio.h
+../obj/abcd_util.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/stdio.h
+../obj/abcd_util.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_util.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_util.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_util.o: /usr/include/sys/_types/_wchar_t.h /usr/include/unistd.h
+../obj/abcd_util.o: /usr/include/sys/unistd.h
+../obj/abcd_util.o: /usr/include/sys/_types/_posix_vdisable.h
+../obj/abcd_util.o: /usr/include/sys/_types/_seek_set.h /usr/include/sys/select.h
+../obj/abcd_util.o: /usr/include/sys/_types/_uuid_t.h /usr/include/gethostuuid.h
+../obj/abcd_util.o: abcd_types.h abcd_manager.h abcd_manager_int.h config.h
+../obj/abcd_util.o: abcd_node.h abcd_node_int.h abcd_types_int.h abcd_util.h
+../obj/abcd_visualize.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/abcd_visualize.o: /usr/include/sys/_symbol_aliasing.h
+../obj/abcd_visualize.o: /usr/include/sys/_posix_availability.h
+../obj/abcd_visualize.o: /usr/include/Availability.h
+../obj/abcd_visualize.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/abcd_visualize.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/abcd_visualize.o: /usr/include/i386/_types.h
+../obj/abcd_visualize.o: /usr/include/sys/_pthread/_pthread_types.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_va_list.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_size_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_off_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_ssize_t.h
+../obj/abcd_visualize.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h
+../obj/abcd_visualize.o: /usr/include/stdlib.h /usr/include/sys/wait.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_pid_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/abcd_visualize.o: /usr/include/sys/appleapiopts.h
+../obj/abcd_visualize.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+../obj/abcd_visualize.o: /usr/include/machine/_mcontext.h
+../obj/abcd_visualize.o: /usr/include/i386/_mcontext.h
+../obj/abcd_visualize.o: /usr/include/mach/i386/_structs.h
+../obj/abcd_visualize.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_ucontext.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_sigset_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_uid_t.h
+../obj/abcd_visualize.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_int8_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_int16_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_int32_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_int64_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_uint8_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_uint16_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_uint32_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_uint64_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_intptr_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_uintptr_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_intmax_t.h
+../obj/abcd_visualize.o: /usr/include/_types/_uintmax_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_timeval.h
+../obj/abcd_visualize.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/abcd_visualize.o: /usr/include/sys/_endian.h
+../obj/abcd_visualize.o: /usr/include/libkern/_OSByteOrder.h
+../obj/abcd_visualize.o: /usr/include/libkern/i386/_OSByteOrder.h
+../obj/abcd_visualize.o: /usr/include/alloca.h /usr/include/sys/_types/_ct_rune_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_rune_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_wchar_t.h
+../obj/abcd_visualize.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_dev_t.h
+../obj/abcd_visualize.o: /usr/include/sys/_types/_mode_t.h abcd_cache.h
+../obj/abcd_visualize.o: abcd_cache_int.h abcd_types_int.h abcd_types.h
+../obj/abcd_visualize.o: abcd_manager.h abcd_manager_int.h config.h abcd_node.h
+../obj/abcd_visualize.o: abcd_node_int.h abcd_util.h
+../obj/test.o: /usr/include/stdio.h /usr/include/sys/cdefs.h
+../obj/test.o: /usr/include/sys/_symbol_aliasing.h
+../obj/test.o: /usr/include/sys/_posix_availability.h /usr/include/Availability.h
+../obj/test.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+../obj/test.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+../obj/test.o: /usr/include/i386/_types.h /usr/include/sys/_pthread/_pthread_types.h
+../obj/test.o: /usr/include/sys/_types/_va_list.h /usr/include/sys/_types/_size_t.h
+../obj/test.o: /usr/include/sys/_types/_null.h /usr/include/sys/stdio.h
+../obj/test.o: /usr/include/sys/_types/_off_t.h /usr/include/sys/_types/_ssize_t.h
+../obj/test.o: /usr/include/secure/_stdio.h /usr/include/secure/_common.h ABCD.h
+../obj/test.o: abcd_types.h abcd_node_int.h config.h abcd_types_int.h
+../obj/test.o: abcd_cache_int.h abcd_util.h /usr/include/stdlib.h
+../obj/test.o: /usr/include/sys/wait.h /usr/include/sys/_types/_pid_t.h
+../obj/test.o: /usr/include/sys/_types/_id_t.h /usr/include/sys/signal.h
+../obj/test.o: /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h
+../obj/test.o: /usr/include/i386/signal.h /usr/include/machine/_mcontext.h
+../obj/test.o: /usr/include/i386/_mcontext.h /usr/include/mach/i386/_structs.h
+../obj/test.o: /usr/include/sys/_pthread/_pthread_attr_t.h
+../obj/test.o: /usr/include/sys/_types/_sigaltstack.h
+../obj/test.o: /usr/include/sys/_types/_ucontext.h
+../obj/test.o: /usr/include/sys/_types/_sigset_t.h /usr/include/sys/_types/_uid_t.h
+../obj/test.o: /usr/include/sys/resource.h /usr/include/stdint.h
+../obj/test.o: /usr/include/sys/_types/_int8_t.h /usr/include/sys/_types/_int16_t.h
+../obj/test.o: /usr/include/sys/_types/_int32_t.h /usr/include/sys/_types/_int64_t.h
+../obj/test.o: /usr/include/_types/_uint8_t.h /usr/include/_types/_uint16_t.h
+../obj/test.o: /usr/include/_types/_uint32_t.h /usr/include/_types/_uint64_t.h
+../obj/test.o: /usr/include/sys/_types/_intptr_t.h
+../obj/test.o: /usr/include/sys/_types/_uintptr_t.h /usr/include/_types/_intmax_t.h
+../obj/test.o: /usr/include/_types/_uintmax_t.h /usr/include/sys/_types/_timeval.h
+../obj/test.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+../obj/test.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+../obj/test.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h
+../obj/test.o: /usr/include/sys/_types/_ct_rune_t.h
+../obj/test.o: /usr/include/sys/_types/_rune_t.h /usr/include/sys/_types/_wchar_t.h
+../obj/test.o: /usr/include/machine/types.h /usr/include/i386/types.h
+../obj/test.o: /usr/include/sys/_types/_dev_t.h /usr/include/sys/_types/_mode_t.h

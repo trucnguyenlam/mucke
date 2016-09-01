@@ -13,6 +13,9 @@ then
 elif [ $OS = Linux ]
 then
   SARCH=linux
+elif [ $OS = Darwin ]
+then
+  SARCH=osx
 else
   echo "*** this architecture is not supported" 2>&1; exit 1
 fi

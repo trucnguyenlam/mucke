@@ -156,6 +156,18 @@ case $SARCH in
     echo "#define HAVE_ISATTY" >> src/new_config.h
     echo "#define HAVE_GETENV" >> src/new_config.h
     ;;
+  osx)
+    echo "#define LINUX" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "/*" >> src/new_config.h
+    echo "DATE_STR +%a %b %d %Y" >> src/new_config.h
+    echo "*/" >> src/new_config.h
+    echo "" >> src/new_config.h
+    echo "#define HAVE_CURSES" >> src/new_config.h
+    echo "#define HAVE_TERMIOS" >> src/new_config.h
+    echo "#define HAVE_ISATTY" >> src/new_config.h
+    echo "#define HAVE_GETENV" >> src/new_config.h
+    ;;
   sunos)
     echo "#define SUNOS" >> src/new_config.h
     echo "" >> src/new_config.h

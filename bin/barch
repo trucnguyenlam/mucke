@@ -27,6 +27,14 @@ then
     x86_64) MACHINE=intel;;
     *) error;;
   esac
+elif [ $OS = Darwin ]
+then
+  SARCH=osx
+  case `uname -m` in
+    i386 | i486 | i586 | i686) MACHINE=intel;;
+    x86_64) MACHINE=intel;;
+    *) error;;
+  esac
 else
   error;
 fi
