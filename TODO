@@ -1,2 +1,3 @@
  - make C++ version of CUDD more efficient
+   + edit option to parse configuration file, setting cached
  - make C version of CUDD work (problem of count ref)

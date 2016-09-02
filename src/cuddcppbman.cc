@@ -48,7 +48,37 @@ extern "C" {
 CuddCPPBMan::CuddCPPBMan() :
     current_var(0)
 {
-    _manager = new Cudd(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, 0);
+    InitFileReader initFileReader(".cuddbmanrc");
+
+    double factor = 0.4, cache_limit = 2147483648;
+    int MB = 0;
+
+
+    if (initFileReader.getValue("MB", MB))
+    {
+        verbose << "using initial memory " << MB
+                << " MB from file `.cuddbmanrc'" << '\n';
+    }
+    else verbose << "using default memory" << '\n';
+
+    _manager = new Cudd(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, MB);
+
+    if (initFileReader.getValue("cache_ratio", factor))
+    {
+        verbose << "using cache ratio " << factor
+                << " from file `.cuddbmanrc'" << '\n';
+    }
+    else verbose << "using default cache ratio " << factor << '\n';
+    _manager->SetMinHit((unsigned int) factor * 100);
+
+    if (initFileReader.getValue("cache_limit", cache_limit))
+    {
+        verbose << "using hard limit for cache size " << cache_limit
+                << " from file `.cuddbmanrc'" << '\n';
+        _manager->SetMaxCacheHard((unsigned int) cache_limit);
+    }
+    else verbose << "using default cache size" << '\n';
+
 }
 
 /*---------------------------------------------------------------------------*/
@@ -630,9 +660,11 @@ CuddCPPBMan::stats()
 {
     char stats[ 1500 ];
     sprintf(stats,
-            "CUDD: n%u c%u s%.0f h%.0f (%.0f%%) gc%d",
+            "CUDD: t%u n%u c%u u%.0f s%.0f h%.0f (%.0f%%) gc%d",
+            manager() -> ReadSlots(),
             manager() -> ReadKeys(),
             manager() -> ReadCacheSlots(),
+            manager() -> ReadCacheUsedSlots(),
             manager() -> ReadCacheLookUps(),
             manager() -> ReadCacheHits(),
             (manager() -> ReadCacheHits() / manager() -> ReadCacheLookUps()) * 100.0,
