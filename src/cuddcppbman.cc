@@ -50,18 +50,11 @@ CuddCPPBMan::CuddCPPBMan() :
 {
     InitFileReader initFileReader(".cuddbmanrc");
 
-    double factor = 0.4, cache_limit = 2147483648;
-    int MB = 0;
+    double factor = 0.4,
+    unsigned cache_limit = 8388608;
+    unsigned unique_table = 1048576;
 
-
-    if (initFileReader.getValue("MB", MB))
-    {
-        verbose << "using initial memory " << MB
-                << " MB from file `.cuddbmanrc'" << '\n';
-    }
-    else verbose << "using default memory" << '\n';
-
-    _manager = new Cudd(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, MB);
+    _manager = new Cudd(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, 0);
 
     if (initFileReader.getValue("cache_ratio", factor))
     {
@@ -78,6 +71,13 @@ CuddCPPBMan::CuddCPPBMan() :
         _manager->SetMaxCacheHard((unsigned int) cache_limit);
     }
     else verbose << "using default cache size" << '\n';
+
+    if (initFileReader.getValue("unique_table", unique_table))
+    {
+        verbose << "using limit for fast unique table growth " << unique_table
+                << " from file `.cuddbmanrc'" << '\n';
+        _manager->SetLooseUpTo((unsigned int) unique_table);
+    }
 
 }
 
