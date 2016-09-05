@@ -1,4 +1,5 @@
 OPTIMIZE=-O3
+OPTIMIZE=
 
 #------------------------------------------------------------------------
 FLAGS=-g -fPIC -Wno-write-strings $(OPTIMIZE)
@@ -29,7 +30,10 @@ all: config.h
 
 BIN=../bin/LINK
 OBJ=../obj/LINK
-INCL=-I../contrib/bddlib.D.E.Long -I../contrib/abcd/src -I../contrib/cudd/install/include
+INCL=-I../contrib/bddlib.D.E.Long \
+ 	 -I../contrib/abcd/src \
+ 	 -I../contrib/cudd/install/include \
+ 	 -I../contrib/CaCBDD/includes
 
 #------------------------------------------------------------------------
 
@@ -175,6 +179,18 @@ $(BIN)/mucke_static_bman: $(OBJS) $(SOBJS)
 	  cp libcudd.a ../../../../bin/LINK; \
 	  libs="$$libs -lcudd"; \
 	  cd ../../../../src; \
+	fi; \
+	if [ ! x"$$CACBDD" = x ]; \
+	then \
+	  echo "[generating cacbddbman objects]"; \
+	  make \
+	    $(OBJ)/cacbddbman.o; \
+	  libs="$$libs \
+	    $(OBJ)/cacbddbman.o"; \
+	  cd ../contrib/CacBDD; \
+	  cp libcacBDD.a ../../bin/LINK; \
+	  libs="$$libs -lcacBDD"; \
+	  cd ../../src; \
 	fi; \
 	echo "[generating abcdbman objects]"; \
 	cd ../contrib/abcd/src; make ../lib/libabcd.a; cd ../../../src; \
@@ -418,6 +434,8 @@ $(OBJ)/cuddbman.o: cuddbman.cc
 	$(CXX) -c -o $@ cuddbman.cc
 $(OBJ)/cuddcppbman.o: cuddcppbman.cc
 	$(CXX) -c -o $@ cuddcppbman.cc
+$(OBJ)/cacbddbman.o: cacbddbman.cc
+	$(CXX) -c -o $@ cacbddbman.cc
 $(OBJ)/cuddstats.o: cuddstats.c
 	$(CC) $(INCL) -c -o $@ cuddstats.c
 $(OBJ)/cuddbmanDynamic.o: cuddbmanDynamic.cc

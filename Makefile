@@ -28,6 +28,9 @@ distclean:
 realclean: distclean
 
 config_static:
-	./configure --static --longbdd=`pwd`/contrib/bddlib.D.E.Long/bddlib --cuddbdd=`pwd`/contrib/cudd/install
+	./configure --static --longbdd=`pwd`/contrib/bddlib.D.E.Long/bddlib \
+			--cuddbdd=`pwd`/contrib/cudd/install \
+			--cacbdd=`pwd`/contrib/CacBDD
 
 .PHONY: all clean depend distclean realclean config_static
+# DO NOT DELETE

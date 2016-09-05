@@ -18,6 +18,9 @@ usage() {
   echo "    --cuddbdd=<dir>    to generate code for the CUDD library" 1>&2
   echo "                       of Fabio Somenzi" 1>&2
   echo "" 1>&2
+  echo "    --cacbdd=<dir>     to generate code for the CacBDD" 1>&2
+  echo "                       of ..." 1>&2
+  echo "" 1>&2
   echo "    --CXX=<compiler>   specifies another C++ compiler" 1>&2
   echo "" 1>&2
   echo "    --CPP=<cpp>        specifies another C(++) preprocessor" 1>&2
@@ -43,6 +46,7 @@ CXX="g++"
 CPP="gcc -E"
 LONGBDD=""
 CUDDBDD=""
+CACBDD=""
 
 while [ $# -gt 0 ]
 do
@@ -72,6 +76,19 @@ do
       if [[ ! -d $CUDDBDD ]]
       then
         echo "*** configure: argument to --cuddbdd is not a directory" 1>&2
+  usage
+      fi
+      ;;
+    --cacbdd=*)
+      CACBDD=$(echo "$1" | sed -e 's,--cacbdd=,,')
+      if [ x"$CACBDD" = x ]
+      then
+        echo "*** configure: argument to --cacbdd is missing" 1>&2
+  usage
+      fi
+      if [[ ! -d $CACBDD ]]
+      then
+        echo "*** configure: argument to --cacbdd is not a directory" 1>&2
   usage
       fi
       ;;
@@ -186,7 +203,7 @@ esac
 
 echo "  constants ..."
 ${CPP} src/Constants.c |  grep -E "^[^#]" | indent | \
-sed -e '/_MY_/!d' -e 's/_MY_\([a-zA-Z0-9_]*\)/\1/' >> src/new_config.h
+sed -e '/_MY_/!d' -e 's/_MY_\([a-zA-Z0-9_]*\)/\1/' -e 's/const int/#define/' -e 's/=/ /' -e 's/;//' >> src/new_config.h
 
 echo "  have to define bool ..."
 tmpfile=/tmp/have_bool$$
@@ -246,6 +263,7 @@ echo "BARCH=$BARCH" >> .configuration
 echo "STATIC=$STATIC" >> .configuration
 echo 'LONGBDD="'$LONGBDD'"' >> .configuration
 echo 'CUDDBDD="'$CUDDBDD'"' >> .configuration
+echo 'CACBDD="'$CACBDD'"' >> .configuration
 
 #--------------------------------------------------------------------------
 # Configure subtargets ----------------------------------------------------
@@ -276,5 +294,13 @@ then
   rm -rf install
   make install
   make distclean
+  cd ../../
+fi
+
+if [ ! x"$CACBDD" = x ]
+then
+  echo "configuring CacBDD library"
+  cd contrib/CacBDD
+  make
   cd ../../
 fi

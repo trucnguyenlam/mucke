@@ -1,4 +1,5 @@
 OPTIMIZE=-O3
+OPTIMIZE=
 
 #------------------------------------------------------------------------
 FLAGS=-g -fPIC -Wno-write-strings $(OPTIMIZE)
@@ -29,7 +30,10 @@ all: config.h
 
 BIN=../bin/LINK
 OBJ=../obj/LINK
-INCL=-I../contrib/bddlib.D.E.Long -I../contrib/abcd/src -I../contrib/cudd/install/include
+INCL=-I../contrib/bddlib.D.E.Long \
+ 	 -I../contrib/abcd/src \
+ 	 -I../contrib/cudd/install/include \
+ 	 -I../contrib/CaCBDD/includes
 
 #------------------------------------------------------------------------
 
@@ -175,6 +179,18 @@ $(BIN)/mucke_static_bman: $(OBJS) $(SOBJS)
 	  cp libcudd.a ../../../../bin/LINK; \
 	  libs="$$libs -lcudd"; \
 	  cd ../../../../src; \
+	fi; \
+	if [ ! x"$$CACBDD" = x ]; \
+	then \
+	  echo "[generating cacbddbman objects]"; \
+	  make \
+	    $(OBJ)/cacbddbman.o; \
+	  libs="$$libs \
+	    $(OBJ)/cacbddbman.o"; \
+	  cd ../contrib/CacBDD; \
+	  cp libcacBDD.a ../../bin/LINK; \
+	  libs="$$libs -lcacBDD"; \
+	  cd ../../src; \
 	fi; \
 	echo "[generating abcdbman objects]"; \
 	cd ../contrib/abcd/src; make ../lib/libabcd.a; cd ../../../src; \
@@ -418,6 +434,8 @@ $(OBJ)/cuddbman.o: cuddbman.cc
 	$(CXX) -c -o $@ cuddbman.cc
 $(OBJ)/cuddcppbman.o: cuddcppbman.cc
 	$(CXX) -c -o $@ cuddcppbman.cc
+$(OBJ)/cacbddbman.o: cacbddbman.cc
+	$(CXX) -c -o $@ cacbddbman.cc
 $(OBJ)/cuddstats.o: cuddstats.c
 	$(CC) $(INCL) -c -o $@ cuddstats.c
 $(OBJ)/cuddbmanDynamic.o: cuddbmanDynamic.cc
@@ -678,6 +696,72 @@ $(OBJ)/y.tab.o: y.tab.c
 ../obj/LINK/brepr.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
 ../obj/LINK/brepr.o: /usr/include/bits/sigset.h
 ../obj/LINK/cHash.o: cHash.h config.h Primes.h debug.h
+../obj/LINK/cacbddbman.o: cacbddbman.h booleman.h boole.h idx.h list.h
+../obj/LINK/cacbddbman.o: iterator.h io.h stack.h config.h Ref.h debug.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/cacBDD.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/Base.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/BDDNode.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/Manager.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/UTable.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/DdNode.h
+../obj/LINK/cacbddbman.o: /usr/include/stdlib.h /usr/include/features.h
+../obj/LINK/cacbddbman.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/wordsize.h
+../obj/LINK/cacbddbman.o: /usr/include/gnu/stubs.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/waitflags.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/waitstatus.h
+../obj/LINK/cacbddbman.o: /usr/include/endian.h /usr/include/bits/endian.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/byteswap.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/types.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/typesizes.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/cacbddbman.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/cacbddbman.o: /usr/include/sys/select.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/select.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/sigset.h /usr/include/bits/time.h
+../obj/LINK/cacbddbman.o: /usr/include/sys/sysmacros.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/cacbddbman.o: /usr/include/alloca.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/stdlib-float.h
+../obj/LINK/cacbddbman.o: /usr/include/assert.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/CTable.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/XVector.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/XBits.h
+../obj/LINK/cacbddbman.o: /usr/include/memory.h /usr/include/string.h
+../obj/LINK/cacbddbman.o: /usr/include/xlocale.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/XInts.h
+../obj/LINK/cacbddbman.o: /usr/include/limits.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/posix1_lim.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/local_lim.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/limits.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/posix2_lim.h
+../obj/LINK/cacbddbman.o: /usr/include/sys/sysinfo.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/kernel.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/sysinfo.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/types.h /usr/include/asm/types.h
+../obj/LINK/cacbddbman.o: /usr/include/asm-generic/types.h
+../obj/LINK/cacbddbman.o: /usr/include/asm-generic/int-ll64.h
+../obj/LINK/cacbddbman.o: /usr/include/asm/bitsperlong.h
+../obj/LINK/cacbddbman.o: /usr/include/asm-generic/bitsperlong.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/posix_types.h
+../obj/LINK/cacbddbman.o: /usr/include/linux/stddef.h
+../obj/LINK/cacbddbman.o: /usr/include/asm/posix_types.h
+../obj/LINK/cacbddbman.o: /usr/include/asm/posix_types_64.h
+../obj/LINK/cacbddbman.o: /usr/include/asm-generic/posix_types.h Timer.h
+../obj/LINK/cacbddbman.o: ../contrib/CacBDD/includes/XFunction.h
+../obj/LINK/cacbddbman.o: /usr/include/stdio.h /usr/include/libio.h
+../obj/LINK/cacbddbman.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/sys_errlist.h InitFileReader.h
+../obj/LINK/cacbddbman.o: /usr/include/math.h /usr/include/bits/math-vector.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/libm-simd-decl-stubs.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/huge_val.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/huge_valf.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/huge_vall.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/inf.h /usr/include/bits/nan.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/mathdef.h
+../obj/LINK/cacbddbman.o: /usr/include/bits/mathcalls.h except.h
+../obj/LINK/cacbddbman.o: /usr/include/setjmp.h /usr/include/bits/setjmp.h
 ../obj/LINK/cache.o: cache.h cHash.h config.h repr.h alloc.h iterator.h
 ../obj/LINK/cache.o: stack.h debug.h idx.h list.h io.h manager.h Ref.h
 ../obj/LINK/cexbuild.o: cexbuild.h evalmmc.h evalint.h eval.h array.h debug.h
@@ -995,16 +1079,69 @@ $(OBJ)/y.tab.o: y.tab.c
 ../obj/LINK/linkBManStatic.o: longbman.h cuddcppbman.h
 ../obj/LINK/linkBManStatic.o: ../contrib/cudd/install/include/cuddObj.hh
 ../obj/LINK/linkBManStatic.o: ../contrib/cudd/install/include/cudd.h
-../obj/LINK/linkBManStatic.o: /usr/include/dlfcn.h /usr/include/features.h
+../obj/LINK/linkBManStatic.o: cacbddbman.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/cacBDD.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/Base.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/BDDNode.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/Manager.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/UTable.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/DdNode.h
+../obj/LINK/linkBManStatic.o: /usr/include/stdlib.h /usr/include/features.h
 ../obj/LINK/linkBManStatic.o: /usr/include/stdc-predef.h
 ../obj/LINK/linkBManStatic.o: /usr/include/sys/cdefs.h
 ../obj/LINK/linkBManStatic.o: /usr/include/bits/wordsize.h
 ../obj/LINK/linkBManStatic.o: /usr/include/gnu/stubs.h
-../obj/LINK/linkBManStatic.o: /usr/include/bits/dlfcn.h /usr/include/string.h
-../obj/LINK/linkBManStatic.o: /usr/include/xlocale.h except.h
-../obj/LINK/linkBManStatic.o: /usr/include/setjmp.h
-../obj/LINK/linkBManStatic.o: /usr/include/bits/setjmp.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/waitflags.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/waitstatus.h
+../obj/LINK/linkBManStatic.o: /usr/include/endian.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/endian.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/byteswap.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/types.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/typesizes.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/byteswap-16.h
+../obj/LINK/linkBManStatic.o: /usr/include/sys/types.h /usr/include/time.h
+../obj/LINK/linkBManStatic.o: /usr/include/sys/select.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/select.h
 ../obj/LINK/linkBManStatic.o: /usr/include/bits/sigset.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/time.h
+../obj/LINK/linkBManStatic.o: /usr/include/sys/sysmacros.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/pthreadtypes.h
+../obj/LINK/linkBManStatic.o: /usr/include/alloca.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/stdlib-float.h
+../obj/LINK/linkBManStatic.o: /usr/include/assert.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/CTable.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/XVector.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/XBits.h
+../obj/LINK/linkBManStatic.o: /usr/include/memory.h /usr/include/string.h
+../obj/LINK/linkBManStatic.o: /usr/include/xlocale.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/XInts.h
+../obj/LINK/linkBManStatic.o: /usr/include/limits.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/posix1_lim.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/local_lim.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/limits.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/posix2_lim.h
+../obj/LINK/linkBManStatic.o: /usr/include/sys/sysinfo.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/kernel.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/sysinfo.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/types.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm/types.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm-generic/types.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm-generic/int-ll64.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm/bitsperlong.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm-generic/bitsperlong.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/posix_types.h
+../obj/LINK/linkBManStatic.o: /usr/include/linux/stddef.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm/posix_types.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm/posix_types_64.h
+../obj/LINK/linkBManStatic.o: /usr/include/asm-generic/posix_types.h Timer.h
+../obj/LINK/linkBManStatic.o: ../contrib/CacBDD/includes/XFunction.h
+../obj/LINK/linkBManStatic.o: /usr/include/stdio.h /usr/include/libio.h
+../obj/LINK/linkBManStatic.o: /usr/include/_G_config.h /usr/include/wchar.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/stdio_lim.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/sys_errlist.h
+../obj/LINK/linkBManStatic.o: /usr/include/dlfcn.h /usr/include/bits/dlfcn.h
+../obj/LINK/linkBManStatic.o: except.h /usr/include/setjmp.h
+../obj/LINK/linkBManStatic.o: /usr/include/bits/setjmp.h
 ../obj/LINK/loadBMan.o: init.h config.h
 ../obj/LINK/loadBManDynamic.o: booleman.h boole.h idx.h list.h iterator.h
 ../obj/LINK/loadBManDynamic.o: io.h stack.h config.h Ref.h debug.h except.h

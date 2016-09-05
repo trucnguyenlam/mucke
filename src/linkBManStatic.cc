@@ -5,6 +5,7 @@
 #include "longbman.h"
 // #include "cuddbman.h"      // Disable at the moment
 #include "cuddcppbman.h"
+#include "cacbddbman.h"
 
 extern char * bmanID;
 
@@ -16,6 +17,7 @@ extern "C" {
     extern void longbman_installAt(BooleManager**);
     // extern void cuddbman_installAt(BooleManager**);
     extern void cuddcppbman_installAt(BooleManager**);
+    extern void cacbddbman_installAt(BooleManager**);
     extern void abcdbman_installAt(BooleManager**);
 };
 
@@ -42,11 +44,11 @@ bool linkBMan_doTheLink()
         installAt = &abcdbman_installAt;
     }
     else
-        // if(strcmp(bmanID, "libcudd.so") == 0)
-        //   {
-        //     installAt = &cuddbman_installAt;
-        //   }
-        // else
+        if(strcmp(bmanID, "cacbdd.a") == 0)
+          {
+            installAt = &cacbddbman_installAt;
+          }
+        else
         if (strcmp(bmanID, "cudd.a") == 0)
         {
             installAt = &cuddcppbman_installAt;

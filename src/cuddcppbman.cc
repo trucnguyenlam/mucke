@@ -50,9 +50,9 @@ CuddCPPBMan::CuddCPPBMan() :
 {
     InitFileReader initFileReader(".cuddbmanrc");
 
-    double factor = 0.4,
-    unsigned cache_limit = 8388608;
-    unsigned unique_table = 1048576;
+    double factor = 0.25;
+    double cache_limit = 8388608;
+    double unique_table = 1048576;
 
     _manager = new Cudd(0, 0, CUDD_UNIQUE_SLOTS, CUDD_CACHE_SLOTS, 0);
 
@@ -664,7 +664,7 @@ CuddCPPBMan::stats()
             manager() -> ReadSlots(),
             manager() -> ReadKeys(),
             manager() -> ReadCacheSlots(),
-            manager() -> ReadCacheUsedSlots(),
+            manager() -> ReadCacheUsedSlots() * 100.0,
             manager() -> ReadCacheLookUps(),
             manager() -> ReadCacheHits(),
             (manager() -> ReadCacheHits() / manager() -> ReadCacheLookUps()) * 100.0,
